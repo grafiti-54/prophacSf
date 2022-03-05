@@ -18,6 +18,9 @@
     {# lien css footer #}   
     <link rel="stylesheet" href="{{asset('assets/css/footer.css')}}">
 
+    {# lien css page département #}
+    <link rel="stylesheet" href="{{asset('assets/css/departements.css')}}">
+
     {% block stylesheets %}
             {# {{ encore_entry_link_tags('app') }} #}
     {% endblock %}
@@ -27,17 +30,17 @@
 {# HEADER #}
 <body>
     <div class="logo">
-        <div><a href="{{path('app_acceuil')}}"><img class="logo-prophac" src="{{asset('assets/img/Logo_Prophac_haute-resolution_rgb.png')}}"
+        <div><a href="{{path('app_accueil')}}"><img class="logo-prophac" src="{{asset('assets/img/Logo_Prophac_haute-resolution_rgb.png')}}"
             alt="logo-phophac" /></a>
         </div>
     </div>
     <header id="hd-navbar" class="hd-nav">
         
-        <a class="hd-home" href="{{path('app_acceuil')}}">HOME</a>
+        <a class="hd-home" href="{{path('app_accueil')}}">HOME</a>
         <div class="hd-dropdown-1">
-            <button class="hd-btn">DOMAINE D'ACTIVITÉS</button>
+            <button class="hd-btn">DOMAINE D'ACTIVITÉS</button> 
             <div class="hd-content">
-                <a href="diagnostics.php">DIAGNOSTICS</a>
+                <a href="{{path('app_diagnostics')}}">DIAGNOSTICS</a>
                 <a href="pharmaceuticals.html">PHARMACEUTICALS</a>
                 <a href="patient-information-and-diabetes-care.html">PATIENT INFORMATIONS AND DIABETES CARE</a>
                 <a href="veterinary.html">VETERINARY</a>
@@ -66,7 +69,7 @@
         <a class="hd-icon" onclick="myFunction()">&#9776</a>
         <!--Unicode menu hambourger-->
     </header>
- {% block carousel%} 
+ {% block illustration %} 
  {# carousel #}
 <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
@@ -141,7 +144,7 @@
           /></a>
         </div>
         <div class="ft-info">
-          <a class="ft-nom" href="#"><strong>DIAGNOSTICS</strong></a>
+          <a class="ft-nom" href="{{path('app_diagnostics')}}"><strong>DIAGNOSTICS</strong></a>
           <a class="ft-phone" href="#">(+352) 482 482-500</a>
           <a class="ft-mail" href="#">diagnostics@prophac.lu</a>
         </div>
@@ -197,6 +200,7 @@
         </div>
       </div>
     </footer>
+    <div class="mentions text-center py-1"> <a href="#"><small class="text-light">Mentions légales</small></a></div>
 
 
 
