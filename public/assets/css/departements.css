@@ -1,0 +1,54 @@
+
+
+/* sous titre de section */
+.sous-titre{
+    background-color: #0032A0;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    border-radius: 30px;
+    padding: 5px;
+    margin-bottom: 30px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 15px -10px;
+    margin-top: 30px;
+}
+
+.diagnostics-container{ /* image de fond*/
+    background-image: url("../img/departement-diagnostics.jpg");
+    height: 45vh;
+    width: 100vw auto;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+h1{
+    font-size: clamp(1.9rem,2.5vw,3rem) /*reduction de la taille du texte suivant la taille de l'ecran*/
+}
+
+p{
+    font-size: 26px;
+    /* margin: 10px; */
+}
+
+.picto{ /* image picto*/
+    height: 100px;
+    width: 100px;
+    
+}
+
+@media(max-width: 700px){ 
+    p{
+    display:none;
+    
+    }
+    h1{
+        margin: 2em;
+    }
+}

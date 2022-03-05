@@ -47,8 +47,8 @@ header{
     color: white;
 }
 
-header > a,
-header button {/* balise a qui suivent directement le header*/
+header > a, /* balise a qui suivent directement le header*/
+header button {
     color: white;
     margin: 0 20px;
     font-size: 16px; 
@@ -75,7 +75,7 @@ header .hd-dropdown-1:hover .hd-content{ /* hover (au survol) du bouton*/
     display: flex;
     flex-direction: column;
     position: absolute; /* le menu ne bouge pas au survole*/
-    background-color: rgb(197, 190, 190);
+    background-color: rgba(197, 190, 190, 0.9); /* fond des sous menu*/
     top:120px; /*marge pour affichage du menu plus bas*/
     width: 120%;
     padding: 15px 2px;
@@ -87,10 +87,12 @@ header .hd-dropdown-1:hover .hd-content{ /* hover (au survol) du bouton*/
 header .hd-content a{
     padding: 5px;
     text-decoration: none;
+    color: rgb(0, 51, 160);
 }
 
 header .hd-content a:hover{ /* survole des sous menu*/
-    background-color: rgb(161, 170, 192);
+    background-color: rgb(0, 51, 160);
+    color: white;
 }
 
 /*------------------Responsive ---------------*/
