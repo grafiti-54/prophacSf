@@ -1,0 +1,251 @@
+@font-face {
+    font-family:'DIN Offc';
+    src: url('font/fonts/DINOffc.eot');
+    src: url('font/fonts/DINOffc.eot?#iefix') format('embedded-opentype'),
+         url('font/fonts/DINOffc.woff2') format('woff2'),
+         url('font/fonts/DINOffc.woff') format('woff'),
+         url('font/fonts/DINOffc.ttf')  format('truetype'),
+         url('font/fonts/DINOffc.svg#DIN Offc') format('svg');
+}
+
+*{
+    margin: 0;
+    padding:0;
+    list-style: none;
+    text-decoration: none;
+    font-family:'DIN Offc';
+}
+
+/*logo prophac*/
+.logo{
+    text-align: center;
+}
+.logo img{ 
+    height: 80px;
+    width: 250px;
+    /* float: left; */
+    margin: 35px;   
+}
+
+header{
+    width: 100%;
+    height: 120px;
+    background-color: rgb(0, 51, 160);
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    position: relative;
+    flex-direction: row;
+    z-index: 100;
+    
+}
+/* lien vers l'accueil sur la navbar */
+.hd-home{
+    text-decoration: none;
+}
+.hd-home:hover{
+    color: white;
+}
+
+header > a,
+header button {/* balise a qui suivent directement le header*/
+    color: white;
+    margin: 0 20px;
+    font-size: 16px; 
+}
+
+header button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    
+}
+header .hd-dropdown-1{ /* dropdown est le parent de dropdown il faut donc mettre une position relative lorsqu'un enfant à une position absolute*/
+    position: relative;
+    height: 100%;
+    display: flex;    
+}
+
+header .hd-dropdown-1 .hd-content{
+    display: none; /*on cache le sous menu*/
+}
+
+header .hd-dropdown-1:hover .hd-content{ /* hover (au survol) du bouton*/
+    display: block;
+    display: flex;
+    flex-direction: column;
+    position: absolute; /* le menu ne bouge pas au survole*/
+    background-color: rgb(197, 190, 190);
+    top:120px; /*marge pour affichage du menu plus bas*/
+    width: 120%;
+    padding: 15px 2px;
+    box-sizing: border-box;
+    transition: 1s;
+    
+}
+
+header .hd-content a{
+    padding: 5px;
+    text-decoration: none;
+}
+
+header .hd-content a:hover{ /* survole des sous menu*/
+    background-color: rgb(161, 170, 192);
+}
+
+/*------------------Responsive ---------------*/
+
+header .hd-icon{
+    display:none; /* cache le hamburger par defaut*/
+}
+
+@media(max-width: 770px){ 
+    header > a,
+    header button{
+    display:none; /* caché a partir de la taille d'ecran choisi*/
+    margin: 10px;
+    }
+    header .hd-icon{
+    display:block; /* on fait apparaitre le hamburger */
+    position: absolute;
+    right:0;
+    margin-right: 55px !important;
+    font-size: 36px;
+    cursor: pointer;
+    text-align: center;
+    width: 5% !important;
+    top:1px;
+    padding: 0 !important;
+    text-decoration: none !important;
+    
+}
+
+
+/*script*/
+
+header.hd-responsive > a{
+    padding: 10px 0;
+}
+    
+    header.hd-responsive > a,
+    header.hd-responsive .hd-dropdown-1 {
+        display: block;
+        width:100%;
+        
+    }
+
+    header.hd-responsive button{
+        display: block;
+        padding: 10px 0;
+    }
+
+    header{
+        flex-direction: column;
+        min-height: 70px;
+        height: 100%;
+        align-items: flex-start;
+    }
+
+    header .hd-dropdown-1:hover .hd-content{ /* hover (au survol) du bouton*/
+        position: relative;
+        width:100%;
+        top:0;
+        padding:30px;
+    }
+}
+
+
+/* ------------- CAROUSEL -------------------*/
+
+.carousel carousel-dark slide{
+    z-index: 0.5;
+  }
+
+/* taille des picto du carousel*/
+
+.car-picto{ 
+    height:90px;
+    width: 90px;
+    animation: apparaitre 3s;}
+
+/* lien du carousel*/
+.car-lien{  
+    text-decoration: none;
+    color:white;
+}
+
+/* titre de chaque photo du carousel*/
+.car-titre{
+    font-size: clamp(1.3rem,2.5vw,3rem); /*reduction de la taille du texte suivant la taille de l'ecran*/
+    animation: apparaitre 1s;
+}
+
+/* paragraphe de chaque photo du carousel*/
+.car-p{ 
+    font-size: 26px;
+    margin: 10px;
+    animation:apparaitre 2s;
+}
+
+
+/*animation pour  titre-paragraphe-picto du carousel*/
+@keyframes apparaitre {
+    0%{
+      opacity: 0;
+    }
+    20%{
+      opacity: 0;
+    }
+    40%{
+      opacity: 0.0;
+    }
+    
+    90%{
+      opacity: 0.3
+    }
+    100%{
+      opacity:1;
+    }
+  }
+
+/* responsive carousel */
+
+@media(max-width: 1015px){ 
+    .car-p{
+    display:none;
+    
+    }
+    .car-titre{
+        margin-top: 2em;
+    }
+}
+@media(max-width: 700px){ 
+
+    .car-picto{
+        display: none;
+    }
+
+    .car-picto{
+        justify-content: centrer;
+        margin-bottom: 1em;
+    }
+    
+  }
+
+@media(max-width:915px){
+  #carouselExampleDark{
+    height: 25vh;
+  }
+}
+@media(max-width:770px){
+.carousel-indicators{
+    visibility: hidden;
+}
+}
+
+@media(max-width: 500px){ 
+.carousel-control-next-icon, .carousel-control-prev-icon{
+    visibility: hidden;
+}
+
+}
