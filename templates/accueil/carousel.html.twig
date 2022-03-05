@@ -1,0 +1,53 @@
+{# carousel #}
+<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <img src="{{asset('assets/img/departement-diagnostics.jpg')}}" class="d-block w-100" alt="dep-diagnostics">
+          <div class="carousel-caption d-none d-md-block">
+            <a class="car-lien" href="#"><h5 class="car-titre">DIAGNOSTICS</h5>
+            <p class="car-p">Analyseurs et réactifs pour les analyses médicales et les analyses de recherche bio-médicales.</p>
+            <img src="{{asset('assets/img/Picto_Diagno_demi-tons_rgb.png')}}" alt="diagnostics" class="car-picto"></a>
+            
+          </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="4000">
+          <img src="{{asset('assets/img/department-pharmaceuticals.jpg')}}" class="d-block w-100" alt="dep-pharmaceuticals">
+          <div class="carousel-caption d-none d-md-block">
+            <a class="car-lien" href="#"><h5 class="car-titre">PHARMACEUTICALS</h5>
+            <p class="car-p">Partenaire de l’industrie pharmaceutique au Grand-Duché de Luxembourg.</p>
+            <img src="{{asset('assets/img/Picto_Pharma_demi-tons_rgb.png')}}" alt="picto-pharma" class="car-picto"></a>
+            
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{{asset('assets/img/department-patient-information.jpg')}}" class="d-block w-100" alt="dep-patient-diabete">
+          <div class="carousel-caption d-none d-md-block">
+            <a class="car-lien" href="#"><h5 class="car-titre">PATIENT INFORMATION & DIABETES CARE</h5>
+            <p class="car-p">Lecteurs de glycémie, pompes à insuline, thermomètres et tensiomètres.</p>
+            <img src="{{asset('assets/img/Picto_Diabet_demi-tons_rgb.png')}}" alt="picto-patient-diabete" class="car-picto"></a>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{{asset('assets/img/department-veterinary.jpg')}}" class="d-block w-100" alt="dep-veterinary">
+          <div class="carousel-caption d-none d-md-block">
+            <a class="car-lien" href="#"><h5 class="car-titre">VETERINARY</h5>
+            <p class="car-p">Distribution d’une gamme importante de produits vétérinaires.</p>
+            <img src="{{asset('assets/img/Picto_Vete_demi-tons_rgb.png')}}" alt="picto-veterinary" class="car-picto"></a>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
