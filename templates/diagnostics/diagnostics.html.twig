@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-
+{% block title %}Diagnostics - Prophac{% endblock %}
 {% block illustration %}
     <div class="departement diagnostics-container">
         <h1 class="titre-departement">DIAGNOSTICS</h1>
@@ -13,5 +13,6 @@
 
 {% block body %}
   <!--sous titre-->
+  <a href="{{path('app_diagnostics.annuaire')}}">Annuaire diagnostics</a>
     <div class="container titre-section">Produits</div>
 {% endblock %}

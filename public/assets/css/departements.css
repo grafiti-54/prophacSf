@@ -22,8 +22,15 @@
     background-image: url("../img/department-pharmaceuticals.jpg");
 }
 
+.patient-container{
+    background-image: url("../img/department-patient-information.jpg");
+}
+
+.veto-container{
+    background-image: url("../img/department-veterinary.jpg");
+}
 /* bloc de présentation des 4 départements */
-.diagnostics-container, .pharma-container{ 
+.diagnostics-container, .pharma-container, .patient-container, .veto-container{ 
     height: 45vh;
     width: 100vw auto;
     background-position: center;
