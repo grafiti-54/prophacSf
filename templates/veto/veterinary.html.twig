@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Veterinary - Prophac{% endblock %}
+
+{% block illustration %}
+    <div class="departement veto-container">
+        <h1 class="titre-departement">VETERINARY</h1>
+        <p class="sous-titre-departement">
+            Distribution d’une gamme importante de produits vétérinaires.
+        </p>
+        <img class="picto" src="{{asset('assets/img/Picto_Vete_demi-tons_rgb.png')}}" alt="Picto Veterinary" />
+  </div>
+{% endblock %}
+
+{% block body %}
+{# futur bouton vers annuaire veto #}
+<a href="{{path('app_veto.annuaire')}}">Annuaire veterinary</a>
+  {# Section produit veto #}
+    <div class="container titre-section">Produits</div>
+{% endblock %}

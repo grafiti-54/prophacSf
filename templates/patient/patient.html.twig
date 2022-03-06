@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}Patient Information And Diabetes Care - Prophac{% endblock %}
+
+{% block illustration %}
+    <div class="departement patient-container">
+        <h1 class="titre-departement">PATIENT INFORMATION & DIABETES CARE</h1>
+        <p class="sous-titre-departement">
+            Lecteurs de glycémie, pompes à insuline, thermomètres et tensiomètres.
+        </p>
+        <img class="picto" src="{{asset('assets/img/Picto_Diabet_demi-tons_rgb.png')}}" alt="Picto patient & diabete" />
+  </div>
+{% endblock %}
+
+{% block body %}
+  <!--sous titre-->
+  <a href="{{path('app_patient.annuaire')}}">Annuaire patient</a>
+    <div class="container titre-section">Produits</div>
+{% endblock %}
