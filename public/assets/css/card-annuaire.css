@@ -1,0 +1,36 @@
+.card-annuaire{
+    background-color: #DFEAF8 !important;
+    border: none;
+    height: 400px auto;
+    width: 400px auto;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    box-shadow: rgb(38, 57, 77) 0px 10px 10px -10px;
+}
+.card-annuaire img{
+    max-height: 350px;
+    background-position: center top;
+}
+
+.card-annuaire p, span{
+    color: #0032A0;
+    font-size: 1em;
+}
+.card-annuaire span{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+
+.sous-titre{
+    background-color: #0032A0;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    border-radius: 30px;
+    padding: 5px;
+    margin-bottom: 30px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 15px -10px;
+    margin-top: 30px;
+    
+}

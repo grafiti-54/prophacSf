@@ -1,5 +1,5 @@
 .info{
-    width: 100vw;
+    width: 100vw auto;
     height: 5em;
     background-color: #dfeaf8;
     color: #0032a0;
@@ -26,7 +26,7 @@
 }
 
 
-span{
+.info span{
     padding-left: 0.5em;
 }
 
@@ -41,9 +41,14 @@ span{
     }
  }
 
+ @media(max-width: 660px){
+    .info{
+        height:13em;
+    }
+ }
  @media(max-width: 644px){
     .info{
-        height:10em;
+        height:11em;
         justify-content: flex-start;
     }
     .bloc{

@@ -48,10 +48,10 @@ footer a{
      margin-bottom:50px;
  }
 
- @media(max-width: 395px){
+ @media(max-width: 410px){
     .ft-footer{
         
-        height: 80vh;
+        height: 85vh;
         background-image: none; 
     }
     .ft-certificat-iso{
