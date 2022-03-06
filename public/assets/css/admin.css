@@ -1,0 +1,25 @@
+@font-face {
+    font-family:'DIN Offc';
+    src: url('font/fonts/DINOffc.eot');
+    src: url('font/fonts/DINOffc.eot?#iefix') format('embedded-opentype'),
+         url('font/fonts/DINOffc.woff2') format('woff2'),
+         url('font/fonts/DINOffc.woff') format('woff'),
+         url('font/fonts/DINOffc.ttf')  format('truetype'),
+         url('font/fonts/DINOffc.svg#DIN Offc') format('svg');
+}
+
+*{
+    margin: 0;
+    padding:0;
+    list-style: none;
+    text-decoration: none;
+    font-family:'DIN Offc';
+}
+
+.navbar{
+background-color: rgb(0, 51, 160) !important;
+}
+
+#sidenavAccordion{
+    background-color: rgb(0, 51, 160);
+}
