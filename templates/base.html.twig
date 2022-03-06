@@ -15,6 +15,9 @@
     {# lien css navbar + carousel #}   
     <link rel="stylesheet" href="{{asset('assets/css/navbar.css')}}">
 
+    {# lien css page département #}
+    <link rel="stylesheet" href="{{asset('assets/css/info.css')}}">
+
     {# lien css footer #}   
     <link rel="stylesheet" href="{{asset('assets/css/footer.css')}}">
 
@@ -24,7 +27,7 @@
     {% block stylesheets %}
             {# {{ encore_entry_link_tags('app') }} #}
     {% endblock %}
-    <title>{% block title %}Prophac - Prophac, fondé depuis 1946{% endblock %}</title>
+    <title>{% block title %}Prophac - Prophac, fondé en 1946{% endblock %}</title>
 </head>
 
 {# HEADER #}
@@ -34,6 +37,42 @@
             alt="logo-phophac" /></a>
         </div>
     </div>
+    {# Info #}
+    <div class="info">
+      <span class="bloc"
+        ><span class="name"><strong>PROPHAC</strong></span
+        ><span class="statuts"
+          >Produits Pharmaceutiques et Chimiques s.à r.l.</span
+        ></span
+      >
+      <div class="bloc1">
+        <span class="sous-bloc1"
+          ><span class="rue">5, Rangwee</span
+          ><span class="cp-ville">L-2412 Howald</span></span
+        ><span class="sous-bloc1"
+          ><span class="bp">B.P. 2063</span
+          ><span class="cp-ville">L-1020 Luxembourg</span></span
+        ><span class="sous-bloc1"
+          ><span class="tel">Tél : (+352) 482 482-1</span
+          ><span class="fax">Fax : (+352) 482 482-482</span>
+        </span>
+      </div>
+      <div class="bloc2">
+        <span class="sous-bloc2">
+          <span class="horaire">Heures d’ouverture :</span>
+        </span>
+        <span class="sous-bloc2">
+        <span class="horaire">du lundi au vendredi de 8h00 – 12h00 </span
+        >
+          <span class="horaire">et de 13h00 – 17h00 sur rendez-vous</span></span
+        ><span class="sous-bloc2"
+          ><span class="parking">PARKING GRATUIT</span
+          ><span class="bus">Ligne bus: 30</span></span
+        >
+      </div>
+    </div>
+
+    {# Menu navigation #}
     <header id="hd-navbar" class="hd-nav">
         
         <a class="hd-home" href="{{path('app_accueil')}}">HOME</a>
@@ -41,7 +80,7 @@
             <button class="hd-btn">DOMAINE D'ACTIVITÉS</button> 
             <div class="hd-content">
                 <a href="{{path('app_diagnostics')}}">DIAGNOSTICS</a>
-                <a href="pharmaceuticals.html">PHARMACEUTICALS</a>
+                <a href="{{path('app_pharma')}}">PHARMACEUTICALS</a>
                 <a href="patient-information-and-diabetes-care.html">PATIENT INFORMATIONS AND DIABETES CARE</a>
                 <a href="veterinary.html">VETERINARY</a>
             </div>
@@ -82,7 +121,7 @@
         <div class="carousel-item active" data-bs-interval="10000">
           <img src="{{asset('assets/img/departement-diagnostics.jpg')}}" class="d-block w-100" alt="dep-diagnostics">
           <div class="carousel-caption d-none d-md-block">
-            <a class="car-lien" href="#"><h5 class="car-titre">DIAGNOSTICS</h5>
+            <a class="car-lien" href="{{path('app_diagnostics')}}"><h5 class="car-titre">DIAGNOSTICS</h5>
             <p class="car-p">Analyseurs et réactifs pour les analyses médicales et les analyses de recherche bio-médicales.</p>
             <img src="{{asset('assets/img/Picto_Diagno_demi-tons_rgb.png')}}" alt="diagnostics" class="car-picto"></a>
             
@@ -91,7 +130,7 @@
         <div class="carousel-item" data-bs-interval="4000">
           <img src="{{asset('assets/img/department-pharmaceuticals.jpg')}}" class="d-block w-100" alt="dep-pharmaceuticals">
           <div class="carousel-caption d-none d-md-block">
-            <a class="car-lien" href="#"><h5 class="car-titre">PHARMACEUTICALS</h5>
+            <a class="car-lien" href="{{path('app_pharma')}}"><h5 class="car-titre">PHARMACEUTICALS</h5>
             <p class="car-p">Partenaire de l’industrie pharmaceutique au Grand-Duché de Luxembourg.</p>
             <img src="{{asset('assets/img/Picto_Pharma_demi-tons_rgb.png')}}" alt="picto-pharma" class="car-picto"></a>
             
@@ -159,7 +198,7 @@
           /></a>
         </div>
         <div class="ft-info">
-          <a class="ft-nom" href="#"><strong>PHARMACEUTICALS</strong></a>
+          <a class="ft-nom" href="{{path('app_pharma')}}"><strong>PHARMACEUTICALS</strong></a>
           <a class="ft-phone" href="#">(+352) 482 482-400</a>
           <a class="ft-mail" href="#">pharma@prophac.lu</a>
         </div>
