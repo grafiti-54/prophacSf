@@ -1,7 +1,7 @@
-
+/*------------------------ CSS des 4 pages de départements -----------------*/
 
 /* sous titre de section */
-.sous-titre{
+.titre-section{
     background-color: #0032A0;
     width: 100%;
     text-align: center;
@@ -13,9 +13,17 @@
     box-shadow: rgb(38, 57, 77) 0px 20px 15px -10px;
     margin-top: 30px;
 }
-
-.diagnostics-container{ /* image de fond*/
+/* image de présentation des 4 départements */
+.diagnostics-container{ 
     background-image: url("../img/departement-diagnostics.jpg");
+}
+
+.pharma-container{
+    background-image: url("../img/department-pharmaceuticals.jpg");
+}
+
+/* bloc de présentation des 4 départements */
+.diagnostics-container, .pharma-container{ 
     height: 45vh;
     width: 100vw auto;
     background-position: center;
@@ -28,27 +36,30 @@
     color: white;
 }
 
-h1{
-    font-size: clamp(1.9rem,2.5vw,3rem) /*reduction de la taille du texte suivant la taille de l'ecran*/
+/*reduction de la taille du titre suivant la taille de l'ecran*/
+.titre-departement{
+    font-size: clamp(1.9rem,2.5vw,3rem) 
 }
 
-p{
+.sous-titre-departement{
     font-size: 26px;
     /* margin: 10px; */
 }
 
-.picto{ /* image picto*/
+/* image picto des départements*/
+.picto{ 
     height: 100px;
     width: 100px;
     
 }
 
+/* Réglage responsive */
 @media(max-width: 700px){ 
-    p{
+    .sous-titre-departement{
     display:none;
     
     }
-    h1{
+    .titre-departement{
         margin: 2em;
     }
 }
