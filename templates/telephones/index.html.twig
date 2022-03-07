@@ -1,0 +1,38 @@
+{% extends 'admin/accueil.html.twig' %}
+
+{% block title %}Admin - Prophac{% endblock %}
+
+{% block PageTitle %} Liste des numéros de téléphone{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Numero</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for telephone in telephones %}
+            <tr class="table-{% if loop.index is odd %} list-prophac{% else %} blanc {% endif %}">
+                <td>{{ telephone.id }}</td>
+                <td>{{ telephone.numero }}</td>
+                <td>
+                
+                    <a href="{{ path('app_telephones_show', {'id': telephone.id}) }}"><img src="{{asset('assets/img/logo-crud/read.svg')}}" alt="icon-show" width="25px" height ="25px"></a>
+                    <a class="ms-2" href="{{ path('app_telephones_edit', {'id': telephone.id}) }}"><img src="{{asset('assets/img/logo-crud/edit.svg')}}" alt="icon-edit" width="25px" height ="25px"></a>
+                    <a class="ms-2" href="{{ path('app_telephones_delete', {'id': telephone.id}) }}"><img src="{{asset('assets/img/logo-crud/delete.svg')}}" alt="icon-delete" width="25px" height ="25px"></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Pas de numéros pour le moment</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-prophac" href="{{ path('app_telephones_new') }}">Ajouter un numéro de téléphone</a>
+{% endblock %}
