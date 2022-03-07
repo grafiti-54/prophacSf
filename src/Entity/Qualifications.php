@@ -21,6 +21,12 @@ class Qualifications
     #[ORM\ManyToMany(targetEntity: Collaborateurs::class, mappedBy: 'qualification')]
     private $collaborateurs;
 
+    //correction could not be converted to string
+    public function __toString()
+    {
+        return $this->libelle;
+    }
+
     public function __construct()
     {
         $this->collaborateurs = new ArrayCollection();

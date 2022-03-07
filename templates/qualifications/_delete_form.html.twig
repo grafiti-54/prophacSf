@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_qualifications_delete', {'id': qualification.id}) }}" onsubmit="return confirm('Voulez vous vraiment supprimer la qualification?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ qualification.id) }}">
+    <button class="btn btn-danger text-light ms-1 mt-2">Supprimer la qualification</button>
+</form>

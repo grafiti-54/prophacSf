@@ -1,0 +1,36 @@
+{% extends 'admin/accueil.html.twig' %}
+
+{% block title %}Admin - Prophac{% endblock %}
+
+{% block PageTitle %} Liste des numéros de téléphone{% endblock %}
+
+{% block body %}
+    <a class="btn btn-prophac mb-3" href="{{ path('app_qualifications_new') }}">Ajouter une qualification</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for qualification in qualifications %}
+            <tr class="table-{% if loop.index is odd %} list-prophac{% else %} blanc {% endif %}">
+                <td>{{ qualification.id }}</td>
+                <td>{{ qualification.libelle }}</td>
+                <td>
+                    <a href="{{ path('app_qualifications_show', {'id': qualification.id}) }}"><img src="{{asset('assets/img/logo-crud/read.svg')}}" alt="icon-show" width="25px" height ="25px"></a>
+                    <a class="ms-2" href="{{ path('app_qualifications_edit', {'id': qualification.id}) }}"><img src="{{asset('assets/img/logo-crud/edit.svg')}}" alt="icon-edit" width="25px" height ="25px"></a>
+                    <a class="ms-2" href="{{ path('app_qualifications_delete', {'id': qualification.id}) }}"><img src="{{asset('assets/img/logo-crud/delete.svg')}}" alt="icon-delete" width="25px" height ="25px"></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Pas de qualification pour le moment</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {# <a class="btn btn-prophac" href="{{ path('app_qualifications_new') }}">Ajouter une qualification</a> #}
+{% endblock %}

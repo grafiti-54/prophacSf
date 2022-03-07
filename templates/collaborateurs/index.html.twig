@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Collaborateurs index{% endblock %}
+
+{% block body %}
+    <h1>Collaborateurs index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Photo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for collaborateur in collaborateurs %}
+            <tr>
+                <td>{{ collaborateur.id }}</td>
+                <td>{{ collaborateur.email }}</td>
+                <td>{{ collaborateur.roles ? collaborateur.roles|json_encode : '' }}</td>
+                <td>{{ collaborateur.password }}</td>
+                <td>{{ collaborateur.nom }}</td>
+                <td>{{ collaborateur.prenom }}</td>
+                <td>{{ collaborateur.photo }}</td>
+                <td>
+                    <a href="{{ path('app_collaborateurs_show', {'id': collaborateur.id}) }}">show</a>
+                    <a href="{{ path('app_collaborateurs_edit', {'id': collaborateur.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_collaborateurs_new') }}">Create new</a>
+{% endblock %}
