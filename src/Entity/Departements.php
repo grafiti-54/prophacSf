@@ -30,11 +30,15 @@ class Departements
     #[ORM\ManyToMany(targetEntity: Partenaires::class, mappedBy: 'departement')]
     private $partenaires;
 
+    #[ORM\OneToMany(mappedBy: 'departement', targetEntity: Articles::class)]
+    private $articles;
+
     public function __construct()
     {
         $this->collaborateur = new ArrayCollection();
         $this->produit = new ArrayCollection();
         $this->partenaires = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -139,6 +143,36 @@ class Departements
     {
         if ($this->partenaires->removeElement($partenaire)) {
             $partenaire->removeDepartement($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Articles>
+     */
+    public function getArticles(): Collection
+    {
+        return $this->articles;
+    }
+
+    public function addArticle(Articles $article): self
+    {
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+            $article->setDepartement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticle(Articles $article): self
+    {
+        if ($this->articles->removeElement($article)) {
+            // set the owning side to null (unless already changed)
+            if ($article->getDepartement() === $this) {
+                $article->setDepartement(null);
+            }
         }
 
         return $this;
