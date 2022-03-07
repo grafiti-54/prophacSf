@@ -21,15 +21,16 @@ class Telephones
     #[ORM\OneToMany(mappedBy: 'numero', targetEntity: Collaborateurs::class)]
     private $collaborateurs;
 
-    //correction could not be converted to string
-    public function __toString()
-    {
-        return $this->numero;
-    }
 
     public function __construct()
     {
         $this->collaborateurs = new ArrayCollection();
+    }
+
+    //correction could not be converted to string
+    public function __toString()
+    {
+        return $this->numero;
     }
 
     public function getId(): ?int

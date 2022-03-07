@@ -56,7 +56,7 @@ class Collaborateurs implements UserInterface, PasswordAuthenticatedUserInterfac
         $this->articles = new ArrayCollection();
     }
 
-    //correction Categorie could not be converted to string
+    //correction could not be converted to string
     public function __toString()
     {
         return $this->nom;
