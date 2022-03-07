@@ -60,7 +60,10 @@ class Collaborateurs implements UserInterface, PasswordAuthenticatedUserInterfac
     public function __toString()
     {
         return $this->nom;
+        return $this->qualification;
     }
+
+    
 
     public function getId(): ?int
     {

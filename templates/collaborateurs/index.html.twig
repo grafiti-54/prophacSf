@@ -1,45 +1,50 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/accueil.html.twig' %}
 
-{% block title %}Collaborateurs index{% endblock %}
+{% block title %}Admin - Prophac{% endblock %}
+
+{% block PageTitle %} Liste des collaborateurs{% endblock %}
 
 {% block body %}
-    <h1>Collaborateurs index</h1>
+<a class="btn btn-prophac mb-3" href="{{ path('app_collaborateurs_new') }}">Ajouter un collaborateur</a>
+
+    {# {{ dump(collaborateurs) }} #}
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Email</th>
-                <th>Roles</th>
-                <th>Password</th>
                 <th>Nom</th>
                 <th>Prenom</th>
-                <th>Photo</th>
+                <th>Email</th>
+                {# <th>Roles</th> #}
+                {# <th>Password</th> #}
+                {# <th>Photo</th> #}
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for collaborateur in collaborateurs %}
-            <tr>
+            <tr class="table-{% if loop.index is odd %} list-prophac{% else %} blanc {% endif %}">
                 <td>{{ collaborateur.id }}</td>
-                <td>{{ collaborateur.email }}</td>
-                <td>{{ collaborateur.roles ? collaborateur.roles|json_encode : '' }}</td>
-                <td>{{ collaborateur.password }}</td>
+                {# <td>{{ collaborateur.numero }}</td> #}
                 <td>{{ collaborateur.nom }}</td>
                 <td>{{ collaborateur.prenom }}</td>
-                <td>{{ collaborateur.photo }}</td>
+                <td>{{ collaborateur.email }}</td>
+                {# <td>{{ collaborateur.roles ? collaborateur.roles|json_encode : '' }}</td> #}
+                {# <td>{{ collaborateur.password }}</td> #}
+                {# <td>{{ collaborateur.photo }}</td> #}
                 <td>
-                    <a href="{{ path('app_collaborateurs_show', {'id': collaborateur.id}) }}">show</a>
-                    <a href="{{ path('app_collaborateurs_edit', {'id': collaborateur.id}) }}">edit</a>
+                    <a href="{{ path('app_collaborateurs_show', {'id': collaborateur.id}) }}"><img src="{{asset('assets/img/logo-crud/read.svg')}}" alt="icon-show" width="25px" height ="25px"></a>
+                    <a class="ms-2" href="{{ path('app_collaborateurs_edit', {'id': collaborateur.id}) }}"><img src="{{asset('assets/img/logo-crud/edit.svg')}}" alt="icon-edit" width="25px" height ="25px"></a>
+                    <a class="ms-2" href="{{ path('app_collaborateurs_delete', {'id': collaborateur.id}) }}"><img src="{{asset('assets/img/logo-crud/delete.svg')}}" alt="icon-delete" width="25px" height ="25px"></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="8">Pas de collaborateurs pour le moment</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_collaborateurs_new') }}">Create new</a>
+{# <a class="btn btn-prophac mb-3" href="{{ path('app_collaborateurs_new') }}">Ajouter un collaborateur</a> #}
 {% endblock %}
