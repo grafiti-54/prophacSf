@@ -1,21 +1,42 @@
+/*Formulaire connexion à l'administration */
 .form-admin{
     background-color: rgb(207, 216, 240) !important;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
+/* Header Logo prophac + Titre Administrateur pour formulaire*/
 .header-form-admin{
     background-color: rgb(0, 51, 160);
-    
 }
 
-
-.btn-form-admin{
+/*Bouton de validation de formulaire style prophac */
+.btn-form-admin, .btn-prophac{
     background-color: rgb(0, 51, 160);
     color: white;
     border-radius: 25px;
     
 }
+
+/*Survol bouton style prophac */
 .btn-form-admin:hover{
     color: white;
-    
+}
+/*Survol bouton style prophac admin */
+.btn-prophac:hover{
+    color:burlywood;
+}
+
+/*Arrondi des bouton validation et suppression CRUD*/
+.btn-danger, .btn-success{
+    border-radius: 25px; 
+}
+
+/* Formulaire d'ajout CRUD */
+.form-new-prophac{
+    background-color: rgb(207, 216, 240) !important;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.list-prophac{
+    background-color: rgb(207, 216, 240);
 }
