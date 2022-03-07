@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CollaborateursRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -34,6 +36,21 @@ class Collaborateurs implements UserInterface, PasswordAuthenticatedUserInterfac
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $photo;
+
+    #[ORM\ManyToMany(targetEntity: Qualifications::class, inversedBy: 'collaborateurs')]
+    private $qualification;
+
+    #[ORM\ManyToOne(targetEntity: Telephones::class, inversedBy: 'collaborateurs')]
+    private $numero;
+
+    #[ORM\ManyToMany(targetEntity: Departements::class, mappedBy: 'collaborateur')]
+    private $departements;
+
+    public function __construct()
+    {
+        $this->qualification = new ArrayCollection();
+        $this->departements = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -137,6 +154,69 @@ class Collaborateurs implements UserInterface, PasswordAuthenticatedUserInterfac
     public function setPhoto(?string $photo): self
     {
         $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Qualifications>
+     */
+    public function getQualification(): Collection
+    {
+        return $this->qualification;
+    }
+
+    public function addQualification(Qualifications $qualification): self
+    {
+        if (!$this->qualification->contains($qualification)) {
+            $this->qualification[] = $qualification;
+        }
+
+        return $this;
+    }
+
+    public function removeQualification(Qualifications $qualification): self
+    {
+        $this->qualification->removeElement($qualification);
+
+        return $this;
+    }
+
+    public function getNumero(): ?Telephones
+    {
+        return $this->numero;
+    }
+
+    public function setNumero(?Telephones $numero): self
+    {
+        $this->numero = $numero;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Departements>
+     */
+    public function getDepartements(): Collection
+    {
+        return $this->departements;
+    }
+
+    public function addDepartement(Departements $departement): self
+    {
+        if (!$this->departements->contains($departement)) {
+            $this->departements[] = $departement;
+            $departement->addCollaborateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDepartement(Departements $departement): self
+    {
+        if ($this->departements->removeElement($departement)) {
+            $departement->removeCollaborateur($this);
+        }
 
         return $this;
     }
