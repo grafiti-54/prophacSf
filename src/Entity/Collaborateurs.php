@@ -46,10 +46,14 @@ class Collaborateurs implements UserInterface, PasswordAuthenticatedUserInterfac
     #[ORM\ManyToMany(targetEntity: Departements::class, mappedBy: 'collaborateur')]
     private $departements;
 
+    #[ORM\OneToMany(mappedBy: 'collaborateur', targetEntity: Articles::class)]
+    private $articles;
+
     public function __construct()
     {
         $this->qualification = new ArrayCollection();
         $this->departements = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -216,6 +220,36 @@ class Collaborateurs implements UserInterface, PasswordAuthenticatedUserInterfac
     {
         if ($this->departements->removeElement($departement)) {
             $departement->removeCollaborateur($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Articles>
+     */
+    public function getArticles(): Collection
+    {
+        return $this->articles;
+    }
+
+    public function addArticle(Articles $article): self
+    {
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+            $article->setCollaborateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticle(Articles $article): self
+    {
+        if ($this->articles->removeElement($article)) {
+            // set the owning side to null (unless already changed)
+            if ($article->getCollaborateur() === $this) {
+                $article->setCollaborateur(null);
+            }
         }
 
         return $this;
