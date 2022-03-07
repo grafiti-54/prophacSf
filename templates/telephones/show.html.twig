@@ -6,7 +6,6 @@
 
 
 {% block body %}
-
     <table class="table">
         <tbody>
             <tr>
@@ -20,10 +19,8 @@
         </tbody>
     </table>
     <div class="d-flex">
-    <a class="btn btn-success text-light ms-2 mt-2" href="{{ path('app_telephones_edit', {'id': telephone.id}) }}">Modifier ce numéro</a>
-    {{ include('telephones/_delete_form.html.twig') }}
+        <a class="btn btn-success text-light ms-2 mt-2" href="{{ path('app_telephones_edit', {'id': telephone.id}) }}">Modifier ce numéro</a>
+        {{ include('telephones/_delete_form.html.twig') }}
     </div>
     <a class="btn btn-prophac ms-2 mt-2" href="{{ path('app_telephones_index') }}">Retourner sur la liste des numéros</a>
-
-    
 {% endblock %}
