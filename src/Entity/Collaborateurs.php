@@ -25,6 +25,9 @@ class Collaborateurs implements UserInterface, PasswordAuthenticatedUserInterfac
     #[ORM\Column(type: 'json')]
     private $roles = [];
 
+    // Pour la modification des mots de passe via le crud
+    private ?string $plainPassword = null;
+
     #[ORM\Column(type: 'string')]
     private $password;
 
@@ -116,7 +119,7 @@ class Collaborateurs implements UserInterface, PasswordAuthenticatedUserInterfac
      */
     public function getPassword(): string
     {
-        return $this->password;
+        return (string) $this->password;
     }
 
     public function setPassword(string $password): self
@@ -263,4 +266,25 @@ class Collaborateurs implements UserInterface, PasswordAuthenticatedUserInterfac
 
         return $this;
     }
+
+    /**
+     * Get the value of plainPassword
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * Set the value of plainPassword
+     *
+     * @return  self
+     */
+    public function setPlainPassword($plainPassword): self
+    {
+        $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
+
 }
