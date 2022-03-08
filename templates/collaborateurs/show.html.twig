@@ -29,10 +29,10 @@
                 <th>Roles</th>
                 <td>{{ collaborateur.roles ? collaborateur.roles|json_encode : '' }}</td>
             </tr>
-            <tr>
+            {# <tr>
                 <th>Password</th>
                 <td>{{ collaborateur.password }}</td>
-            </tr>
+            </tr> #}
             <tr>
                 <th>Photo</th>
                 <td>{{ collaborateur.photo }}</td>
@@ -61,7 +61,10 @@
     </table>
     <div class="d-flex">
         <a class="btn btn-success text-light ms-2 mt-2" href="{{ path('app_collaborateurs_edit', {'id': collaborateur.id}) }}">Modifier le collaborateur</a>
+        <a class="btn btn-warning text-light ms-2 mt-2" href="{{ path('user.edit.password', {'id': collaborateur.id}) }}">Modifier le mot de passe du collaborateur</a>
         {{ include('collaborateurs/_delete_form.html.twig') }}
+        
+        
     </div>
     <a class="btn btn-prophac ms-2 mt-2" href="{{ path('app_collaborateurs_index') }}">Retourner sur la liste des collaborateurs</a>
     

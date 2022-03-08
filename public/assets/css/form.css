@@ -27,7 +27,7 @@
 }
 
 /*Arrondi des bouton validation et suppression CRUD*/
-.btn-danger, .btn-success{
+.btn-danger, .btn-success, .btn-warning{
     border-radius: 25px; 
 }
 

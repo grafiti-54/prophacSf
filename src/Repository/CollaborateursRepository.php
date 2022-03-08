@@ -51,14 +51,14 @@ class CollaborateursRepository extends ServiceEntityRepository implements Passwo
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
      */
-    public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
+    public function upgradePassword(PasswordAuthenticatedUserInterface $collaborateurs, string $newHashedPassword): void
     {
-        if (!$user instanceof Collaborateurs) {
-            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', \get_class($user)));
+        if (!$collaborateurs instanceof Collaborateurs) {
+            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', \get_class($collaborateurs)));
         }
 
-        $user->setPassword($newHashedPassword);
-        $this->_em->persist($user);
+        $collaborateurs->setPassword($newHashedPassword);
+        $this->_em->persist($collaborateurs);
         $this->_em->flush();
     }
 
