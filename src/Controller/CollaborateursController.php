@@ -9,15 +9,18 @@ use App\Repository\CollaborateursRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
-
+//Controlleur pour le crud des collaborateurs
 #[Route('/collaborateurs')]
 class CollaborateursController extends AbstractController 
 {
+    //Affichage de la liste des collaborateurs enregistré en base de donnée
     #[Route('/', name: 'app_collaborateurs_index', methods: ['GET'])]
     public function index(CollaborateursRepository $collaborateursRepository): Response
     {
@@ -25,25 +28,38 @@ class CollaborateursController extends AbstractController
             'collaborateurs' => $collaborateursRepository->findAll(),
         ]);
     }
+    //Ajout d'un collaborateur
     #[Route('/new', name: 'app_collaborateurs_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, CollaborateursRepository $collaborateursRepository, UserPasswordHasherInterface $passwordEncoder, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, CollaborateursRepository $collaborateursRepository, UserPasswordHasherInterface $passwordEncoder, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         //IMPORTANT RAJOUTER (string) DANS  getPassword(): { return (string) $this->password;}
         $collaborateur = new Collaborateurs();
         $form = $this->createForm(CollaborateursType::class, $collaborateur);
         $form->handleRequest($request);
-
+        //Vérification lorsque le formulaire est envoyé ainsi que valide selon les conditions défini ci-dessous
         if ($form->isSubmitted() && $form->isValid()) {
-            $collaborateur->setPassword(
-                $passwordEncoder->hashPassword(
-                        $collaborateur,
-                        $form->get('password')->getData()
-                    )
-                );
-    
+            //Vérification de l'image de profil du collaborateur
+            $photo = $form->get('photo')->getData();
+            if($photo){
+                $originalFileName = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
+                //On enleve les metas et les injections
+                $safeFilename = $slugger->slug($originalFileName);
+                // on renome la photo avec un nom unique et son extension
+                $newFilename = $safeFilename.'-'.uniqid().'-'.$photo->guessExtension();
+                try{
+                    //image_directory correspond a la variable global dans config\service.yaml
+                    $photo->move($this->getParameter('images_directory'),$newFilename);
+                }catch (FileException $e) {
+                    //En cas d'erreur
+                    echo("Erreur lors du chargement de l'image");
+                }
+                //On stock le nouveau nom de la photo
+                $collaborateur->setPhoto($newFilename);
+            }
+            //Vérification du mot de passe du collaborateur
+            $collaborateur->setPassword($passwordEncoder->hashPassword($collaborateur,$form->get('password')->getData()));
                 $entityManager->persist($collaborateur);
                 $entityManager->flush();
-            // $collaborateursRepository->add($collaborateur);
             return $this->redirectToRoute('app_collaborateurs_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -52,7 +68,7 @@ class CollaborateursController extends AbstractController
             'form' => $form,
         ]);
     }
-
+    //Affichage d'un collaborateur selon son id
     #[Route('/{id}', name: 'app_collaborateurs_show', methods: ['GET'])]
     public function show(Collaborateurs $collaborateur): Response
     {
@@ -60,15 +76,35 @@ class CollaborateursController extends AbstractController
             'collaborateur' => $collaborateur,
         ]);
     }
-
+    //Modification d'un collaborateur selon son id
     #[Route('/{id}/edit', name: 'app_collaborateurs_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Collaborateurs $collaborateur, CollaborateursRepository $collaborateursRepository): Response
+    public function edit(Request $request, Collaborateurs $collaborateur, CollaborateursRepository $collaborateursRepository, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
+        
         $form = $this->createForm(CollaborateursType::class, $collaborateur);
         $form->handleRequest($request);
-
+        //Vérification lorsque le formulaire est envoyé ainsi que valide selon les conditions défini ci-dessous
         if ($form->isSubmitted() && $form->isValid()) {
             $collaborateursRepository->add($collaborateur);
+            $photo = $form->get('photo')->getData();
+            if($photo){
+                $originalFileName = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
+                //On enleve les metas et les injections
+                $safeFilename = $slugger->slug($originalFileName);
+                // on renome la photo avec un nom unique et son extension
+                $newFilename = $safeFilename.'-'.uniqid().'-'.$photo->guessExtension();
+                try{
+                    //image_directory correspond a la variable global dans config\service.yaml
+                    $photo->move($this->getParameter('images_directory'),$newFilename);
+                }catch (FileException $e) {
+                    //En cas d'erreur
+                    echo("Erreur lors du chargement de l'image");
+                }
+                //On stock le nouveau nom de la photo
+                $collaborateur->setPhoto($newFilename);
+            }
+            $entityManager->flush();
+
             return $this->redirectToRoute('app_collaborateurs_index', [], Response::HTTP_SEE_OTHER);
         }
 

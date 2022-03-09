@@ -5,8 +5,8 @@
 {% block PageTitle %} Détail du collaborateur {{ collaborateur.nom }} {{ collaborateur.prenom }}{% endblock %}
 
 {% block body %}
-    <h1>Collaborateurs</h1>
-{{ dump(collaborateur) }}
+    
+{# {{ dump(collaborateur) }} #}
     <table class="table">
         <tbody>
             <tr>
@@ -22,6 +22,14 @@
                 <td>{{ collaborateur.prenom }}</td>
             </tr>
             <tr>
+                <th>Qualification</th>
+                <td>
+                    {% for qualifications in collaborateur.qualification %}
+                        {{ qualifications}} <br>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
                 <th>Email</th>
                 <td>{{ collaborateur.email }}</td>
             </tr>
@@ -35,15 +43,7 @@
             </tr> #}
             <tr>
                 <th>Photo</th>
-                <td>{{ collaborateur.photo }}</td>
-            </tr>
-            <tr>
-                <th>Qualification</th>
-                <td>
-                    {% for qualifications in collaborateur.qualification %}
-                        {{ qualifications}} <br>
-                    {% endfor %}
-                </td>
+                <td><img src="../uploads/{{ collaborateur.photo}}" alt="photo-{{ collaborateur.nom }}-{{ collaborateur.prenom }}" class="img-fluid" width="15%"></td>
             </tr>
             <tr>
                 <th>Numéro de téléphone</th>

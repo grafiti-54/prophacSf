@@ -6,9 +6,12 @@ use App\Entity\Collaborateurs;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File as ConstraintsFile;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -29,26 +32,40 @@ class CollaborateursType extends AbstractType
                   'Admin' => 'ROLE_ADMIN',
                 ],
             ])
-            // ->add('password', PasswordType::class, [
-            //     // instead of being set onto the object directly,
-            //     // this is read and encoded in the controller
-            //     'mapped' => false,
-            //     'attr' => ['autocomplete' => 'new-password'],
-            //     'constraints' => [
-            //         new NotBlank([
-            //             'message' => 'Please enter a password',
-            //         ]),
-            //         new Length([
-            //             'min' => 5,
-            //             'minMessage' => 'Your password should be at least {{ limit }} characters',
-            //             // max length allowed by Symfony for security reasons
-            //             'max' => 4096,
-            //         ]),
-            //     ],
-            // ])
+            ->add('password', PasswordType::class, [
+                // instead of being set onto the object directly,
+                // this is read and encoded in the controller
+                'mapped' => false,
+                'attr' => ['autocomplete' => 'new-password'],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Please enter a password',
+                    ]),
+                    new Length([
+                        'min' => 5,
+                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        // max length allowed by Symfony for security reasons
+                        'max' => 4096,
+                    ]),
+                ],
+            ])
             
-            ->add('photo')
-            // ->add('qualification')
+            ->add('photo', FileType::class,[
+                'label' => 'Image du collaborateur',
+                'required' => false,
+                'mapped' => false, // n'est pas lié a la base de donnée
+                'constraints' => [
+                    new ConstraintsFile([
+                        'maxSize' => '10240k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Veuiller inserer un jpeg ou un png',
+                    ])
+                ]
+            ])
+
             ->add('qualification')
             ->add('numero')
             ->add('departements')
