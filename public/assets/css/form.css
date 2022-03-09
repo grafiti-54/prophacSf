@@ -40,3 +40,14 @@
 .list-prophac{
     background-color: rgb(207, 216, 240);
 }
+
+/* CAPTCHA */
+
+.captcha_image{
+    margin-bottom: 20px;
+    
+}
+
+#user_password_captcha{
+    width: 10vw;
+}
