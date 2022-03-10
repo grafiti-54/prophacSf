@@ -6,9 +6,11 @@ use App\Entity\Departements;
 use App\Form\DepartementsType;
 use App\Repository\DepartementsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/departements')]
 class DepartementsController extends AbstractController
@@ -22,13 +24,33 @@ class DepartementsController extends AbstractController
     }
 
     #[Route('/new', name: 'app_departements_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, DepartementsRepository $departementsRepository): Response
+    public function new(Request $request, DepartementsRepository $departementsRepository, SluggerInterface $slugger): Response
     {
         $departement = new Departements();
         $form = $this->createForm(DepartementsType::class, $departement);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            //Ajout du logo du département
+            $photo = $form->get('logo')->getData();
+            if($photo){
+                $originalFileName = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
+                //On enleve les metas et les injections
+                $safeFilename = $slugger->slug($originalFileName);
+                // on renome la photo avec un nom unique et son extension
+                $newFilename = $safeFilename.'-'.uniqid().'-'.$photo->guessExtension();
+                try{
+                    //image_directory correspond a la variable global dans config\service.yaml
+                    $photo->move($this->getParameter('images_directory'),$newFilename);
+                }catch (FileException $e) {
+                    //En cas d'erreur
+                    echo("Erreur lors du chargement de l'image");
+                }
+                //On stock le nouveau nom de la photo
+                $departement->setLogo($newFilename);
+            }
+
             $departementsRepository->add($departement);
             return $this->redirectToRoute('app_departements_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -48,12 +70,31 @@ class DepartementsController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_departements_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Departements $departement, DepartementsRepository $departementsRepository): Response
+    public function edit(Request $request, Departements $departement, DepartementsRepository $departementsRepository, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(DepartementsType::class, $departement);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            //Modification du logo du département
+            $photo = $form->get('logo')->getData();
+            if($photo){
+                $originalFileName = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
+                //On enleve les metas et les injections
+                $safeFilename = $slugger->slug($originalFileName);
+                // on renome la photo avec un nom unique et son extension
+                $newFilename = $safeFilename.'-'.uniqid().'-'.$photo->guessExtension();
+                try{
+                    //image_directory correspond a la variable global dans config\service.yaml
+                    $photo->move($this->getParameter('images_directory'),$newFilename);
+                }catch (FileException $e) {
+                    //En cas d'erreur
+                    echo("Erreur lors du chargement de l'image");
+                }
+                //On stock le nouveau nom de la photo
+                $departement->setLogo($newFilename);
+            }
             $departementsRepository->add($departement);
             return $this->redirectToRoute('app_departements_index', [], Response::HTTP_SEE_OTHER);
         }

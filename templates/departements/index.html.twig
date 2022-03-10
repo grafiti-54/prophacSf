@@ -12,7 +12,7 @@
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Logo</th>
-                <th>Actions</th>
+                <th class="w-25 text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -20,11 +20,11 @@
             <tr class="table-{% if loop.index is odd %} list-prophac{% else %} blanc {% endif %}">
                 <td>{{ departement.id }}</td>
                 <td>{{ departement.nom }}</td>
-                <td>{{ departement.logo }}</td>
-                <td>
-                    <a href="{{ path('app_departements_show', {'id': departement.id}) }}"><img src="{{asset('assets/img/logo-crud/read.svg')}}" alt="icon-show" width="25px" height ="25px"></a>
+                <td><img src="../uploads/{{ departement.logo}}" alt="picto-{{ departement.nom }}" class="img-fluid" width="15%"></td>
+                <td class="text-center">
+                    <a href="{{ path('app_departements_show', {'id': departement.id})}}"><img src="{{asset('assets/img/logo-crud/read.svg')}}" alt="icon-show" width="25px" height ="25px"></a>
                     <a class="ms-2" href="{{ path('app_departements_edit', {'id': departement.id}) }}"><img src="{{asset('assets/img/logo-crud/edit.svg')}}" alt="icon-edit" width="25px" height ="25px"></a>
-                    <a class="ms-2" href="{{ path('app_departements_delete', {'id': departement.id}) }}"><img src="{{asset('assets/img/logo-crud/delete.svg')}}" alt="icon-delete" width="25px" height ="25px"></a>
+                    <a class="ms-2 w-25" href="{{ path('app_departements_delete', {'id': departement.id}) }}"><img src="{{asset('assets/img/logo-crud/delete.svg')}}" alt="icon-delete" width="25px" height ="25px"></a>
                 </td>
             </tr>
         {% else %}
