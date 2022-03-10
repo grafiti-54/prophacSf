@@ -69,7 +69,7 @@
 							{# Titre de section menu admin #}
 							<div class="sb-sidenav-menu-heading">Ajouts et Modifications</div>
 							{# Menu admin collaborateurs #}
-							<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+							<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collaborateurs" aria-expanded="false" aria-controls="collapseLayouts">
 								<div class="sb-nav-link-icon">
 									<img src="{{asset('assets/img/logo-crud/people.svg')}}" alt="icon-show" width="15px" height ="15px">
 								</div>
@@ -79,7 +79,7 @@
 								</div>
 							</a>
 							{# Liste des sous menus de la section #}
-							<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+							<div class="collapse" id="collaborateurs" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 								<nav
 									class="sb-sidenav-menu-nested nav">
 									{# path() utilise comme parametre le name de la Route que l'on souhaite afficher #}
@@ -87,7 +87,7 @@
 									<a class="nav-link" href="{{path('app_collaborateurs_new')}}">Ajouter un collaborateur</a>
 								</nav>
 							</div>
-
+							
 							{# Menu admin numero de téléphone #}
 							<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#numeroTel" aria-expanded="false" aria-controls="collapseLayouts">
 								<div class="sb-nav-link-icon">
@@ -127,8 +127,27 @@
 									<a class="nav-link" href="{{path('app_qualifications_new')}}">Ajouter une qualification</a>
 								</nav>
 							</div>
-
-
+							<div class="sb-sidenav-menu-heading">Sections et articles du site</div>
+							
+							{# Menu admin départements #}
+							<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#departements" aria-expanded="false" aria-controls="collapseLayouts">
+								<div class="sb-nav-link-icon">
+									<img src="{{asset('assets/img/logo-crud/departement.svg')}}" alt="icon-show" width="15px" height ="15px">
+								</div>
+								Départements
+								<div class="sb-sidenav-collapse-arrow">
+									<i class="fas fa-angle-down"></i>
+								</div>
+							</a>
+							{# Liste des sous menus de la section #}
+							<div class="collapse" id="departements" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+								<nav
+									class="sb-sidenav-menu-nested nav">
+									{# path() utilise comme parametre le name de la Route que l'on souhaite afficher #}
+									<a class="nav-link" href="{{path('app_departements_index')}}">Liste des départements</a> 
+									<a class="nav-link" href="{{path('app_departements_new')}}">Ajouter un département</a>
+								</nav>
+							</div>
 
 
 
