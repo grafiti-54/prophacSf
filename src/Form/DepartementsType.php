@@ -19,7 +19,7 @@ class DepartementsType extends AbstractType
         $builder
             ->add('nom')
             ->add('logo', FileType::class,[
-                'label' => 'Image du collaborateur',
+                'label' => 'Image du departement',
                 'required' => false,
                 'mapped' => false, // n'est pas lié a la base de donnée
                 'constraints' => [
@@ -28,6 +28,7 @@ class DepartementsType extends AbstractType
                         'mimeTypes' => [
                             'image/jpeg',
                             'image/png',
+                            
                         ],
                         'mimeTypesMessage' => 'Veuiller inserer un jpeg ou un png',
                     ])
@@ -35,12 +36,12 @@ class DepartementsType extends AbstractType
             ])
             // ->add('produit')
             // ->add('partenaires')
-            ->add('Collaborateur', EntityType::class, [
-                'required' => false,
-                'class' => Collaborateurs::class,
-                'multiple' => true,
-                'mapped' => true,
-            ])
+            // ->add('Collaborateur', EntityType::class, [
+            //     'required' => false,
+            //     'class' => Collaborateurs::class,
+            //     'multiple' => true,
+            //     'mapped' => true,
+            // ])
             // ->add('collaborateur',CollectionType::class , [
             //     'label' => 'Liste des collaborateurs de ce département',
             //     'attr' => [
