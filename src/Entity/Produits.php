@@ -30,6 +30,9 @@ class Produits
     #[ORM\ManyToOne(targetEntity: Partenaires::class, inversedBy: 'produits')]
     private $partenaire;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $lien;
+
     public function __construct()
     {
         $this->departement = new ArrayCollection();
@@ -108,6 +111,18 @@ class Produits
     public function setPartenaire(?Partenaires $partenaire): self
     {
         $this->partenaire = $partenaire;
+
+        return $this;
+    }
+
+    public function getLien(): ?string
+    {
+        return $this->lien;
+    }
+
+    public function setLien(?string $lien): self
+    {
+        $this->lien = $lien;
 
         return $this;
     }

@@ -64,6 +64,7 @@ class Collaborateurs implements UserInterface, PasswordAuthenticatedUserInterfac
     {
         return $this->nom;
         return $this->qualification;
+        // return $this->departements;
     }
 
     

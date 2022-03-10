@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Collaborateurs;
+use App\Entity\Departements;
 use App\Form\CollaborateursType;
 use App\Form\UserPasswordType;
 use App\Repository\CollaborateursRepository;
@@ -20,6 +21,17 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 #[Route('/collaborateurs')]
 class CollaborateursController extends AbstractController 
 {
+
+    // injection de dépendance
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager){
+        $this->entityManager = $entityManager;
+    }
+
+
+
+
     //Affichage de la liste des collaborateurs enregistré en base de donnée
     #[Route('/', name: 'app_collaborateurs_index', methods: ['GET'])]
     public function index(CollaborateursRepository $collaborateursRepository): Response
@@ -34,10 +46,20 @@ class CollaborateursController extends AbstractController
     {
         //IMPORTANT RAJOUTER (string) DANS  getPassword(): { return (string) $this->password;}
         $collaborateur = new Collaborateurs();
+        // $departement = new Departements();
         $form = $this->createForm(CollaborateursType::class, $collaborateur);
         $form->handleRequest($request);
         //Vérification lorsque le formulaire est envoyé ainsi que valide selon les conditions défini ci-dessous
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            //Ajout du departement lors de la création d'un collaborateur
+            foreach($form['departements']->getData()->getValues() as $v){
+                $departement = $entityManager->getRepository(Departements::class)->find($v->getId());
+                if($departement){
+                    $departement->addCollaborateur($collaborateur);
+                }
+            }
+
             //Vérification de l'image de profil du collaborateur
             $photo = $form->get('photo')->getData();
             if($photo){
@@ -80,11 +102,20 @@ class CollaborateursController extends AbstractController
     #[Route('/{id}/edit', name: 'app_collaborateurs_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Collaborateurs $collaborateur, CollaborateursRepository $collaborateursRepository, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
-        
+        // $departement = new Departements();
         $form = $this->createForm(CollaborateursType::class, $collaborateur);
         $form->handleRequest($request);
         //Vérification lorsque le formulaire est envoyé ainsi que valide selon les conditions défini ci-dessous
         if ($form->isSubmitted() && $form->isValid()) {
+
+            //Modification du departement lors de la création d'un collaborateur
+            foreach($form['departements']->getData()->getValues() as $v){
+                $departement = $entityManager->getRepository(Departements::class)->find($v->getId());
+                if($departement){
+                    $departement->addCollaborateur($collaborateur);
+                }
+            }
+
             $collaborateursRepository->add($collaborateur);
             $photo = $form->get('photo')->getData();
             if($photo){

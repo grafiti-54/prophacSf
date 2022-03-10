@@ -49,10 +49,14 @@
                 <th>Numéro de téléphone</th>
                 <td>{{ collaborateur.numero }}</td>
             </tr>
-            {# <tr>
+            <tr>
                 <th>Département</th>
-                <td>{{ collaborateur.departements }}</td>
-            </tr> #}
+                <td>
+                    {% for departement in collaborateur.departements %}
+                        {{ departement }} <br>
+                    {% endfor %}
+                </td>
+            </tr>
             {# <tr>
                 <th>Article</th>
                 <td>{{ collaborateur.articles }}</td>

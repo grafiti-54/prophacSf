@@ -7,7 +7,7 @@
 {% block body %}
 <a class="btn btn-prophac mb-3" href="{{ path('app_collaborateurs_new') }}">Ajouter un collaborateur</a>
 
-    {# {{ dump(collaborateurs) }} #}
+    {{ dump(collaborateurs) }}
 
     <table class="table">
         <thead>
@@ -16,6 +16,7 @@
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Email</th>
+                <th>Departement</th>
                 {# <th>Roles</th> #}
                 {# <th>Password</th> #}
                 {# <th>Photo</th> #}
