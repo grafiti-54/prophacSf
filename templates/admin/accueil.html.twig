@@ -127,6 +127,26 @@
 									<a class="nav-link" href="{{path('app_qualifications_new')}}">Ajouter une qualification</a>
 								</nav>
 							</div>
+
+							{# Menu admin partenaires #}
+							<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#partenaire" aria-expanded="false" aria-controls="collapseLayouts">
+								<div class="sb-nav-link-icon">
+									<img src="{{asset('assets/img/logo-crud/partenaires.svg')}}" alt="icon-show" width="15px" height ="15px">
+								</div>
+								Partenaires
+								<div class="sb-sidenav-collapse-arrow">
+									<i class="fas fa-angle-down"></i>
+								</div>
+							</a>
+							{# Liste des sous menus de la section partenaire #}
+							<div class="collapse" id="partenaire" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+								<nav
+									class="sb-sidenav-menu-nested nav">
+									{# path() utilise comme parametre le name de la Route que l'on souhaite afficher #}
+									<a class="nav-link" href="{{path('app_partenaires_index')}}">Liste des partenaires</a> 
+									<a class="nav-link" href="{{path('app_partenaires_new')}}">Ajouter un partenaire</a>
+								</nav>
+							</div>
 							<div class="sb-sidenav-menu-heading">Sections et articles du site</div>
 							
 							{# Menu admin départements #}

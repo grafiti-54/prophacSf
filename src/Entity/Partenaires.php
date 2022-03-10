@@ -36,6 +36,14 @@ class Partenaires
         $this->produits = new ArrayCollection();
     }
 
+    //correction could not be converted to string
+    public function __toString()
+    {
+        // return $this->nom;
+        // return $this->qualification;
+        // return $this->departement;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

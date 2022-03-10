@@ -5,7 +5,7 @@
 {% block PageTitle %} Détail du département {{ departement.nom }}{% endblock %}
 
 {% block body %}
-{{ dump(departement) }}
+{# {{ dump(departement) }} #}
     <table class="table">
         <tbody>
             <tr>
@@ -18,7 +18,7 @@
             </tr>
             <tr>
                 <th>Logo</th>
-                <td>{{ departement.logo }}</td>
+                <td><img src="../uploads/{{ departement.logo}}" alt="picto-{{ departement.nom }}" class="img-fluid" width="15%"></td>
             </tr>
             {# <tr>
                 <th>Collaborateur</th>

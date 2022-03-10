@@ -52,7 +52,7 @@ class CollaborateursController extends AbstractController
         //Vérification lorsque le formulaire est envoyé ainsi que valide selon les conditions défini ci-dessous
         if ($form->isSubmitted() && $form->isValid()) {
             
-            //Ajout du departement lors de la création d'un collaborateur
+            //Ajout du departement lors de la création d'un collaborateur relation many to many mappedBy
             foreach($form['departements']->getData()->getValues() as $v){
                 $departement = $entityManager->getRepository(Departements::class)->find($v->getId());
                 if($departement){
@@ -60,7 +60,7 @@ class CollaborateursController extends AbstractController
                 }
             }
 
-            //Vérification de l'image de profil du collaborateur
+            //Récupération de l'image de profil du collaborateur
             $photo = $form->get('photo')->getData();
             if($photo){
                 $originalFileName = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
@@ -108,7 +108,7 @@ class CollaborateursController extends AbstractController
         //Vérification lorsque le formulaire est envoyé ainsi que valide selon les conditions défini ci-dessous
         if ($form->isSubmitted() && $form->isValid()) {
 
-            //Modification du departement lors de la création d'un collaborateur
+            //Modification du departement lors de la création d'un collaborateur relation many to many mappedBy
             foreach($form['departements']->getData()->getValues() as $v){
                 $departement = $entityManager->getRepository(Departements::class)->find($v->getId());
                 if($departement){
