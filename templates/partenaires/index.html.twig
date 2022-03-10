@@ -1,0 +1,47 @@
+{% extends 'admin/accueil.html.twig' %}
+
+{% block title %}Admin - Prophac{% endblock %}
+
+{% block PageTitle %} Liste des partenaires{% endblock %}
+
+{% block body %}
+{{ dump(partenaires) }}
+    <a class="btn btn-prophac mb-3" href="{{ path('app_partenaires_new') }}">Ajouter un partenaire</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th class="w-25 text-center">Nom</th>
+                {# <th>SiteInternet</th> #}
+                <th class="w-25 text-center">Logo</th>
+                <th class="w-25 text-center">Département</th>
+                <th class="w-25 text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for partenaire in partenaires %}
+            <tr class="table-{% if loop.index is odd %} list-prophac{% else %} blanc {% endif %}">
+                <td>{{ partenaire.id }}</td>
+                <td class="w-25 text-center">{{ partenaire.nom }}</td>
+                {# <td>{{ partenaire.siteInternet }}</td> #}
+                <td class="w-25 text-center"><img src="../uploads/{{ partenaire.logo}}" alt="logo-{{ partenaire.nom }}" class="img-fluid" width="20%"></td>
+                <td class="w-25 text-center">
+                    {% for departement in partenaire.departement %}
+                        {{ departement }} <br>
+                    {% endfor %}
+                </td>
+                <td class="text-center">
+                    <a href="{{ path('app_partenaires_show', {'id': partenaire.id})}}"><img src="{{asset('assets/img/logo-crud/read.svg')}}" alt="icon-show" width="25px" height ="25px"></a>
+                    <a class="ms-2" href="{{ path('app_partenaires_edit', {'id': partenaire.id}) }}"><img src="{{asset('assets/img/logo-crud/edit.svg')}}" alt="icon-edit" width="25px" height ="25px"></a>
+                    <a class="ms-2 w-25" href="{{ path('app_partenaires_delete', {'id': partenaire.id}) }}"><img src="{{asset('assets/img/logo-crud/delete.svg')}}" alt="icon-delete" width="25px" height ="25px"></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Pas de partenaire pour le moment</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {# <a class="btn btn-prophac mb-3" href="{{ path('app_partenaires_new') }}">Ajouter un partenaire</a> #}
+{% endblock %}
