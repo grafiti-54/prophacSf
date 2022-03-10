@@ -1,0 +1,43 @@
+{% extends 'admin/accueil.html.twig' %}
+
+{% block title %}Admin - Prophac{% endblock %}
+
+{% block PageTitle %} Liste des articles{% endblock %}
+
+{% block body %}
+{# {{ dump(articles) }} #}
+<a class="btn btn-prophac mb-3" href="{{ path('app_articles_new') }}">Ajouter un article</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                {# <th>Contenu</th> #}
+                <th>Département</th>
+                <th>CreatedDate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.titre }}</td>
+                {# <td>{{ article.contenu }}</td> #}
+                <td>{{ article.departement }}</td>
+                <td>{{ article.createdDate ? article.createdDate|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_articles_show', {'id': article.id}) }}"><img src="{{asset('assets/img/logo-crud/read.svg')}}" alt="icon-show" width="25px" height ="25px"></a>
+                    <a class="ms-2" href="{{ path('app_articles_edit', {'id': article.id}) }}"><img src="{{asset('assets/img/logo-crud/edit.svg')}}" alt="icon-edit" width="25px" height ="25px"></a>
+                    <a class="ms-2" href="{{ path('app_articles_delete', {'id': article.id}) }}"><img src="{{asset('assets/img/logo-crud/delete.svg')}}" alt="icon-delete" width="25px" height ="25px"></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Pas d'article pour le moment</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {# <a class="btn btn-prophac mb-3" href="{{ path('app_articles_new') }}">Ajouter un article</a> #}
+{% endblock %}
