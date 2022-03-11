@@ -22,7 +22,7 @@
 		<nav
 			class="sb-topnav navbar navbar-expand navbar-dark">
 			<!-- Navbar Brand-->
-			<a class="navbar-brand ps-3" href="index.html">Admin-Prophac</a>
+			<a class="navbar-brand ps-3" href="{{path('app_admin')}}">Admin-Prophac</a> 
 			<!-- Sidebar Toggle-->
 			<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
 				<i class="fas fa-bars"></i>
@@ -59,7 +59,7 @@
 					<div class="sb-sidenav-menu">
 						<div class="nav">
 							<div class="sb-sidenav-menu-heading">Accueil</div>
-							<a class="nav-link" href="#">
+							<a class="nav-link" href="{{path('app_admin')}}">
 								<div class="sb-nav-link-icon">
 									<i class="fas fa-tachometer-alt"></i>
 								</div>
@@ -207,6 +207,26 @@
 									{# path() utilise comme parametre le name de la Route que l'on souhaite afficher #}
 									<a class="nav-link" href="{{path('app_articles_index')}}">Liste des articles</a> 
 									<a class="nav-link" href="{{path('app_articles_new')}}">Ajouter un article</a>
+								</nav>
+							</div>
+
+							{# Menu admin images des articles du site #}
+							<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#images" aria-expanded="false" aria-controls="collapseLayouts">
+								<div class="sb-nav-link-icon">
+									<img src="{{asset('assets/img/logo-crud/images.svg')}}" alt="icon-show" width="15px" height ="15px">
+								</div>
+								Images
+								<div class="sb-sidenav-collapse-arrow">
+									<i class="fas fa-angle-down"></i>
+								</div>
+							</a>
+							{# Liste des sous menus de la section #}
+							<div class="collapse" id="images" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+								<nav
+									class="sb-sidenav-menu-nested nav">
+									{# path() utilise comme parametre le name de la Route que l'on souhaite afficher #}
+									<a class="nav-link" href="{{path('app_images_index')}}">Liste des images</a> 
+									<a class="nav-link" href="{{path('app_images_new')}}">Ajouter une image</a>
 								</nav>
 							</div>
 
