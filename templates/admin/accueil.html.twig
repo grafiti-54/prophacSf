@@ -147,6 +147,27 @@
 									<a class="nav-link" href="{{path('app_partenaires_new')}}">Ajouter un partenaire</a>
 								</nav>
 							</div>
+
+							{# Menu admin partenaires #}
+							<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#produit" aria-expanded="false" aria-controls="collapseLayouts">
+								<div class="sb-nav-link-icon">
+									<img src="{{asset('assets/img/logo-crud/produits.svg')}}" alt="icon-show" width="15px" height ="15px">
+								</div>
+								Produits
+								<div class="sb-sidenav-collapse-arrow">
+									<i class="fas fa-angle-down"></i>
+								</div>
+							</a>
+							{# Liste des sous menus de la section partenaire #}
+							<div class="collapse" id="produit" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+								<nav
+									class="sb-sidenav-menu-nested nav">
+									{# path() utilise comme parametre le name de la Route que l'on souhaite afficher #}
+									<a class="nav-link" href="{{path('app_produits_index')}}">Liste des produits</a> 
+									<a class="nav-link" href="{{path('app_produits_new')}}">Ajouter un produit</a>
+								</nav>
+							</div>
+
 							<div class="sb-sidenav-menu-heading">Sections et articles du site</div>
 							
 							{# Menu admin départements #}

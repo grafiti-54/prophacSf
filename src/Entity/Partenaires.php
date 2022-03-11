@@ -39,9 +39,9 @@ class Partenaires
     //correction could not be converted to string
     public function __toString()
     {
-        // return $this->nom;
+        return $this->nom;
         // return $this->qualification;
-        // return $this->departement;
+        return $this->departement;
     }
 
     public function getId(): ?int
