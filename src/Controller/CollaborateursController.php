@@ -60,7 +60,7 @@ class CollaborateursController extends AbstractController
                 }
             }
 
-            //Récupération de l'image de profil du collaborateur
+            //Ajout de l'image de profil du collaborateur
             $photo = $form->get('photo')->getData();
             if($photo){
                 $originalFileName = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
@@ -78,6 +78,7 @@ class CollaborateursController extends AbstractController
                 //On stock le nouveau nom de la photo
                 $collaborateur->setPhoto($newFilename);
             }
+            
             //Vérification du mot de passe du collaborateur
             $collaborateur->setPassword($passwordEncoder->hashPassword($collaborateur,$form->get('password')->getData()));
                 $entityManager->persist($collaborateur);

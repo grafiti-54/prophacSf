@@ -21,7 +21,7 @@ class Produits
     #[ORM\Column(type: 'text', nullable: true)]
     private $description;
 
-    #[ORM\Column(type: 'string', length: 150)]
+    #[ORM\Column(type: 'string', length: 150, nullable: true)]
     private $photo;
 
     #[ORM\ManyToMany(targetEntity: Departements::class, inversedBy: 'produit')]
