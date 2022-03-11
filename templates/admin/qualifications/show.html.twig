@@ -19,7 +19,7 @@
     </table>
     <div class="d-flex">
         <a class="btn btn-success text-light ms-2 mt-2" href="{{ path('app_qualifications_edit', {'id': qualification.id}) }}">Modifier la qualification</a>
-        {{ include('qualifications/_delete_form.html.twig') }}
+        {{ include('admin/qualifications/_delete_form.html.twig') }}
     </div>
         <a class="btn btn-prophac ms-2 mt-2" href="{{ path('app_qualifications_index') }}">Retourner sur la liste des qualifications</a>    
 {% endblock %}

@@ -10,13 +10,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/qualifications')]
+#[Route('/admin/qualifications')]
 class QualificationsController extends AbstractController
 {
     #[Route('/', name: 'app_qualifications_index', methods: ['GET'])]
     public function index(QualificationsRepository $qualificationsRepository): Response
     {
-        return $this->render('qualifications/index.html.twig', [
+        return $this->render('admin/qualifications/index.html.twig', [
             'qualifications' => $qualificationsRepository->findAll(),
         ]);
     }
@@ -33,7 +33,7 @@ class QualificationsController extends AbstractController
             return $this->redirectToRoute('app_qualifications_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('qualifications/new.html.twig', [
+        return $this->renderForm('admin/qualifications/new.html.twig', [
             'qualification' => $qualification,
             'form' => $form,
         ]);
@@ -42,7 +42,7 @@ class QualificationsController extends AbstractController
     #[Route('/{id}', name: 'app_qualifications_show', methods: ['GET'])]
     public function show(Qualifications $qualification): Response
     {
-        return $this->render('qualifications/show.html.twig', [
+        return $this->render('admin/qualifications/show.html.twig', [
             'qualification' => $qualification,
         ]);
     }
@@ -58,7 +58,7 @@ class QualificationsController extends AbstractController
             return $this->redirectToRoute('app_qualifications_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('qualifications/edit.html.twig', [
+        return $this->renderForm('admin/qualifications/edit.html.twig', [
             'qualification' => $qualification,
             'form' => $form,
         ]);

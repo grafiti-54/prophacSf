@@ -18,7 +18,7 @@
             </tr>
             <tr>
                 <th>Logo</th>
-                <td><img src="../uploads/{{ departement.logo}}" alt="picto-{{ departement.nom }}" class="img-fluid" width="15%"></td>
+                <td><img src="../../../uploads/{{ departement.logo}}" alt="picto-{{ departement.nom }}" class="img-fluid" width="15%"></td>
             </tr>
             {# <tr>
                 <th>Collaborateur</th>
@@ -32,7 +32,7 @@
     </table>
     <div class="d-flex">
         <a class="btn btn-success text-light ms-2 mt-2" href="{{ path('app_departements_edit', {'id': departement.id}) }}">Modifier ce département</a>
-        {{ include('departements/_delete_form.html.twig') }}
+        {{ include('admin/departements/_delete_form.html.twig') }}
     </div>
     <a class="btn btn-prophac ms-2 mt-2" href="{{ path('app_departements_index') }}">Retourner sur la liste des départements</a>
 {% endblock %}

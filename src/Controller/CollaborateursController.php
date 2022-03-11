@@ -36,7 +36,7 @@ class CollaborateursController extends AbstractController
     #[Route('/', name: 'app_collaborateurs_index', methods: ['GET'])]
     public function index(CollaborateursRepository $collaborateursRepository): Response
     {
-        return $this->render('collaborateurs/index.html.twig', [
+        return $this->render('admin/collaborateurs/index.html.twig', [
             'collaborateurs' => $collaborateursRepository->findAll(),
         ]);
     }
@@ -85,7 +85,7 @@ class CollaborateursController extends AbstractController
             return $this->redirectToRoute('app_collaborateurs_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('collaborateurs/new.html.twig', [
+        return $this->renderForm('admin/collaborateurs/new.html.twig', [
             'collaborateur' => $collaborateur,
             'form' => $form,
         ]);
@@ -94,7 +94,7 @@ class CollaborateursController extends AbstractController
     #[Route('/{id}', name: 'app_collaborateurs_show', methods: ['GET'])]
     public function show(Collaborateurs $collaborateur): Response
     {
-        return $this->render('collaborateurs/show.html.twig', [
+        return $this->render('admin/collaborateurs/show.html.twig', [
             'collaborateur' => $collaborateur,
         ]);
     }
@@ -139,7 +139,7 @@ class CollaborateursController extends AbstractController
             return $this->redirectToRoute('app_collaborateurs_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('collaborateurs/edit.html.twig', [
+        return $this->renderForm('admin/collaborateurs/edit.html.twig', [
             'collaborateur' => $collaborateur,
             'form' => $form,
         ]);
@@ -194,7 +194,7 @@ class CollaborateursController extends AbstractController
                 );
             }
         }
-        return $this->render('collaborateurs/password.html.twig', [
+        return $this->render('admin/collaborateurs/password.html.twig', [
             'form' => $form->createView()
         ]);
     }

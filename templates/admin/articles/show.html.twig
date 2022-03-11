@@ -29,7 +29,7 @@
     </table>
     <div class="d-flex">
         <a class="btn btn-success text-light ms-2 mt-2" href="{{ path('app_articles_edit', {'id': article.id}) }}">Modifier l'article</a>
-        {{ include('articles/_delete_form.html.twig') }}
+        {{ include('admin/articles/_delete_form.html.twig') }}
     </div>
         <a class="btn btn-prophac ms-2 mt-2" href="{{ path('app_articles_index') }}">Retourner sur la liste des articles</a>
 {% endblock %}
