@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 //Controlleur pour le crud des collaborateurs
-#[Route('/collaborateurs')]
+#[Route('/admin/collaborateurs')]
 class CollaborateursController extends AbstractController 
 {
 

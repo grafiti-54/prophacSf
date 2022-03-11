@@ -1,0 +1,41 @@
+{% extends 'admin/accueil.html.twig' %}
+
+{% block title %}Admin - Prophac{% endblock %}
+
+{% block PageTitle %} Liste des images{% endblock %}
+
+{% block body %}
+    {# {{ dump(images) }} #}
+<a class="btn btn-prophac mb-3" href="{{ path('app_images_new') }}">Ajouter une image</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Lien</th>
+                <th>Legende</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for image in images %}
+            <tr class="table-{% if loop.index is odd %} list-prophac{% else %} blanc {% endif %}">
+                <td>{{ image.id }}</td>
+                <td>{{ image.titre }}</td>
+                <td class="w-25 text-center" ><img src="../../../uploads/{{ image.lien}}" alt="{{image.titre}}" class="img-fluid" width="35%"></td>
+                <td>{{ image.legende }}</td>
+                <td>
+                    <a href="{{ path('app_images_show', {'id': image.id}) }}"><img src="{{asset('assets/img/logo-crud/read.svg')}}" alt="icon-show" width="25px" height ="25px"></a>
+                    <a class="ms-2" href="{{ path('app_images_edit', {'id': image.id}) }}"><img src="{{asset('assets/img/logo-crud/edit.svg')}}" alt="icon-edit" width="25px" height ="25px"></a>
+                    <a class="ms-2" href="{{ path('app_images_delete', {'id': image.id}) }}"><img src="{{asset('assets/img/logo-crud/delete.svg')}}" alt="icon-delete" width="25px" height ="25px"></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Pas d'image pour le moment</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {# <a class="btn btn-prophac mb-3" href="{{ path('app_images_new') }}">Ajouter une image</a> #}
+{% endblock %}
