@@ -2,15 +2,15 @@
 
 {% block title %}Admin - Prophac{% endblock %}
 
-{% block PageTitle %} Modification de l'article{% endblock %}
+{% block PageTitle %} Modification du partenaire{% endblock %}
 
 {% block body %}
     <div class="header-form-admin d-flex justify-content-center mb-5">
         <img class="py-2" src="{{asset('assets/img/form/logo-prophac.svg')}}" alt="logo-prophac-blanc" width="25%">
         <h3 class="text-light py-5 ps-5">Administrateur</h3>
-    </div>   
-    <div class="container form-admin py-5 mb-5">
-        {{ include('articles/_form.html.twig', {'button_label': "Valider la mise à jour de l'article"}) }}
-        <a class="btn btn-prophac ms-1 mt-2" href="{{ path('app_articles_index') }}">Retourer sur la liste des articles</a>
+    </div>
+    <div class="container form-admin py-5"> 
+    {{ include('admin/partenaires/_form.html.twig', {'button_label': 'Valider la mise à jour de ce partenaire'}) }}
+    <a class="btn btn-prophac ms-1 mt-2" href="{{ path('app_partenaires_index') }}">Retourner sur la liste des partenaires</a>
     </div>
 {% endblock %}

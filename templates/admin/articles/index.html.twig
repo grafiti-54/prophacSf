@@ -20,7 +20,7 @@
         </thead>
         <tbody>
         {% for article in articles %}
-            <tr>
+            <tr class="table-{% if loop.index is odd %} list-prophac{% else %} blanc {% endif %}">
                 <td>{{ article.id }}</td>
                 <td>{{ article.titre }}</td>
                 {# <td>{{ article.contenu }}</td> #}

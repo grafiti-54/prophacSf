@@ -43,7 +43,7 @@
             </tr> #}
             <tr>
                 <th>Photo</th>
-                <td><img src="../uploads/{{ collaborateur.photo}}" alt="photo-{{ collaborateur.nom }}-{{ collaborateur.prenom }}" class="img-fluid" width="15%"></td>
+                <td><img src="../../../uploads/{{ collaborateur.photo}}" alt="photo-{{ collaborateur.nom }}-{{ collaborateur.prenom }}" class="img-fluid" width="15%"></td>
             </tr>
             <tr>
                 <th>Numéro de téléphone</th>
@@ -66,7 +66,7 @@
     <div class="d-flex">
         <a class="btn btn-success text-light ms-2 mt-2" href="{{ path('app_collaborateurs_edit', {'id': collaborateur.id}) }}">Modifier le collaborateur</a>
         <a class="btn btn-warning text-light ms-2 mt-2" href="{{ path('user.edit.password', {'id': collaborateur.id}) }}">Modifier le mot de passe du collaborateur</a>
-        {{ include('collaborateurs/_delete_form.html.twig') }}
+        {{ include('admin/collaborateurs/_delete_form.html.twig') }}
         
         
     </div>

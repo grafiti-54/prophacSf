@@ -10,13 +10,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/articles')]
+#[Route('/admin/articles')]
 class ArticlesController extends AbstractController
 {
     #[Route('/', name: 'app_articles_index', methods: ['GET'])]
     public function index(ArticlesRepository $articlesRepository): Response
     {
-        return $this->render('articles/index.html.twig', [
+        return $this->render('admin/articles/index.html.twig', [
             'articles' => $articlesRepository->findAll(),
         ]);
     }
@@ -33,7 +33,7 @@ class ArticlesController extends AbstractController
             return $this->redirectToRoute('app_articles_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('articles/new.html.twig', [
+        return $this->renderForm('admin/articles/new.html.twig', [
             'article' => $article,
             'form' => $form,
         ]);
@@ -42,7 +42,7 @@ class ArticlesController extends AbstractController
     #[Route('/{id}', name: 'app_articles_show', methods: ['GET'])]
     public function show(Articles $article): Response
     {
-        return $this->render('articles/show.html.twig', [
+        return $this->render('admin/articles/show.html.twig', [
             'article' => $article,
         ]);
     }
@@ -58,7 +58,7 @@ class ArticlesController extends AbstractController
             return $this->redirectToRoute('app_articles_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('articles/edit.html.twig', [
+        return $this->renderForm('admin/articles/edit.html.twig', [
             'article' => $article,
             'form' => $form,
         ]);

@@ -11,13 +11,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/telephones')]
+#[Route('/admin/telephones')]
 class TelephonesController extends AbstractController
 {
     #[Route('/', name: 'app_telephones_index', methods: ['GET'])]
     public function index(TelephonesRepository $telephonesRepository): Response
     {
-        return $this->render('telephones/index.html.twig', [
+        return $this->render('admin/telephones/index.html.twig', [
             'telephones' => $telephonesRepository->findAll(),
         ]);
     }
@@ -34,7 +34,7 @@ class TelephonesController extends AbstractController
             return $this->redirectToRoute('app_telephones_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('telephones/new.html.twig', [
+        return $this->renderForm('admin/telephones/new.html.twig', [
             'telephone' => $telephone,
             'form' => $form,
         ]);
@@ -43,7 +43,7 @@ class TelephonesController extends AbstractController
     #[Route('/{id}', name: 'app_telephones_show', methods: ['GET'])]
     public function show(Telephones $telephone): Response
     {
-        return $this->render('telephones/show.html.twig', [
+        return $this->render('admin/telephones/show.html.twig', [
             'telephone' => $telephone,
         ]);
     }
@@ -59,7 +59,7 @@ class TelephonesController extends AbstractController
             return $this->redirectToRoute('app_telephones_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('telephones/edit.html.twig', [
+        return $this->renderForm('admin/telephones/edit.html.twig', [
             'telephone' => $telephone,
             'form' => $form,
         ]);

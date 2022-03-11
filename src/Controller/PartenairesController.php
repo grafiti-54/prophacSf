@@ -14,13 +14,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-#[Route('/partenaires')]
+#[Route('/admin/partenaires')]
 class PartenairesController extends AbstractController
 {
     #[Route('/', name: 'app_partenaires_index', methods: ['GET'])]
     public function index(PartenairesRepository $partenairesRepository): Response
     {
-        return $this->render('partenaires/index.html.twig', [
+        return $this->render('admin/partenaires/index.html.twig', [
             'partenaires' => $partenairesRepository->findAll(),
         ]);
     }
@@ -57,7 +57,7 @@ class PartenairesController extends AbstractController
             return $this->redirectToRoute('app_partenaires_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('partenaires/new.html.twig', [
+        return $this->renderForm('admin/partenaires/new.html.twig', [
             'partenaire' => $partenaire,
             'form' => $form,
         ]);
@@ -66,7 +66,7 @@ class PartenairesController extends AbstractController
     #[Route('/{id}', name: 'app_partenaires_show', methods: ['GET'])]
     public function show(Partenaires $partenaire): Response
     {
-        return $this->render('partenaires/show.html.twig', [
+        return $this->render('admin/partenaires/show.html.twig', [
             'partenaire' => $partenaire,
         ]);
     }
@@ -109,7 +109,7 @@ class PartenairesController extends AbstractController
             return $this->redirectToRoute('app_partenaires_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('partenaires/edit.html.twig', [
+        return $this->renderForm('admin/partenaires/edit.html.twig', [
             'partenaire' => $partenaire,
             'form' => $form,
         ]);
