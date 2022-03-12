@@ -1,10 +1,119 @@
 <?php
 
+
+
+
+                        // NE PAS UTILISER POUR LE MOMENT 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 namespace App\Controller;
 
 use App\Entity\Articles;
+use App\Entity\Images;
 use App\Form\ArticlesType;
 use App\Repository\ArticlesRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,13 +131,14 @@ class ArticlesController extends AbstractController
     }
 
     #[Route('/new', name: 'app_articles_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, ArticlesRepository $articlesRepository): Response
+    public function new(Request $request, ArticlesRepository $articlesRepository, EntityManagerInterface $entityManager,): Response
     {
         $article = new Articles();
         $form = $this->createForm(ArticlesType::class, $article);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $articlesRepository->add($article);
             return $this->redirectToRoute('app_articles_index', [], Response::HTTP_SEE_OTHER);
         }

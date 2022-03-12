@@ -33,6 +33,15 @@ class Articles
     #[ORM\ManyToMany(targetEntity: Images::class, mappedBy: 'article')]
     private $images;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $illustration;
+
+    #[ORM\Column(type: 'string', length: 150, nullable: true)]
+    private $titreIllustration;
+
+    #[ORM\Column(type: 'string', length: 150, nullable: true)]
+    private $legendeIllustration;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -126,6 +135,42 @@ class Articles
         if ($this->images->removeElement($image)) {
             $image->removeArticle($this);
         }
+
+        return $this;
+    }
+
+    public function getIllustration(): ?string
+    {
+        return $this->illustration;
+    }
+
+    public function setIllustration(?string $illustration): self
+    {
+        $this->illustration = $illustration;
+
+        return $this;
+    }
+
+    public function getTitreIllustration(): ?string
+    {
+        return $this->titreIllustration;
+    }
+
+    public function setTitreIllustration(?string $titreIllustration): self
+    {
+        $this->titreIllustration = $titreIllustration;
+
+        return $this;
+    }
+
+    public function getLegendeIllustration(): ?string
+    {
+        return $this->legendeIllustration;
+    }
+
+    public function setLegendeIllustration(?string $legendeIllustration): self
+    {
+        $this->legendeIllustration = $legendeIllustration;
 
         return $this;
     }
