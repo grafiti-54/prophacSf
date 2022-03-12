@@ -1,0 +1,17 @@
+{% extends 'admin/accueil.html.twig' %}
+
+{% block title %}Admin - Prophac{% endblock %}
+
+{% block PageTitle %} Modification de l'article{% endblock %}
+
+{% block body %}
+    <div class="header-form-admin d-flex justify-content-center mb-5">
+        <img class="py-2" src="{{asset('assets/img/form/logo-prophac.svg')}}" alt="logo-prophac-blanc" width="25%">
+        <h3 class="text-light py-5 ps-5">Administrateur</h3>
+    </div>   
+    <div class="container form-admin py-5 mb-5">
+        {{ include('admin/post/_form.html.twig', {'button_label': "Valider la mise à jour de l'article"}) }}
+        <a class="btn btn-prophac ms-1 mt-2" href="{{ path('app_post_index') }}">Retourer sur la liste des articles</a>
+        {# {{ include('post/_delete_form.html.twig') }} #}
+    </div>
+{% endblock %}
