@@ -46,10 +46,10 @@ class ProduitsType extends AbstractType
                 'required' => false,
                 'class' => Partenaires::class,
                 'multiple' => false,
-                // 'mapped' => true,
             ])
             ->add('prioritaire', CheckboxType::class, [
                 'label' => "Affiher ce produit sur la page d'accueil du site ?",
+                'required' => false,
             ])
         ;
     }

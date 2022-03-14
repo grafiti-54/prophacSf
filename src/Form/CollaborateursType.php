@@ -12,15 +12,19 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Mime\Encoder\EncoderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Serializer\Encoder\EncoderInterface as EncoderEncoderInterface;
 use Symfony\Component\Validator\Constraints\File as ConstraintsFile;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Uid\Uuid;
 
 class CollaborateursType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        
         $builder
             ->add('nom')
             ->add('prenom')
@@ -34,23 +38,23 @@ class CollaborateursType extends AbstractType
                     'Admin' => 'ROLE_ADMIN',
                 ],
             ])
-            // ->add('password', PasswordType::class, [
-            //     // instead of being set onto the object directly,
-            //     // this is read and encoded in the controller
-            //     'mapped' => false,
-            //     'attr' => ['autocomplete' => 'new-password'],
-            //     'constraints' => [
-            //         new NotBlank([
-            //             'message' => 'Please enter a password',
-            //         ]),
-            //         new Length([
-            //             'min' => 5,
-            //             'minMessage' => 'Your password should be at least {{ limit }} characters',
-            //             // max length allowed by Symfony for security reasons
-            //             'max' => 4096,
-            //         ]),
-            //     ],
-            // ])
+            ->add('password', PasswordType::class, [
+                // instead of being set onto the object directly,
+                // this is read and encoded in the controller
+                'mapped' => false,
+                'attr' => ['autocomplete' => 'new-password'],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Please enter a password',
+                    ]),
+                    new Length([
+                        'min' => 5,
+                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        // max length allowed by Symfony for security reasons
+                        'max' => 4096,
+                    ]),
+                ],
+            ])
 
             ->add('photo', FileType::class, [
                 'label' => 'Image du collaborateur',
@@ -70,14 +74,34 @@ class CollaborateursType extends AbstractType
             ->add('departements', EntityType::class, [
                 'required' => false,
                 'class' => Departements::class,
+                'expanded' =>true,
                 'multiple' => true,
                 'mapped' => true,
+                'help' => "Selectionner le ou les départements ",
+                
             ])
+            // ->add('qualification', EntityType::class, [
+            //     'required' => false,
+            //     'class' => Qualifications::class,
+            //     'mapped' => false,
+            //     'choice_value' => function(Qualifications $qualification = null){
+            //         if($qualification){
+            //             return $qualification->getId();
+            //         }
+            //     },
+            //     'help' => "Selectionner la qualification",
+            //     // "choice_label" => function(Qualifications $qualification){
+            //     //     return $qualification->getLibelle();
+
+            //     // }
+            // ])
             ->add('qualification', EntityType::class, [
                 'required' => false,
                 'class' => Qualifications::class,
+                'expanded' =>true,
                 'multiple' => true,
                 'mapped' => true,
+                'help' => "Selectionner la ou les qualifications de",
             ])
             ->add('numero')
 
