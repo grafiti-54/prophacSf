@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Classe\Search;
 use App\Entity\Produits;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
@@ -44,6 +45,50 @@ class ProduitsRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
+
+// /**
+//      * fonction pour filtrer la recherche d'un utilisateur dans la barre de recherche de la page produit
+//      *
+//      * @return Product[]
+//      */
+//     public function findWithSearch(Search $search)
+//     {
+//         // gestion de la recherche par checkbox filtre des categories
+//         $query = $this
+//             ->createQueryBuilder('p') // p represente la table produit (alias)
+//             ->select('p'); // on selectionne les catégories
+//             // ->join('p.category', 'c'); // jointure entre les categorie du produit et la table categorie
+//             //si la recherche par categorie n'est pas vide et qu’un utilisateur utilise ce champ pour effectuer une recherche
+//             if(!empty($search->produit)){
+//                 // On reprend la requete
+//                 $query = $query
+//                     ->andWhere('p.id IN (:produits)') // on rajoute dans la requete les id des categories pour qu'il soit dans la liste des categories envoyé en parametre dans l'objet search  
+//                     ->setParameter('produits', $search->produit); // on passe le parametre de la recherche on verifie qu’une catégorie correspond a la recherche faite par l’utilisateur dans le parametre defini
+//             }
+
+//             // gestion de la recherche par recherche textuel dans la barre de recherche
+//             if(!empty($search->string)){
+//                 $query = $query
+//                 ->andWhere('p.nom LIKE :string') // est-ce que p.name correspond a la recherche textuel ?
+//                 ->setParameter('string', "%{$search->string}%") // recherche partiel sur la recherche effectué
+//                 ->setMaxResults(2);
+//             }
+// 		//On retourne les résultats
+//             return $query->getQuery()->getResult();
+//     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // /**
     //  * @return Produits[] Returns an array of Produits objects

@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use App\Classe\Search;
+use App\Entity\Departements;
 use App\Entity\Produits;
 use App\Form\ProduitsType;
+use App\Form\SearchType;
 use App\Repository\ProduitsRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,25 +16,70 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-#[Route('admin//produits')]
+
+
+#[Route('admin/produits')]
 class ProduitsController extends AbstractController
 {
+    // private $entityManager;
+    
+    // /**
+    //  * Fonction qui permet l'utilisateur de doctrine pour récupérer les données des produits
+    //  *
+    //  * @param EntityManagerInterface $entityManager
+    //  */
+    // public function __construct(EntityManagerInterface $entityManager)
+    // {
+    //     $this->entityManager = $entityManager;
+    // }
+
+
     #[Route('/', name: 'app_produits_index', methods: ['GET'])]
-    public function index(ProduitsRepository $produitsRepository): Response
+    public function index(ProduitsRepository $produitsRepository, Request $request ): Response
     {
-        return $this->render('ADMIN/produits/index.html.twig', [
+//         //On récupére tout les produits
+//         //on va chercher le repository des produits qui contient des méthodes pour récupérer les informations de la talble
+//         $products = $this->entityManager->getRepository(Produits::class)->findAll();
+//         //dd($products); // verifications des données récupérés
+
+//         //Formulaire de filtre de recherche
+//         $search = new Search;
+//         $form = $this->createForm(SearchType::class, $search);
+
+//         //On ecoute la requete
+//         $form->handleRequest($request);
+
+//         if($form->isSubmitted() && $form->isValid()){
+//             // On crée la methode findWithSearch dans le repository de Product
+//             $products = $this->entityManager->getRepository(Produits::class)->findWithSearch($search);
+//             //dd($search);
+// //findWithSearch requête personnalisé crée dans ProductRepository.php qui va permettre de récupéré la data en BDD.
+//         }
+
+        return $this->render('admin/produits/index.html.twig', [
             'produits' => $produitsRepository->findAll(),
+            // 'products' => $products,
+            // 'form' => $form->createView(),
+
         ]);
     }
 
     #[Route('/new', name: 'app_produits_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, ProduitsRepository $produitsRepository, SluggerInterface $slugger): Response
+    public function new(Request $request, ProduitsRepository $produitsRepository, SluggerInterface $slugger, EntityManagerInterface $entityManager,): Response
     {
         $produit = new Produits();
         $form = $this->createForm(ProduitsType::class, $produit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            //Ajout du departement lors de la création d'un produitrelation many to many mappedBy
+            foreach($form['departement']->getData()->getValues() as $v){
+                $departement = $entityManager->getRepository(Departements::class)->find($v->getId());
+                if($departement){
+                    $departement->addProduit($produit);
+                }
+            }
 
             //Ajout de l'image du produit
             $photo = $form->get('photo')->getData();
@@ -69,12 +118,20 @@ class ProduitsController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_produits_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Produits $produit, ProduitsRepository $produitsRepository, SluggerInterface $slugger): Response
+    public function edit(Request $request, Produits $produit, ProduitsRepository $produitsRepository, SluggerInterface $slugger, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ProduitsType::class, $produit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            //Modification du departement lors de la création d'un produitrelation many to many mappedBy
+            foreach($form['departement']->getData()->getValues() as $v){
+                $departement = $entityManager->getRepository(Departements::class)->find($v->getId());
+                if($departement){
+                    $departement->addProduit($produit);
+                }
+            }
 
             //Modification de l'image du produit
             $photo = $form->get('photo')->getData();

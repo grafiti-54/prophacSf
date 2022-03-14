@@ -165,9 +165,12 @@ class ArticlesController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $articlesRepository->add($article);
-            return $this->redirectToRoute('app_articles_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_articles_index');
+            $this->addFlash('success', "L'article a été modifié avec succés");
+        }else{
+            // $this->addFlash('error', "Une erreur est survenue lors de la modification de l'article");
         }
-
+        $this->addFlash('info', "Vous êtes sur le point de mofidier le contenu d'un article du site");
         return $this->renderForm('admin/articles/edit.html.twig', [
             'article' => $article,
             'form' => $form,
@@ -179,6 +182,10 @@ class ArticlesController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$article->getId(), $request->request->get('_token'))) {
             $articlesRepository->remove($article);
+
+            $this->addFlash('success', "L'article a été supprimé avec succés");
+        } else{
+            // $this->addFlash('error', "L'article n'est pas supprimé");
         }
 
         return $this->redirectToRoute('app_articles_index', [], Response::HTTP_SEE_OTHER);

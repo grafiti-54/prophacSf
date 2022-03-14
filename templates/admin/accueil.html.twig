@@ -13,29 +13,30 @@
 		</title>
 		{# lien css navbar #}
 		<link rel="stylesheet" href="{{asset('assets/css/admin.css')}}">
-		<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/> 
-		<link href="{{ asset('assets/css/form.css') }}" rel="stylesheet"/> 
-		{% block stylesheets %}{% endblock %}
+		<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
+		<link href="{{ asset('assets/css/form.css') }}" rel="stylesheet"/> {% block stylesheets %}{% endblock %}
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
 		<nav
 			class="sb-topnav navbar navbar-expand navbar-dark">
 			<!-- Navbar Brand-->
-			<a class="navbar-brand ps-3" href="{{path('app_admin')}}">Admin-Prophac</a> 
+			<a class="navbar-brand ps-3" href="{{path('app_admin')}}">Admin-Prophac</a>
 			<!-- Sidebar Toggle-->
 			<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
 				<i class="fas fa-bars"></i>
 			</button>
 			{# Barre de recherche #}
-			<form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-				<div class="input-group">
-					<input class="form-control" type="text" placeholder="Rechercher" aria-label="Search for..." aria-describedby="btnNavbarSearch"/>
-					<button class="btn btn-primary" id="btnNavbarSearch" type="button">
-						<i class="fas fa-search"></i>
-					</button>
-				</div>
-			</form>
+			{# <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+				<div class="input-group d-flex mt-5">
+					<a class="btn btn-primary" href="{{ path('app_recherche_admin') }}">Recherche avancée</a> #}
+					{# <input class="form-control" type="text" placeholder="Rechercher" aria-label="Search for..." aria-describedby="btnNavbarSearch"/>
+										<button class="btn btn-primary" id="btnNavbarSearch" type="button">
+											<i class="fas fa-search"></i>
+										</button> #}
+					{# {{form(form)}} #}
+				{# </div>
+			</form> #}
 			{# Menu de l'utilisateur profil et deconnexion #}
 			<ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
 				<li class="nav-item dropdown">
@@ -47,7 +48,7 @@
 							<a class="dropdown-item" href="#!">Profil</a>
 						</li>
 						<li>
-							<a class="dropdown-item" href="{{path('app_logout')}}">Deconnexion</a> 
+							<a class="dropdown-item" href="{{path('app_logout')}}">Deconnexion</a>
 						</li>
 					</ul>
 				</li>
@@ -58,6 +59,9 @@
 				<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
 					<div class="sb-sidenav-menu">
 						<div class="nav">
+							<div
+								class="mt-3 ms-2 me-2">{# {{ render(controller('App\\Controller\\RechercheAdminController::searchBar')) }} #}
+							</div>
 							<div class="sb-sidenav-menu-heading">Accueil</div>
 							<a class="nav-link" href="{{path('app_admin')}}">
 								<div class="sb-nav-link-icon">
@@ -71,7 +75,7 @@
 							{# Menu admin collaborateurs #}
 							<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collaborateurs" aria-expanded="false" aria-controls="collapseLayouts">
 								<div class="sb-nav-link-icon">
-									<img src="{{asset('assets/img/logo-crud/people.svg')}}" alt="icon-show" width="15px" height ="15px">
+									<img src="{{asset('assets/img/logo-crud/people.svg')}}" alt="icon-show" width="15px" height="15px">
 								</div>
 								Collaborateurs
 								<div class="sb-sidenav-collapse-arrow">
@@ -83,15 +87,15 @@
 								<nav
 									class="sb-sidenav-menu-nested nav">
 									{# path() utilise comme parametre le name de la Route que l'on souhaite afficher #}
-									<a class="nav-link" href="{{path('app_collaborateurs_index')}}">Liste des collaborateurs</a> 
+									<a class="nav-link" href="{{path('app_collaborateurs_index')}}">Liste des collaborateurs</a>
 									<a class="nav-link" href="{{path('app_collaborateurs_new')}}">Ajouter un collaborateur</a>
 								</nav>
 							</div>
-							
+
 							{# Menu admin numero de téléphone #}
 							<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#numeroTel" aria-expanded="false" aria-controls="collapseLayouts">
 								<div class="sb-nav-link-icon">
-									<img src="{{asset('assets/img/logo-crud/telephone.svg')}}" alt="icon-show" width="15px" height ="15px">
+									<img src="{{asset('assets/img/logo-crud/telephone.svg')}}" alt="icon-show" width="15px" height="15px">
 								</div>
 								Numéro de téléphone
 								<div class="sb-sidenav-collapse-arrow">
@@ -103,7 +107,7 @@
 								<nav
 									class="sb-sidenav-menu-nested nav">
 									{# path() utilise comme parametre le name de la Route que l'on souhaite afficher #}
-									<a class="nav-link" href="{{path('app_telephones_index')}}">Liste des numéros</a> 
+									<a class="nav-link" href="{{path('app_telephones_index')}}">Liste des numéros</a>
 									<a class="nav-link" href="{{path('app_telephones_new')}}">Ajouter un numéro</a>
 								</nav>
 							</div>
@@ -111,7 +115,7 @@
 							{# Menu admin qualifications des collaborateurs #}
 							<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#qualification" aria-expanded="false" aria-controls="collapseLayouts">
 								<div class="sb-nav-link-icon">
-									<img src="{{asset('assets/img/logo-crud/valise.svg')}}" alt="icon-show" width="15px" height ="15px">
+									<img src="{{asset('assets/img/logo-crud/valise.svg')}}" alt="icon-show" width="15px" height="15px">
 								</div>
 								Qualifications
 								<div class="sb-sidenav-collapse-arrow">
@@ -123,7 +127,7 @@
 								<nav
 									class="sb-sidenav-menu-nested nav">
 									{# path() utilise comme parametre le name de la Route que l'on souhaite afficher #}
-									<a class="nav-link" href="{{path('app_qualifications_index')}}">Liste des qualifications</a> 
+									<a class="nav-link" href="{{path('app_qualifications_index')}}">Liste des qualifications</a>
 									<a class="nav-link" href="{{path('app_qualifications_new')}}">Ajouter une qualification</a>
 								</nav>
 							</div>
@@ -131,7 +135,7 @@
 							{# Menu admin partenaires #}
 							<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#partenaire" aria-expanded="false" aria-controls="collapseLayouts">
 								<div class="sb-nav-link-icon">
-									<img src="{{asset('assets/img/logo-crud/partenaires.svg')}}" alt="icon-show" width="15px" height ="15px">
+									<img src="{{asset('assets/img/logo-crud/partenaires.svg')}}" alt="icon-show" width="15px" height="15px">
 								</div>
 								Partenaires
 								<div class="sb-sidenav-collapse-arrow">
@@ -143,7 +147,7 @@
 								<nav
 									class="sb-sidenav-menu-nested nav">
 									{# path() utilise comme parametre le name de la Route que l'on souhaite afficher #}
-									<a class="nav-link" href="{{path('app_partenaires_index')}}">Liste des partenaires</a> 
+									<a class="nav-link" href="{{path('app_partenaires_index')}}">Liste des partenaires</a>
 									<a class="nav-link" href="{{path('app_partenaires_new')}}">Ajouter un partenaire</a>
 								</nav>
 							</div>
@@ -151,7 +155,7 @@
 							{# Menu admin partenaires #}
 							<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#produit" aria-expanded="false" aria-controls="collapseLayouts">
 								<div class="sb-nav-link-icon">
-									<img src="{{asset('assets/img/logo-crud/produits.svg')}}" alt="icon-show" width="15px" height ="15px">
+									<img src="{{asset('assets/img/logo-crud/produits.svg')}}" alt="icon-show" width="15px" height="15px">
 								</div>
 								Produits
 								<div class="sb-sidenav-collapse-arrow">
@@ -163,17 +167,17 @@
 								<nav
 									class="sb-sidenav-menu-nested nav">
 									{# path() utilise comme parametre le name de la Route que l'on souhaite afficher #}
-									<a class="nav-link" href="{{path('app_produits_index')}}">Liste des produits</a> 
+									<a class="nav-link" href="{{path('app_produits_index')}}">Liste des produits</a>
 									<a class="nav-link" href="{{path('app_produits_new')}}">Ajouter un produit</a>
 								</nav>
 							</div>
 
 							<div class="sb-sidenav-menu-heading">Sections et articles du site</div>
-							
+
 							{# Menu admin départements #}
 							<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#departements" aria-expanded="false" aria-controls="collapseLayouts">
 								<div class="sb-nav-link-icon">
-									<img src="{{asset('assets/img/logo-crud/departement.svg')}}" alt="icon-show" width="15px" height ="15px">
+									<img src="{{asset('assets/img/logo-crud/departement.svg')}}" alt="icon-show" width="15px" height="15px">
 								</div>
 								Départements
 								<div class="sb-sidenav-collapse-arrow">
@@ -185,7 +189,7 @@
 								<nav
 									class="sb-sidenav-menu-nested nav">
 									{# path() utilise comme parametre le name de la Route que l'on souhaite afficher #}
-									<a class="nav-link" href="{{path('app_departements_index')}}">Liste des départements</a> 
+									<a class="nav-link" href="{{path('app_departements_index')}}">Liste des départements</a>
 									<a class="nav-link" href="{{path('app_departements_new')}}">Ajouter un département</a>
 								</nav>
 							</div>
@@ -193,7 +197,7 @@
 							{# Menu admin articles du site #}
 							<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#articles" aria-expanded="false" aria-controls="collapseLayouts">
 								<div class="sb-nav-link-icon">
-									<img src="{{asset('assets/img/logo-crud/articles.svg')}}" alt="icon-show" width="15px" height ="15px">
+									<img src="{{asset('assets/img/logo-crud/articles.svg')}}" alt="icon-show" width="15px" height="15px">
 								</div>
 								Articles
 								<div class="sb-sidenav-collapse-arrow">
@@ -205,7 +209,7 @@
 								<nav
 									class="sb-sidenav-menu-nested nav">
 									{# path() utilise comme parametre le name de la Route que l'on souhaite afficher #}
-									<a class="nav-link" href="{{path('app_post_index')}}">Liste des articles</a> 
+									<a class="nav-link" href="{{path('app_post_index')}}">Liste des articles</a>
 									<a class="nav-link" href="{{path('app_post_new')}}">Ajouter un article</a>
 								</nav>
 							</div>
@@ -213,7 +217,7 @@
 							{# Menu admin images des articles du site #}
 							<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#images" aria-expanded="false" aria-controls="collapseLayouts">
 								<div class="sb-nav-link-icon">
-									<img src="{{asset('assets/img/logo-crud/images.svg')}}" alt="icon-show" width="15px" height ="15px">
+									<img src="{{asset('assets/img/logo-crud/images.svg')}}" alt="icon-show" width="15px" height="15px">
 								</div>
 								Images
 								<div class="sb-sidenav-collapse-arrow">
@@ -225,47 +229,44 @@
 								<nav
 									class="sb-sidenav-menu-nested nav">
 									{# path() utilise comme parametre le name de la Route que l'on souhaite afficher #}
-									<a class="nav-link" href="{{path('app_images_index')}}">Liste des images</a> 
+									<a class="nav-link" href="{{path('app_images_index')}}">Liste des images</a>
 									<a class="nav-link" href="{{path('app_images_new')}}">Ajouter une image</a>
 								</nav>
 							</div>
 
 							{# Menu admin articles du site #}
-							<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#test" aria-expanded="false" aria-controls="collapseLayouts">
+							{# <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#test" aria-expanded="false" aria-controls="collapseLayouts">
 								<div class="sb-nav-link-icon">
-									<img src="{{asset('assets/img/logo-crud/articles.svg')}}" alt="icon-show" width="15px" height ="15px">
+									<img src="{{asset('assets/img/logo-crud/articles.svg')}}" alt="icon-show" width="15px" height="15px">
 								</div>
 								Test article image 2 tables
 								<div class="sb-sidenav-collapse-arrow">
 									<i class="fas fa-angle-down"></i>
 								</div>
-							</a>
+							</a> #}
 							{# Liste des sous menus de la section #}
-							<div class="collapse" id="test" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+							{# <div class="collapse" id="test" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 								<nav
 									class="sb-sidenav-menu-nested nav">
-									{# path() utilise comme parametre le name de la Route que l'on souhaite afficher #}
-									<a class="nav-link" href="{{path('app_articles_index')}}">Liste des articles</a> 
+									<a class="nav-link" href="{{path('app_articles_index')}}">Liste des articles</a>
 									<a class="nav-link" href="{{path('app_articles_new')}}">Ajouter un article</a>
 								</nav>
-							</div>
+							</div> #}
 
 
-
-							
 							{# <div class="sb-sidenav-menu-heading">Addons</div>
-							<a class="nav-link" href="charts.html">
-								<div class="sb-nav-link-icon">
-									<i class="fas fa-chart-area"></i>
-								</div>
-								Charts
-							</a>
-							<a class="nav-link" href="tables.html">
-								<div class="sb-nav-link-icon">
-									<i class="fas fa-table"></i>
-								</div>
-								Tables
-							</a> #}
+														<a class="nav-link" href="charts.html">
+															<div class="sb-nav-link-icon">
+																<i class="fas fa-chart-area"></i>
+															</div>
+															Charts
+														</a>
+														<a class="nav-link" href="tables.html">
+															<div class="sb-nav-link-icon">
+																<i class="fas fa-table"></i>
+															</div>
+															Tables
+														</a> #}
 						</div>
 					</div>
 				</nav>
@@ -278,28 +279,32 @@
 								Block PageTitle
 							{% endblock %}
 						</h1>
-						
-							<div class="card-body">
-								{% for message in app.session.flashBag.get('info') %}
-									<div class="alert alert-info">
-										{{message}}
-									</div>
-								{% endfor %}
+						{# {% block message %} #}
+							{# Gestion des messages d'information renvoyé à l'administrateur lors d'une action #}
+							<div class="card mb-4 border-none">
+								<div class="card-body border-none">
+									{% for message in app.session.flashBag.get('info') %}
+										<div class="alert alert-info">
+											{{message}}
+										</div>
+									{% endfor %}
 
-								{% for message in app.session.flashBag.get('success') %}
-									<div class="alert alert-success">
-										{{message}}
-									</div>
-								{% endfor %}
+									{% for message in app.session.flashBag.get('success') %}
+										<div class="alert alert-success">
+											{{message}}
+										</div>
+									{% endfor %}
 
-								{% for message in app.session.flashBag.get('error') %}
-									<div class="alert alert-danger">
-										{{message}}
-									</div>
-								{% endfor %}
-							</div>					
+									{% for message in app.session.flashBag.get('error') %}
+										<div class="alert alert-danger">
+											{{message}}
+										</div>
+									{% endfor %}
+								</div>
+							</div>
+						{# {% endblock %} #}
 						{% block body %}
-						Template body
+							Template body
 						{% endblock %}
 					</div>
 				</main>

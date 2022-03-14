@@ -34,12 +34,15 @@ class ImagesController extends AbstractController
             
             //Ajout de l'image d'un article
             $photo = $form->get('lien')->getData();
+            
             if($photo){
+
                 $originalFileName = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
                 //On enleve les metas et les injections
                 $safeFilename = $slugger->slug($originalFileName);
                 // on renome la photo avec un nom unique et son extension
                 $newFilename = $safeFilename.'-'.uniqid().'-'.$photo->guessExtension();
+                
                 try{
                     //image_directory correspond a la variable global dans config\service.yaml
                     $photo->move($this->getParameter('images_directory'),$newFilename);
@@ -76,7 +79,6 @@ class ImagesController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             //Ajout de l'image d'un article
             $photo = $form->get('lien')->getData();
             if($photo){
