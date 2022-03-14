@@ -56,8 +56,8 @@ class CollaborateursController extends AbstractController
             foreach($form['departements']->getData()->getValues() as $v){
                 $departement = $entityManager->getRepository(Departements::class)->find($v->getId());
                 if($departement){
-                    $departement->addCollaborateur($collaborateur);
-                }
+                    return $departement->addCollaborateur($collaborateur);
+                }   
             }
 
             //Ajout de l'image de profil du collaborateur
