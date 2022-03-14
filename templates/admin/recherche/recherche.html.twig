@@ -2,13 +2,14 @@
 
 {% block title %}Admin - Prophac{% endblock %}
 
-{% block PageTitle %} Liste des collaborateurs{% endblock %}
+{% block PageTitle %} Recherche{% endblock %}
+
 
 {% block body %}
-<a class="btn btn-prophac mb-3" href="{{ path('app_collaborateurs_new') }}">Ajouter un collaborateur</a>
-<a class="btn btn-prophac mb-3" href="{{ path('app_register') }}">Création d'un nouveau compte</a>
-    {# {{ dump(collaborateurs) }} #}
-    <table class="table">
+
+{# Barre de recherche pour administrateur #}
+{# {{ form(form) }} #}
+<table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -38,12 +39,12 @@
                     <a class="ms-2" href="{{ path('app_collaborateurs_delete', {'id': collaborateur.id}) }}"><img src="{{asset('assets/img/logo-crud/delete.svg')}}" alt="icon-delete" width="25px" height ="25px"></a>
                 </td>
             </tr>
-        {% else %}
+            {% else %}
             <tr>
                 <td colspan="8">Pas de collaborateurs pour le moment</td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
-{# <a class="btn btn-prophac mb-3" href="{{ path('app_collaborateurs_new') }}">Ajouter un collaborateur</a> #}
+    </tbody>
+</table>
+
 {% endblock %}

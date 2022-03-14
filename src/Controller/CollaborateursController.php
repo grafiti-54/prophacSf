@@ -83,6 +83,7 @@ class CollaborateursController extends AbstractController
             $collaborateur->setPassword($passwordEncoder->hashPassword($collaborateur,$form->get('password')->getData()));
                 $entityManager->persist($collaborateur);
                 $entityManager->flush();
+                $this->addFlash('success', "Le collaborateur a été ajouté avec succés.");
             return $this->redirectToRoute('app_collaborateurs_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -136,7 +137,7 @@ class CollaborateursController extends AbstractController
                 $collaborateur->setPhoto($newFilename);
             }
             $entityManager->flush();
-
+            $this->addFlash('success', "Le collaborateur a été modifié avec succés.");
             return $this->redirectToRoute('app_collaborateurs_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -152,12 +153,12 @@ class CollaborateursController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$collaborateur->getId(), $request->request->get('_token'))) {
             $collaborateursRepository->remove($collaborateur);
         }
-
+        $this->addFlash('success', "Le collaborateur a été supprimé avec succés.");
         return $this->redirectToRoute('app_collaborateurs_index', [], Response::HTTP_SEE_OTHER);
     }
 
      /**
-     * This controller allow us to edit user's password
+     * Modification du mot de passe d'un collabaorateur
      *
      * @param Collaborateurs $choosenUser
      * @param Request $request
@@ -166,7 +167,7 @@ class CollaborateursController extends AbstractController
      * @return Response
      */
     
-    #[Security("is_granted('ROLE_USER') and user === collaborateur")]
+    // #[Security("is_granted('ROLE_USER') and user === collaborateur")]
     #[Route('/utilisateur/edition-mot-de-passe/{id}', 'user.edit.password', methods: ['GET', 'POST'])]
     public function editPassword(Collaborateurs $collaborateur, Request $request, EntityManagerInterface $manager, UserPasswordHasherInterface $passwordEncoder): Response {
         $form = $this->createForm(UserPasswordType::class);

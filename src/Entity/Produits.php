@@ -33,6 +33,9 @@ class Produits
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $lien;
 
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private $prioritaire;
+
     public function __construct()
     {
         $this->departement = new ArrayCollection();
@@ -123,6 +126,18 @@ class Produits
     public function setLien(?string $lien): self
     {
         $this->lien = $lien;
+
+        return $this;
+    }
+
+    public function getPrioritaire(): ?bool
+    {
+        return $this->prioritaire;
+    }
+
+    public function setPrioritaire(?bool $prioritaire): self
+    {
+        $this->prioritaire = $prioritaire;
 
         return $this;
     }

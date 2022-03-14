@@ -1,17 +1,30 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/accueil.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Admin - Prophac{% endblock %}
+
+{% block PageTitle %} Création d'un nouveau compte {% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
-
+    <div class="header-form-admin d-flex justify-content-center">
+        {# <img class="py-2" src="{{asset('assets/img/form/logo-prophac.svg')}}" alt="logo-prophac-blanc" width="25%"> #}
+        <h3 class="text-light py-5 ps-5">Administrateur</h3>
+    </div>
+<div class="header-form-admin d-flex justify-content-center mb-5">
+        <img class="py-2" src="{{asset('assets/img/form/logo-prophac.svg')}}" alt="logo-prophac-blanc" width="25%">   
+	<div class="container my-5">
+		{% for message in app.flashes('warning') %}
+			<div class="alert alert-warning mt-4">
+				{{ message }}
+			</div>
+		{% endfor %}
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
+            
         }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        {{ form_row(registrationForm.confirmation) }}
 
-        <button type="submit" class="btn">Register</button>
+        <button class="btn btn-success ms-1" type="submit" class="btn">Créer le compte</button>
     {{ form_end(registrationForm) }}
+    </div>
 {% endblock %}

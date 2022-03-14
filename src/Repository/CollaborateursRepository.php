@@ -62,6 +62,31 @@ class CollaborateursRepository extends ServiceEntityRepository implements Passwo
         $this->_em->flush();
     }
 
+
+
+
+
+    // Recherche des collaborateurs par nom / prenom
+    public function findCollaborateurByName(string $query)
+    {
+        $qb = $this->createQueryBuilder('c');
+        $qb
+            ->where(
+                $qb->expr()->andX(
+                    $qb->expr()->orX(
+                        $qb->expr()->like('c.nom', ':query'),
+                        $qb->expr()->like('c.prenom', ':query'),
+                    ),
+                    $qb->expr()->isNotNull('c.nom')
+                )
+            )
+            ->setParameter('query', '%' . $query . '%')
+        ;
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Collaborateurs[] Returns an array of Collaborateurs objects
     //  */

@@ -52,6 +52,7 @@ class PostController extends AbstractController
             }
 
             $articlesRepository->add($article);
+            $this->addFlash('success', "L'article a été ajouté avec succés");
             return $this->redirectToRoute('app_post_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -98,6 +99,7 @@ class PostController extends AbstractController
 
             
             $articlesRepository->add($article);
+            $this->addFlash('success', "L'article a été modifié avec succés");
             return $this->redirectToRoute('app_post_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -113,7 +115,12 @@ class PostController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$article->getId(), $request->request->get('_token'))) {
             $articlesRepository->remove($article);
         }
-
+        $this->addFlash('success', "L'article a été supprimé avec succés");
         return $this->redirectToRoute('app_post_index', [], Response::HTTP_SEE_OTHER);
     }
 }
+
+
+
+
+
