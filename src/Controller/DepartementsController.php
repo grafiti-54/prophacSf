@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/admin/departements')]
@@ -20,6 +21,7 @@ class DepartementsController extends AbstractController
     {
         return $this->render('admin/departements/index.html.twig', [
             'departements' => $departementsRepository->findAll(),
+            
         ]);
     }
 

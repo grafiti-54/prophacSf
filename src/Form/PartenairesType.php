@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Departements;
 use App\Entity\Partenaires;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,7 +18,16 @@ class PartenairesType extends AbstractType
         $builder
             ->add('nom')
             ->add('siteInternet')
-            ->add('departement')
+            ->add('departement', EntityType::class, [
+                'required' => false,
+                'class' => Departements::class,
+                'label' => "Liste des départements en relation avec ce partenaire",
+                'expanded' =>true,
+                'multiple' => true,
+                'mapped' => true,
+                'help' => "Modifications des collaborateurs appartenant à ce département ",
+                
+            ])
             ->add('logo', FileType::class,[
                 'label' => 'Image du partenaire',
                 'required' => false,

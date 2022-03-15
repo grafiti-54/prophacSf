@@ -56,7 +56,7 @@ class CollaborateursController extends AbstractController
             foreach($form['departements']->getData()->getValues() as $v){
                 $departement = $entityManager->getRepository(Departements::class)->find($v->getId());
                 if($departement){
-                    return $departement->addCollaborateur($collaborateur);
+                    $departement->addCollaborateur($collaborateur);
                 }   
             }
 

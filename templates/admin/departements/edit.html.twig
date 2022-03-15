@@ -2,9 +2,11 @@
 
 {% block title %}Admin - Prophac{% endblock %}
 
-{% block PageTitle %} Modification du département{% endblock %}
+{% block PageTitle %} Modification du département : <small class="h4">{{ departement.nom }}</small> {% endblock %}
 
 {% block body %}
+{# {{ dump(departement) }} #}
+
     <div class="header-form-admin d-flex justify-content-center mb-5">
         <img class="py-2" src="{{asset('assets/img/form/logo-prophac.svg')}}" alt="logo-prophac-blanc" width="25%">
         <h3 class="text-light py-5 ps-5">Administrateur</h3>

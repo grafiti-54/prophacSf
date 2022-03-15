@@ -2,9 +2,10 @@
 
 {% block title %}Admin - Prophac{% endblock %}
 
-{% block PageTitle %} Détail la qualification {{ qualification.libelle  }}{% endblock %}
+{% block PageTitle %} Détail la qualification : <small class= "h4"> {{ qualification.libelle }} </small> {% endblock %}
 
 {% block body %}
+{# {{ dump(departement) }} #}
     <table class="table">
         <tbody>
             <tr>
@@ -15,11 +16,20 @@
                 <th>Libelle</th>
                 <td>{{ qualification.libelle }}</td>
             </tr>
+            <tr>
+                <th>Liste des collaborateurs</th>
+                <td>
+                    {% for qualification in qualification.collaborateurs %}
+                    {# {{ dump(qualification) }} #}
+                    {{ qualification.nom}}  {{ qualification.prenom}}<br>
+                    {% endfor %}
+                </td>
+            </tr>
         </tbody>
     </table>
     <div class="d-flex">
         <a class="btn btn-success text-light ms-2 mt-2" href="{{ path('app_qualifications_edit', {'id': qualification.id}) }}">Modifier la qualification</a>
         {{ include('admin/qualifications/_delete_form.html.twig') }}
     </div>
-        <a class="btn btn-prophac ms-2 mt-2" href="{{ path('app_qualifications_index') }}">Retourner sur la liste des qualifications</a>    
+        <a class="btn btn-prophac ms-2 mt-2 mb-5" href="{{ path('app_qualifications_index') }}">Retourner sur la liste des qualifications</a>    
 {% endblock %}
