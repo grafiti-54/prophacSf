@@ -41,6 +41,13 @@ class Produits
         $this->departement = new ArrayCollection();
     }
 
+    //correction could not be converted to string
+    public function __toString()
+    {
+        return $this->nom;
+    
+    }
+
     public function getId(): ?int
     {
         return $this->id;

@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Collaborateurs;
 use App\Entity\Departements;
+use App\Entity\Partenaires;
+use App\Entity\Produits;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -28,22 +30,81 @@ class DepartementsType extends AbstractType
                         'maxSize' => '10240k',
                         'mimeTypes' => [
                             'image/jpeg',
-                            'image/png',
-                            
+                            'image/png',     
                         ],
                         'mimeTypesMessage' => 'Veuiller inserer un jpeg ou un png',
                     ])
                 ]
             ])
-            // ->add('produit')
-            ->add('partenaires')
             ->add('Collaborateur', EntityType::class, [
                 'required' => false,
                 'class' => Collaborateurs::class,
-                'choice_label' => 'nom',
+                'label' => "Liste des collaborateurs qui appartiennent à ce département",
+                'expanded' =>true,
                 'multiple' => true,
-                // 'mapped' => true,
+                'mapped' => true,
+                'help' => "Modifications des collaborateurs appartenant à ce département",
+                'choice_label' => function(?Collaborateurs $collaborateur) {
+                            return $collaborateur ? $collaborateur->getNom()." ".$collaborateur->getPrenom() : '';
+                        },
+                
             ])
+            // ->add('produit', EntityType::class, [
+            //     'disabled' =>true,
+            //     'required' => false,
+            //     'class' => Produits::class,
+            //     'label' => "Liste des produits qui appartiennent à ce département",
+            //     'expanded' =>true,
+            //     'multiple' => true,
+            //     'mapped' => true,
+            //     'help' => "Modifications des produits appartenant à ce département ",
+                
+            // ])
+            // ->add('partenaires', EntityType::class, [
+            //     'disabled' =>true,
+            //     'required' => false,
+            //     'class' => Partenaires::class,
+            //     'label' => "Liste des partenaires qui appartiennent à ce département",
+            //     'expanded' =>true,
+            //     'multiple' => true,
+            //     'mapped' => true,
+            //     'help' => "Modifications des partenaires appartenant à ce département ",
+                
+            // ])
+            ;
+        }
+    
+        public function configureOptions(OptionsResolver $resolver): void
+        {
+            $resolver->setDefaults([
+                'data_class' => Departements::class,
+            ]);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // ->add('Collaborateur', EntityType::class, [
+            //     'required' => false,
+            //     'class' => Collaborateurs::class,
+            //     'choice_label' => 'nom',
+            //     'multiple' => true,
+            //     // 'mapped' => true,
+            // ])
+
+            
 
             // ->add('Collaborateur', ChoiceType::class, [
             //     'choices' => [
@@ -85,13 +146,4 @@ class DepartementsType extends AbstractType
             // ])
             // ->add('produit')
             // ->add('partenaires')
-        ;
-    }
-
-    public function configureOptions(OptionsResolver $resolver): void
-    {
-        $resolver->setDefaults([
-            'data_class' => Departements::class,
-        ]);
-    }
-}
+        

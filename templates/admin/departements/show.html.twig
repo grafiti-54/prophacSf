@@ -2,7 +2,7 @@
 
 {% block title %}Admin - Prophac{% endblock %}
 
-{% block PageTitle %} Détail du département {{ departement.nom }}{% endblock %}
+{% block PageTitle %} Détail du département : <small class="h4">{{ departement.nom }} </small>{% endblock %}
 
 {% block body %}
 {# {{ dump(departement) }} #}
@@ -20,19 +20,38 @@
                 <th>Logo</th>
                 <td><img src="../../../uploads/{{ departement.logo}}" alt="picto-{{ departement.nom }}" class="img-fluid" width="15%"></td>
             </tr>
-            {# <tr>
-                <th>Collaborateur</th>
+            <tr>
+                <th>Liste des collaborateurs</th>
                 <td>
                     {% for collaborateur in departement.collaborateur %}
-                        {{ collaborateur}} <br>
+                        {{ collaborateur.nom}}  {{ collaborateur.prenom}}<br>
                     {% endfor %}
                 </td>
-            </tr> #}
+            </tr>
+            <tr>
+                <th>Liste des produits</th>
+                <td>
+                    {% for produit in departement.produit %}
+                        {# {{ dump(produit) }} #}
+                        {{ produit.nom}}<br>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Liste des partenaires</th>
+                <td>
+                    {% for partenaire in departement.partenaires%}
+                        {# {{ dump(partenaire) }} #}
+                        {{ partenaire.nom}}<br>
+                    {% endfor %}
+                </td>
+            </tr>
+
         </tbody>
     </table>
     <div class="d-flex">
         <a class="btn btn-success text-light ms-2 mt-2" href="{{ path('app_departements_edit', {'id': departement.id}) }}">Modifier ce département</a>
         {{ include('admin/departements/_delete_form.html.twig') }}
     </div>
-    <a class="btn btn-prophac ms-2 mt-2" href="{{ path('app_departements_index') }}">Retourner sur la liste des départements</a>
+    <a class="btn btn-prophac ms-2 mt-2 mb-5" href="{{ path('app_departements_index') }}">Retourner sur la liste des départements</a>
 {% endblock %}

@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Collaborateurs;
 use App\Entity\Qualifications;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -22,7 +24,17 @@ class QualificationsType extends AbstractType
                 'label' => "Nom de la qualification",
                 'label_attr' => ['class' => 'form-label mt-4 ms-4',]
             ])
-            //->add('collaborateurs')
+            
+            // ->add('collaborateurs', EntityType::class, [
+            //     'required' => false,
+            //     'disabled' =>true,
+            //     'label' => "Liste des collaborateurs pour cette qualification",
+            //     'class' => Collaborateurs::class,
+            //     'expanded' =>true,
+            //     'multiple' => true,
+            //     'mapped' => true,
+            //     'help' => "Pour modifier la qualification d'un collaborateur veuillez vous rendre directement sur son profil ",
+            // ])
         ;
     }
 

@@ -71,15 +71,16 @@ class CollaborateursType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('departements', EntityType::class, [
-                'required' => false,
-                'class' => Departements::class,
-                'expanded' =>true,
-                'multiple' => true,
-                'mapped' => true,
-                'help' => "Selectionner le ou les départements ",
+            // ->add('departements', EntityType::class, [
+            //     'required' => false,
+            //     // 'disabled' => true,
+            //     'class' => Departements::class,
+            //     'expanded' =>true,
+            //     'multiple' => true,
+            //     'mapped' => false,
+            //     'help' => "Selectionner le ou les départements de ce collaborateur ",
                 
-            ])
+            // ])
             // ->add('qualification', EntityType::class, [
             //     'required' => false,
             //     'class' => Qualifications::class,
@@ -101,7 +102,7 @@ class CollaborateursType extends AbstractType
                 'expanded' =>true,
                 'multiple' => true,
                 'mapped' => true,
-                'help' => "Selectionner la ou les qualifications de",
+                'help' => "Selectionner la ou les qualifications de ce collaborateur",
             ])
             ->add('numero')
 

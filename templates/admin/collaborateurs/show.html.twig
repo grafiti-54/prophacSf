@@ -2,7 +2,8 @@
 
 {% block title %}Admin - Prophac{% endblock %}
 
-{% block PageTitle %} Détail du collaborateur {{ collaborateur.nom }} {{ collaborateur.prenom }}{% endblock %}
+{% block PageTitle %} <small class="h4 text-center d-flex"> {{ collaborateur.nom }} {{ collaborateur.prenom }} </small> 
+<img src="../../../uploads/{{ collaborateur.photo}}" alt="photo-{{ collaborateur.nom }}-{{ collaborateur.prenom }}" class="img-fluid" width="15%">{% endblock %}
 
 {% block body %}
     
@@ -30,8 +31,20 @@
                 </td>
             </tr>
             <tr>
+                <th>Département</th>
+                <td>
+                    {% for departement in collaborateur.departements %}
+                        {{ departement }} <br>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
                 <th>Email</th>
-                <td>{{ collaborateur.email }}</td>
+                <td><a href="">{{ collaborateur.email }}</a></td>
+            </tr>
+            <tr>
+                <th>Numéro de téléphone</th>
+                <td>{{ collaborateur.numero }}</td>
             </tr>
             <tr>
                 <th>Roles</th>
@@ -41,22 +54,10 @@
                 <th>Password</th>
                 <td>{{ collaborateur.password }}</td>
             </tr> #}
-            <tr>
+            {# <tr>
                 <th>Photo</th>
                 <td><img src="../../../uploads/{{ collaborateur.photo}}" alt="photo-{{ collaborateur.nom }}-{{ collaborateur.prenom }}" class="img-fluid" width="15%"></td>
-            </tr>
-            <tr>
-                <th>Numéro de téléphone</th>
-                <td>{{ collaborateur.numero }}</td>
-            </tr>
-            <tr>
-                <th>Département</th>
-                <td>
-                    {% for departement in collaborateur.departements %}
-                        {{ departement }} <br>
-                    {% endfor %}
-                </td>
-            </tr>
+            </tr> #}
             {# <tr>
                 <th>Article</th>
                 <td>{{ collaborateur.articles }}</td>
@@ -67,9 +68,6 @@
         <a class="btn btn-success text-light ms-2 mt-2" href="{{ path('app_collaborateurs_edit', {'id': collaborateur.id}) }}">Modifier le collaborateur</a>
         <a class="btn btn-warning text-light ms-2 mt-2" href="{{ path('user.edit.password', {'id': collaborateur.id}) }}">Modifier le mot de passe du collaborateur</a>
         {{ include('admin/collaborateurs/_delete_form.html.twig') }}
-        
-        
     </div>
     <a class="btn btn-prophac ms-2 mt-2 mb-5" href="{{ path('app_collaborateurs_index') }}">Retourner sur la liste des collaborateurs</a>
-    
 {% endblock %}

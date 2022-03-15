@@ -2,7 +2,7 @@ twig:
     default_path: '%kernel.project_dir%/templates'
     form_themes: ['bootstrap_5_layout.html.twig']
     # globals:
-    #     hcaptcha_site_key: '%env(HCAPTCHA_SITEKEY)%'
+    #     uuid: '@App\Generator\UuidGenerator'
 
     # globals:
     #     gg_recaptcha_site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
