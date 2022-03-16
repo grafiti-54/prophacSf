@@ -8,6 +8,7 @@
 {% block body %}
     
 {# {{ dump(collaborateur) }} #}
+<div class="presentation-collaborateur mb-5">
     <table class="table">
         <tbody>
             <tr>
@@ -55,10 +56,6 @@
                 <td>{{ collaborateur.password }}</td>
             </tr> #}
             {# <tr>
-                <th>Photo</th>
-                <td><img src="../../../uploads/{{ collaborateur.photo}}" alt="photo-{{ collaborateur.nom }}-{{ collaborateur.prenom }}" class="img-fluid" width="15%"></td>
-            </tr> #}
-            {# <tr>
                 <th>Article</th>
                 <td>{{ collaborateur.articles }}</td>
             </tr> #}
@@ -70,4 +67,5 @@
         {{ include('admin/collaborateurs/_delete_form.html.twig') }}
     </div>
     <a class="btn btn-prophac ms-2 mt-2 mb-5" href="{{ path('app_collaborateurs_index') }}">Retourner sur la liste des collaborateurs</a>
+</div>
 {% endblock %}
