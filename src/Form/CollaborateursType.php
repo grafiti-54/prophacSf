@@ -3,28 +3,20 @@
 namespace App\Form;
 
 use App\Entity\Collaborateurs;
-use App\Entity\Departements;
 use App\Entity\Qualifications;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Mime\Encoder\EncoderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Serializer\Encoder\EncoderInterface as EncoderEncoderInterface;
 use Symfony\Component\Validator\Constraints\File as ConstraintsFile;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Uid\Uuid;
 
 class CollaborateursType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        
         $builder
             ->add('nom')
             ->add('prenom')
@@ -38,24 +30,6 @@ class CollaborateursType extends AbstractType
                     'Admin' => 'ROLE_ADMIN',
                 ],
             ])
-            ->add('password', PasswordType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
-                'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Please enter a password',
-                    ]),
-                    new Length([
-                        'min' => 5,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),
-                ],
-            ])
-
             ->add('photo', FileType::class, [
                 'label' => 'Image du collaborateur',
                 'required' => false,
@@ -71,7 +45,88 @@ class CollaborateursType extends AbstractType
                     ]),
                 ],
             ])
-            // ->add('departements', EntityType::class, [
+            ->add('qualification', EntityType::class, [
+                'required' => false,
+                'class' => Qualifications::class,
+                'expanded' =>true,
+                'multiple' => true,
+                'mapped' => true,
+                'help' => "Selectionner la ou les qualifications de ce collaborateur",
+            ])
+            ->add('numero')
+        ;
+        // Data transformer
+        $builder->get('Roles')
+            ->addModelTransformer(new CallbackTransformer(
+                function ($rolesArray) {
+                    // transform the array to a string
+                    return count($rolesArray) ? $rolesArray[0] : null;
+                },
+                function ($rolesString) {
+                    // transform the string back to an array
+                    return [$rolesString];
+                }
+            ));
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'data_class' => Collaborateurs::class,
+        ]);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// RAJOUTER DANS LE $BUILDER SI NECESSAIRE (DEPARTEMENT - QUALIFICATION -MDP (pas conseillé pour mdp et département))
+
+// use App\Entity\Departements;
+// use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+// use Symfony\Component\Mime\Encoder\EncoderInterface;
+// use Symfony\Component\Serializer\Encoder\EncoderInterface as EncoderEncoderInterface;
+// use Symfony\Component\Validator\Constraints\Length;
+// use Symfony\Component\Validator\Constraints\NotBlank;
+// use Symfony\Component\Uid\Uuid;
+
+// ->add('departements', EntityType::class, [
             //     'required' => false,
             //     // 'disabled' => true,
             //     'class' => Departements::class,
@@ -96,35 +151,21 @@ class CollaborateursType extends AbstractType
 
             //     // }
             // ])
-            ->add('qualification', EntityType::class, [
-                'required' => false,
-                'class' => Qualifications::class,
-                'expanded' =>true,
-                'multiple' => true,
-                'mapped' => true,
-                'help' => "Selectionner la ou les qualifications de ce collaborateur",
-            ])
-            ->add('numero')
 
-        ;
-        // Data transformer
-        $builder->get('Roles')
-            ->addModelTransformer(new CallbackTransformer(
-                function ($rolesArray) {
-                    // transform the array to a string
-                    return count($rolesArray) ? $rolesArray[0] : null;
-                },
-                function ($rolesString) {
-                    // transform the string back to an array
-                    return [$rolesString];
-                }
-            ));
-    }
-
-    public function configureOptions(OptionsResolver $resolver): void
-    {
-        $resolver->setDefaults([
-            'data_class' => Collaborateurs::class,
-        ]);
-    }
-}
+            // ->add('password', PasswordType::class, [
+            //     // instead of being set onto the object directly,
+            //     // this is read and encoded in the controller
+            //     'mapped' => false,
+            //     'attr' => ['autocomplete' => 'new-password'],
+            //     'constraints' => [
+            //         new NotBlank([
+            //             'message' => 'Please enter a password',
+            //         ]),
+            //         new Length([
+            //             'min' => 5,
+            //             'minMessage' => 'Your password should be at least {{ limit }} characters',
+            //             // max length allowed by Symfony for security reasons
+            //             'max' => 4096,
+            //         ]),
+            //     ],
+            // ])

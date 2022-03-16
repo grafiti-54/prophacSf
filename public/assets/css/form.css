@@ -26,9 +26,24 @@
     color:burlywood;
 }
 
+.btn-danger{
+    color: red !important;
+    background-color: white !important;
+}
+
+.btn-success{
+    color: green !important;
+    background-color: white !important;
+}
+
+.btn-warning{
+    color: orange !important;
+    background-color: white !important;
+}
 /*Arrondi des bouton validation et suppression CRUD*/
 .btn-danger, .btn-success, .btn-warning{
-    border-radius: 25px; 
+    border-radius: 10px; 
+    font-size: 0.9em;
 }
 
 /* Formulaire d'ajout CRUD */

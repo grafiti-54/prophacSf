@@ -10,7 +10,7 @@
         <h3 class="text-light py-5 ps-5">Administrateur</h3>
     </div>
 <div class="header-form-admin d-flex justify-content-center mb-5">
-        <img class="py-2" src="{{asset('assets/img/form/logo-prophac.svg')}}" alt="logo-prophac-blanc" width="25%">   
+        <img class="py-2 my-5" src="{{asset('assets/img/form/logo-prophac.svg')}}" alt="logo-prophac-blanc" width="25%">   
 	<div class="container my-5">
 		{% for message in app.flashes('warning') %}
 			<div class="alert alert-warning mt-4">
@@ -18,11 +18,11 @@
 			</div>
 		{% endfor %}
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
+        {{ form_row(registrationForm.email, {'label': 'Adresse e-mail', 'label_attr': {'class':'text-white'}}) }}
+        {{ form_row(registrationForm.plainPassword, { 'label': 'Mot de passe', 'label_attr': {'class':'text-white'}
             
         }) }}
-        {{ form_row(registrationForm.confirmation) }}
+        {{ form_row(registrationForm.confirmation, {'label': 'Confirmation', 'label_attr': {'class':'text-white'}}) }}
 
         <button class="btn btn-success ms-1" type="submit" class="btn">Créer le compte</button>
     {{ form_end(registrationForm) }}

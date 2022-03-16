@@ -111,12 +111,12 @@ class CollaborateursController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             //Modification du departement lors de la création d'un collaborateur relation many to many mappedBy
-            foreach($form['departements']->getData()->getValues() as $v){
-                $departement = $entityManager->getRepository(Departements::class)->find($v->getId());
-                if($departement){
-                    $departement->addCollaborateur($collaborateur);
-                }
-            }
+            // foreach($form['departements']->getData()->getValues() as $v){
+            //     $departement = $entityManager->getRepository(Departements::class)->find($v->getId());
+            //     if($departement){
+            //         $departement->addCollaborateur($collaborateur);
+            //     }
+            // }
 
             $collaborateursRepository->add($collaborateur);
             $photo = $form->get('photo')->getData();

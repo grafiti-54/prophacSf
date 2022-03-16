@@ -1,0 +1,84 @@
+body {
+    background: rgb(207, 216, 240);
+}
+
+
+
+.card-profil {
+    border: none;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer
+}
+
+.card-profil:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background-color: rgb(207, 216, 240);
+    transform: scaleY(1);
+    transition: all 0.5s;
+    transform-origin: bottom
+}
+
+.card-profil:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background-color: rgb(0, 51, 160);
+    transform: scaleY(0);
+    transition: all 0.5s;
+    transform-origin: bottom
+}
+
+.card-profil:hover::after {
+    transform: scaleY(1)
+}
+
+.fonts {
+    font-size: 16px
+}
+
+.social-list {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    padding: 0
+}
+
+.social-list li {
+    padding: 10px;
+    color: rgb(0, 51, 160);
+    font-size: 19px
+}
+
+.buttons button:nth-child(1) {
+    border: 1px solid rgb(0, 51, 160) !important;
+    color: rgb(0, 51, 160);
+    height: 40px
+}
+
+.buttons button:nth-child(1):hover {
+    border: 1px solid rgb(0, 51, 160) !important;
+    color: #fff;
+    height: 40px;
+    background-color: rgb(0, 51, 160);
+}
+
+.buttons button:nth-child(2) {
+    border: 1px solid rgb(0, 51, 160) !important;
+    background-color: rgb(0, 51, 160);
+    color: #fff;
+    height: 40px
+}
+
+.message-profil{
+    background: rgb(207, 216, 240); 
+}
