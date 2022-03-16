@@ -1,5 +1,86 @@
 <?php
 
+
+
+
+
+
+
+// En phase de développement ne pas utiliser pour le moment
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 namespace App\Controller;
 
 use App\Entity\Images;
@@ -12,6 +93,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
+//Affichage de la liste des imgages
 #[Route('/admin/images')]
 class ImagesController extends AbstractController
 {

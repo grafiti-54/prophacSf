@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+//Route à utiliser pour se rendre sur le formulaire de connexion à l'administration du site
 #[Route(path: '/prophac-administrator')]
 class SecurityController extends AbstractController
 {
@@ -20,16 +21,12 @@ class SecurityController extends AbstractController
         if ($this->getUser()) {
             return $this->redirectToRoute('app_profil');
         }
-
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
-
-
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
-
     // Module de déconnexion d'un utilisateur
     #[Route(path: '/logout', name: 'app_logout')]
     public function logout(): void

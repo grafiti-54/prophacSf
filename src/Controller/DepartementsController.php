@@ -10,12 +10,13 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
+// Les départements de la société
 #[Route('/admin/departements')]
 class DepartementsController extends AbstractController
 {
+    //Vue sur l'ensemble des départements de la société
     #[Route('/', name: 'app_departements_index', methods: ['GET'])]
     public function index(DepartementsRepository $departementsRepository): Response
     {
@@ -24,7 +25,7 @@ class DepartementsController extends AbstractController
             
         ]);
     }
-
+    //Ajout d'un nouveau département
     #[Route('/new', name: 'app_departements_new', methods: ['GET', 'POST'])]
     public function new(Request $request, DepartementsRepository $departementsRepository, SluggerInterface $slugger): Response
     {
@@ -52,11 +53,10 @@ class DepartementsController extends AbstractController
                 //On stock le nouveau nom de la photo
                 $departement->setLogo($newFilename);
             }
-
+            $this->addFlash('success', "Le département a été ajouté avec succès.");
             $departementsRepository->add($departement);
             return $this->redirectToRoute('app_departements_index', [], Response::HTTP_SEE_OTHER);
         }
-
         return $this->renderForm('admin/departements/new.html.twig', [
             'departement' => $departement,
             'form' => $form,
@@ -71,7 +71,7 @@ class DepartementsController extends AbstractController
             'departement' => $departement,
         ]);
     }
-
+    //Modification d'un département
     #[Route('/{id}/edit', name: 'app_departements_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Departements $departement, DepartementsRepository $departementsRepository, SluggerInterface $slugger): Response
     {
@@ -98,20 +98,21 @@ class DepartementsController extends AbstractController
                 //On stock le nouveau nom de la photo
                 $departement->setLogo($newFilename);
             }
+            $this->addFlash('success', "Le département a été modifié avec succès.");
             $departementsRepository->add($departement);
             return $this->redirectToRoute('app_departements_index', [], Response::HTTP_SEE_OTHER);
         }
-
         return $this->renderForm('admin/departements/edit.html.twig', [
             'departement' => $departement,
             'form' => $form,
         ]);
     }
-
+    //Suppression d'un département
     #[Route('/{id}', name: 'app_departements_delete', methods: ['POST'])]
     public function delete(Request $request, Departements $departement, DepartementsRepository $departementsRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$departement->getId(), $request->request->get('_token'))) {
+            $this->addFlash('success', "Le département a été supprimé avec succès.");
             $departementsRepository->remove($departement);
         }
 

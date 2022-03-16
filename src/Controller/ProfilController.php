@@ -15,6 +15,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class ProfilController extends AbstractController
 {
+    //Affichage du profil d'un utilisateur lorsqu'il est connecté
     #[Route('/admin/profil', name: 'app_profil')]
     public function index(): Response
     {
@@ -22,24 +23,15 @@ class ProfilController extends AbstractController
             'controller_name' => 'ProfilController',
         ]);
     }
-
+    //Modification par un collaborateur de son profil lorsqu'il est connecté sur son compte
     #[Route('profil/{id}/edit', name: 'app_profil_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Collaborateurs $collaborateur, CollaborateursRepository $collaborateursRepository, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
-        // $departement = new Departements();
+        
         $form = $this->createForm(ProfilType::class, $collaborateur);
         $form->handleRequest($request);
         //Vérification lorsque le formulaire est envoyé ainsi que valide selon les conditions défini ci-dessous
         if ($form->isSubmitted() && $form->isValid()) {
-
-            //Modification du departement lors de la création d'un collaborateur relation many to many mappedBy
-            // foreach($form['departements']->getData()->getValues() as $v){
-            //     $departement = $entityManager->getRepository(Departements::class)->find($v->getId());
-            //     if($departement){
-            //         $departement->addCollaborateur($collaborateur);
-            //     }
-            // }
-
             $collaborateursRepository->add($collaborateur);
             $photo = $form->get('photo')->getData();
             if($photo){
@@ -51,7 +43,7 @@ class ProfilController extends AbstractController
                 try{
                     //image_directory correspond a la variable global dans config\service.yaml
                     $photo->move($this->getParameter('images_directory'),$newFilename);
-                }catch (FileException $e) {
+                }catch (FileException $e){
                     //En cas d'erreur
                     echo("Erreur lors du chargement de l'image");
                 }
@@ -59,13 +51,22 @@ class ProfilController extends AbstractController
                 $collaborateur->setPhoto($newFilename);
             }
             $entityManager->flush();
-            $this->addFlash('success', "Le profil a été modifié avec succés.");
+            $this->addFlash('success', "Le profil a été modifié avec succès.");
             return $this->redirectToRoute('app_profil', [], Response::HTTP_SEE_OTHER);
         }
-
         return $this->renderForm('admin/profil/edit.html.twig', [
             'collaborateur' => $collaborateur,
             'form' => $form,
         ]);
     }
 }
+
+
+
+//Modification du departement lors de la création d'un collaborateur relation many to many mappedBy
+            // foreach($form['departements']->getData()->getValues() as $v){
+            //     $departement = $entityManager->getRepository(Departements::class)->find($v->getId());
+            //     if($departement){
+            //         $departement->addCollaborateur($collaborateur);
+            //     }
+            // }
