@@ -14,9 +14,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
+//Les partenaires de la société
 #[Route('/admin/partenaires')]
 class PartenairesController extends AbstractController
 {
+    // Affichage de la liste des partenaires de la société
     #[Route('/', name: 'app_partenaires_index', methods: ['GET'])]
     public function index(PartenairesRepository $partenairesRepository): Response
     {
@@ -24,7 +26,7 @@ class PartenairesController extends AbstractController
             'partenaires' => $partenairesRepository->findAll(),
         ]);
     }
-
+    //Ajout d'un nouveau partenaire
     #[Route('/new', name: 'app_partenaires_new', methods: ['GET', 'POST'])]
     public function new(Request $request, PartenairesRepository $partenairesRepository, SluggerInterface $slugger): Response
     {
@@ -33,7 +35,6 @@ class PartenairesController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             //Récupération de l'image du partenaire
             $photo = $form->get('logo')->getData();
             if($photo){
@@ -52,17 +53,16 @@ class PartenairesController extends AbstractController
                 //On stock le nouveau nom de la photo
                 $partenaire->setLogo($newFilename);
             }
-
+            $this->addFlash('success', "Le partenaire a été ajouté avec succès.");
             $partenairesRepository->add($partenaire);
             return $this->redirectToRoute('app_partenaires_index', [], Response::HTTP_SEE_OTHER);
         }
-
         return $this->renderForm('admin/partenaires/new.html.twig', [
             'partenaire' => $partenaire,
             'form' => $form,
         ]);
     }
-
+    //Affichage du détail d'un partenaire de la société
     #[Route('/{id}', name: 'app_partenaires_show', methods: ['GET'])]
     public function show(Partenaires $partenaire): Response
     {
@@ -70,7 +70,7 @@ class PartenairesController extends AbstractController
             'partenaire' => $partenaire,
         ]);
     }
-
+    //Modification d'un partenaire de la société
     #[Route('/{id}/edit', name: 'app_partenaires_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Partenaires $partenaire, PartenairesRepository $partenairesRepository, SluggerInterface $slugger, EntityManagerInterface $entityManager,): Response
     {
@@ -78,7 +78,6 @@ class PartenairesController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             //Ajout du departement lors de la création d'un collaborateur
             foreach($form['departement']->getData()->getValues() as $v){
                 $departement = $entityManager->getRepository(Departements::class)->find($v->getId());
@@ -86,7 +85,6 @@ class PartenairesController extends AbstractController
                     $partenaire->addDepartement($departement);
                 }
             }
-
             //Mise à jour de l'image du partenaire
             $photo = $form->get('logo')->getData();
             if($photo){
@@ -105,23 +103,23 @@ class PartenairesController extends AbstractController
                 //On stock le nouveau nom de la photo
                 $partenaire->setLogo($newFilename);
             }
+            $this->addFlash('success', "Le partenaire a été modifié avec succès.");
             $partenairesRepository->add($partenaire);
             return $this->redirectToRoute('app_partenaires_index', [], Response::HTTP_SEE_OTHER);
         }
-
         return $this->renderForm('admin/partenaires/edit.html.twig', [
             'partenaire' => $partenaire,
             'form' => $form,
         ]);
     }
-
+    //Suppression d'un partenaire de la société
     #[Route('/{id}', name: 'app_partenaires_delete', methods: ['POST'])]
     public function delete(Request $request, Partenaires $partenaire, PartenairesRepository $partenairesRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$partenaire->getId(), $request->request->get('_token'))) {
             $partenairesRepository->remove($partenaire);
         }
-
+        $this->addFlash('success', "Le partenaire a été supprimé avec succès.");
         return $this->redirectToRoute('app_partenaires_index', [], Response::HTTP_SEE_OTHER);
     }
 }

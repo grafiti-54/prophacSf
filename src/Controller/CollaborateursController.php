@@ -8,7 +8,6 @@ use App\Form\CollaborateursType;
 use App\Form\UserPasswordType;
 use App\Repository\CollaborateursRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,21 +16,15 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-//Controlleur pour le crud des collaborateurs
+//Les collaborateurs de la société
 #[Route('/admin/collaborateurs')]
 class CollaborateursController extends AbstractController 
 {
-
     // injection de dépendance
-    private $entityManager;
-
+    // private $entityManager;
     public function __construct(EntityManagerInterface $entityManager){
         $this->entityManager = $entityManager;
     }
-
-
-
-
     //Affichage de la liste des collaborateurs enregistré en base de donnée
     #[Route('/', name: 'app_collaborateurs_index', methods: ['GET'])]
     public function index(CollaborateursRepository $collaborateursRepository): Response
@@ -42,7 +35,7 @@ class CollaborateursController extends AbstractController
     }
     //Ajout d'un collaborateur
     #[Route('/new', name: 'app_collaborateurs_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, CollaborateursRepository $collaborateursRepository, UserPasswordHasherInterface $passwordEncoder, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
+    public function new(Request $request, UserPasswordHasherInterface $passwordEncoder, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         //IMPORTANT RAJOUTER (string) DANS  getPassword(): { return (string) $this->password;}
         $collaborateur = new Collaborateurs();
@@ -59,7 +52,6 @@ class CollaborateursController extends AbstractController
                     $departement->addCollaborateur($collaborateur);
                 }   
             }
-
             //Ajout de l'image de profil du collaborateur
             $photo = $form->get('photo')->getData();
             if($photo){
@@ -78,15 +70,13 @@ class CollaborateursController extends AbstractController
                 //On stock le nouveau nom de la photo
                 $collaborateur->setPhoto($newFilename);
             }
-            
             //Vérification du mot de passe du collaborateur
             $collaborateur->setPassword($passwordEncoder->hashPassword($collaborateur,$form->get('password')->getData()));
                 $entityManager->persist($collaborateur);
                 $entityManager->flush();
-                $this->addFlash('success', "Le collaborateur a été ajouté avec succés.");
+                $this->addFlash('success', "Le collaborateur a été ajouté avec succès.");
             return $this->redirectToRoute('app_collaborateurs_index', [], Response::HTTP_SEE_OTHER);
         }
-
         return $this->renderForm('admin/collaborateurs/new.html.twig', [
             'collaborateur' => $collaborateur,
             'form' => $form,
@@ -109,15 +99,6 @@ class CollaborateursController extends AbstractController
         $form->handleRequest($request);
         //Vérification lorsque le formulaire est envoyé ainsi que valide selon les conditions défini ci-dessous
         if ($form->isSubmitted() && $form->isValid()) {
-
-            //Modification du departement lors de la création d'un collaborateur relation many to many mappedBy
-            // foreach($form['departements']->getData()->getValues() as $v){
-            //     $departement = $entityManager->getRepository(Departements::class)->find($v->getId());
-            //     if($departement){
-            //         $departement->addCollaborateur($collaborateur);
-            //     }
-            // }
-
             $collaborateursRepository->add($collaborateur);
             $photo = $form->get('photo')->getData();
             if($photo){
@@ -137,23 +118,22 @@ class CollaborateursController extends AbstractController
                 $collaborateur->setPhoto($newFilename);
             }
             $entityManager->flush();
-            $this->addFlash('success', "Le collaborateur a été modifié avec succés.");
+            $this->addFlash('success', "Le collaborateur a été modifié avec succès.");
             return $this->redirectToRoute('app_collaborateurs_index', [], Response::HTTP_SEE_OTHER);
         }
-
         return $this->renderForm('admin/collaborateurs/edit.html.twig', [
             'collaborateur' => $collaborateur,
             'form' => $form,
         ]);
     }
-
+    // Suppression d'un collaborateur
     #[Route('/{id}', name: 'app_collaborateurs_delete', methods: ['POST'])]
     public function delete(Request $request, Collaborateurs $collaborateur, CollaborateursRepository $collaborateursRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$collaborateur->getId(), $request->request->get('_token'))) {
             $collaborateursRepository->remove($collaborateur);
         }
-        $this->addFlash('success', "Le collaborateur a été supprimé avec succés.");
+        $this->addFlash('success', "Le collaborateur a été supprimé avec succès.");
         return $this->redirectToRoute('app_collaborateurs_index', [], Response::HTTP_SEE_OTHER);
     }
 
@@ -201,3 +181,17 @@ class CollaborateursController extends AbstractController
         ]);
     }
 }
+
+
+
+
+
+
+
+            //Modification du departement lors de la création d'un collaborateur relation many to many mappedBy à placer en dessous de isSubmitted() && $form->isValid()) si necessaire
+            // foreach($form['departements']->getData()->getValues() as $v){
+            //     $departement = $entityManager->getRepository(Departements::class)->find($v->getId());
+            //     if($departement){
+            //         $departement->addCollaborateur($collaborateur);
+            //     }
+            // }
