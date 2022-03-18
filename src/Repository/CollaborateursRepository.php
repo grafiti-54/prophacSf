@@ -63,9 +63,6 @@ class CollaborateursRepository extends ServiceEntityRepository implements Passwo
     }
 
 
-
-
-
     // Recherche des collaborateurs par nom / prenom
     public function findCollaborateurByName(string $query)
     {
@@ -87,6 +84,31 @@ class CollaborateursRepository extends ServiceEntityRepository implements Passwo
             ->getResult();
     }
 
+    /**
+     * Constructeur. Requete de recherche des collaborateurs qui appartiennent à un département
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function findCollaborateurByDepartement($id)
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->join('c.departements', 'd')
+            ->where('d.id = :id')
+            ->setParameter('id', $id)
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
+
+
+
+
+
+
+
+
+
     // /**
     //  * @return Collaborateurs[] Returns an array of Collaborateurs objects
     //  */
@@ -103,16 +125,4 @@ class CollaborateursRepository extends ServiceEntityRepository implements Passwo
         ;
     }
     */
-
-    /*
-    public function findOneBySomeField($value): ?Collaborateurs
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
-}
+ }

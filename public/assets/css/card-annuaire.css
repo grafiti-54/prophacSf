@@ -1,7 +1,7 @@
 .card-annuaire{
     background-color: #DFEAF8 !important;
     border: none;
-    height: 400px auto;
+    height: 560px;
     width: 400px auto;
     /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
     box-shadow: rgb(38, 57, 77) 0px 10px 10px -10px;
@@ -20,7 +20,6 @@
     font-weight: bold;
 }
 
-
 .sous-titre{
     background-color: #0032A0;
     width: 100%;
@@ -34,3 +33,7 @@
     margin-top: 30px;
     
 }
+
+/* .card-info{
+    height: 780px;
+} */
