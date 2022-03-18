@@ -45,6 +45,47 @@ class PartenairesRepository extends ServiceEntityRepository
         }
     }
 
+
+    /**
+     * Constructeur. Requete de recherche des partenaires qui appartiennent à un département
+     *
+     * @param [type] $id id du département
+     * 
+     */
+    public function findPartenaireByDepartement($id)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->join('p.departement', 'd')
+            ->where('d.id = :id')
+            ->setParameter('id', $id)
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // /**
     //  * @return Partenaires[] Returns an array of Partenaires objects
     //  */

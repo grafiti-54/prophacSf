@@ -14,5 +14,13 @@
 {% block body %}
   <!--sous titre-->
   <a href="{{path('app_diagnostics.annuaire')}}">Annuaire diagnostics</a>
+
     <div class="container titre-section">Produits</div>
+    {# liste des produits du département diagnostics #}
+    {{ dump(produits) }}
+    {# Liste des partenaire du département diagnostics #}
+    <div class="container titre-section">Partenaires</div>
+    {{ dump(partenaires) }}
+    
+    
 {% endblock %}

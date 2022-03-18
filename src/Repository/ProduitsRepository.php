@@ -48,7 +48,7 @@ class ProduitsRepository extends ServiceEntityRepository
     /**
      * Requete pour slectionner les produits prioritaire à afficher sur la page d'accueil
      *
-     * @param [type] $value
+     * @param [type] $value true ou false
      * @return void
      */
     public function findByPrioritaire($value)
@@ -57,23 +57,68 @@ class ProduitsRepository extends ServiceEntityRepository
             ->andWhere('p.prioritaire = :val')
             ->setParameter('val', $value)
             ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
 
-    public function findByDepartement($id)
+    /**
+     * Constructeur. Requete de recherche des produits qui appartiennent à un département
+     *
+     * @param [type] $id id du département
+     * 
+     */
+    public function findProduitByDepartement($id)
     {
         $qb = $this->createQueryBuilder('p')
             ->join('p.departement', 'd')
             ->where('d.id = :id')
             ->setParameter('id', $id)
         ;
-
         return $qb->getQuery()->getResult();
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 // /**
 //          * @var \Doctrine\ORM\QueryBuilder
 //          */

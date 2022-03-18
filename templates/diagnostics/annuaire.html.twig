@@ -2,8 +2,6 @@
 
 {% block title %}Annuaire Diagnostics - Prophac
 {% endblock %}
-
-
 {% block illustration %}
 	<div class="departement diagnostics-container">
 		<h1 class="titre-departement">DIAGNOSTICS</h1>
@@ -16,35 +14,39 @@
 {% endblock %}
 
 {% block body %}
-	{# Annuaire diagnostics #}
+	{# Liste des collaborateurs du département diagnostics #}
 	<div class="container titre-section">Annuaire diagnostics</div>
-    
 	<section class="container">
 		<div class="row d-flex justify-content-center">
-        {# Future boucle d'affihage #}
+        {% for collaborateur in collaborateurs %}
 			<div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
 				<div class="card card-annuaire my-3">
-					<img src="{{asset('assets/img/logo-annuaire/BlasiusR_5578-640x640.jpg')}}" class="img-fluid" alt="photo-profil"/>
-					<div class="card-body ">
+					<img src="../../../uploads/{{ collaborateur.photo}}" alt="photo-{{ collaborateur.nom }}-{{ collaborateur.prenom }}" class="img-fluid"/>
+					<div class="card-body card-info">
 						<div class="name d-flex">
 							<img src="{{asset('assets/img/logo-annuaire/name.svg')}}" alt="icon-identite" class="mb-3"><p class="ms-3 d-block"></p>
 							<p>
-								<span>Name</span>
-								Firstname</p>
+								<span>{{ collaborateur.nom }}</span>
+								{{ collaborateur.prenom }}</p>
 						</div>
 						<div class="fonction d-flex">
-							<img src="{{asset('assets/img/logo-annuaire/valise.svg')}}" alt="icon-valise" class="mb-3"><p class="ms-3">Fonction</p>
+							<img src="{{asset('assets/img/logo-annuaire/valise.svg')}}" alt="icon-valise" class="mb-3">
+								<p class="ms-3">
+									{% for qualifications in collaborateur.qualification %}
+                        				{{ qualifications}} <br>
+                    				{% endfor %}
+								</p>
 						</div>
 						<div class="e-mail d-flex">
-							<img src="{{asset('assets/img/logo-annuaire/envelope.svg')}}" alt="icon-envelope" class="mb-3"><a class="ms-3">mail@prophac.lu</a>
+							<img src="{{asset('assets/img/logo-annuaire/envelope.svg')}}" alt="icon-envelope" class="mb-3"><a class="ms-3">{{ collaborateur.email }}</a>
 						</div>
 						<div class="telephone d-flex">
-							<img src="{{asset('assets/img/logo-annuaire/telephone-fill.svg')}}" alt="icon-telephone" class="mb-3"><p class="ms-3">+352 482 482 550</p>
+							<img src="{{asset('assets/img/logo-annuaire/telephone-fill.svg')}}" alt="icon-telephone" class="mb-3"><p class="ms-3">{{ collaborateur.numero }}</p>
 						</div>
 					</div>
 				</div>
 			</div>
-        {# Fin boucle d'affihage #}
+        {% endfor %}
         </div>
 	</section>
 {% endblock %}
