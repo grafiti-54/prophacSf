@@ -25,6 +25,8 @@ class Produits
     private $photo;
 
     #[ORM\ManyToMany(targetEntity: Departements::class, inversedBy: 'produit')]
+    // #[ORM\JoinTable(name: "Departements")]
+    // #[ORM\JoinColumn(name: "id")]
     private $departement;
 
     #[ORM\ManyToOne(targetEntity: Partenaires::class, inversedBy: 'produits')]

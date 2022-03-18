@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Departements;
+use App\Entity\Produits;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -45,6 +46,35 @@ class DepartementsRepository extends ServiceEntityRepository
         }
     }
 
+    // public function produitParDepartement(ManagerRegistry $doctrine,int $id): ?Produits
+    // {
+        
+    //     $entitymanager = $doctrine->get->getEntityManger();
+    //     $query = $entitymanager->createQuery(
+    //         'SELECT * AS produit
+    //         FROM App\Entity\Produits p 
+    //         INNER JOIN App\Entity\Departements d
+    //         WHERE d.id = :id'
+    //     )->setParameter('id', $id);
+
+    //     $result = $query->execute();
+    //     return $result[0]['produit'];
+    // }
+
+
+    // public function produitParDepartement($id): ?Produits
+    // {
+    //     $entityManger = $this->getEntityManager();
+
+    //     $query = $entityManger->createQuery(
+    //         'SELECT d, p
+    //         FROM App\Entity\Departements d
+    //         INNER JOIN d.produit p
+    //         WHERE d.id = :id'
+    //     )->setParameter('id', $id);
+
+    //     return $query->getOneOrNullResult();
+    // }
     // /**
     //  * @return Departements[] Returns an array of Departements objects
     //  */

@@ -17,6 +17,13 @@ use Symfony\Component\Validator\Constraints\File as ConstraintsFile;
 
 class Articles1Type extends AbstractType
 {
+    /**
+     * Constructeur du formulaire reservé pour la création et la modification d'un article du site principal
+     *
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -27,7 +34,6 @@ class Articles1Type extends AbstractType
                 'attr' => [
                     'cols' =>'5',
                     'rows' => '15',
-                    'pattern' => ".{12,}",
                 ]
             ])
             ->add('departement', EntityType::class, [

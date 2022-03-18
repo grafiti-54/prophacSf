@@ -17,9 +17,16 @@ use Symfony\Component\Validator\Constraints\File as ConstraintsFile;
 
 class ProduitsType extends AbstractType
 {
+    /**
+     * Constructeur du formulaire pour la création et la modification d'un produit
+     *
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $group =' ';
+        // $group =' ';
 
         $builder
             ->add('nom')
@@ -27,7 +34,7 @@ class ProduitsType extends AbstractType
             ->add('photo', FileType::class,[
                 'label' => 'Image du produit',
                 'required' => false,
-                'mapped' => false, // n'est pas lié a la base de donnée
+                'mapped' => false, 
                 'constraints' => [
                     new ConstraintsFile([
                         'maxSize' => '10240k',

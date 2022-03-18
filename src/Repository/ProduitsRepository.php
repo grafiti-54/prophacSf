@@ -2,7 +2,6 @@
 
 namespace App\Repository;
 
-use App\Classe\Search;
 use App\Entity\Produits;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
@@ -46,7 +45,65 @@ class ProduitsRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * Requete pour slectionner les produits prioritaire à afficher sur la page d'accueil
+     *
+     * @param [type] $value
+     * @return void
+     */
+    public function findByPrioritaire($value)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.prioritaire = :val')
+            ->setParameter('val', $value)
+            ->orderBy('p.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByDepartement($id)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->join('p.departement', 'd')
+            ->where('d.id = :id')
+            ->setParameter('id', $id)
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
+
 // /**
+//          * @var \Doctrine\ORM\QueryBuilder
+//          */
+//         $qb = $entitymanager->getRepository('App:Produit')
+//             ->createQueryBuilder('produit'); //ceci est un Objet QueryBuilder et sur cet dernier tu peux invoquer les méthodes expr(), join() ....
+
+//         $qb->innerJoin('App\Entity\Gamme', 'gamme', 'WITH', 'gamme.id = produit.idGamme')
+//             ->andWhere( $qb->expr()->in('gamme.nom', $filtre_gamme))
+//             ->innerJoin('App\Entity\PrixProduit', 'prixproduit', 'WITH', 'prixproduit.idProduit = produit.id')
+//             ->andWhere($qb->expr()->gte('prixproduit.prix', $choix_prix_min))
+//             ->andWhere($qb->expr()->lte('prixproduit.prix', $choix_prix_max))
+//             ->andWhere( $qb->expr()->in('produit.qualite', ['1', '2']))
+//             ->andWhere('produit.sculpte = \'O\'');
+
+//         $q = $qb->orderBy('produit.dateCreation', 'desc')
+//             ->getQuery();
+
+    /*
+    public function findOneBySomeField($value): ?Produits
+    {
+    return $this->createQueryBuilder('p')
+    ->andWhere('p.exampleField = :val')
+    ->setParameter('val', $value)
+    ->getQuery()
+    ->getOneOrNullResult()
+    ;
+    }
+     */
+
+    // /**
 //      * fonction pour filtrer la recherche d'un utilisateur dans la barre de recherche de la page produit
 //      *
 //      * @return Product[]
@@ -62,7 +119,7 @@ class ProduitsRepository extends ServiceEntityRepository
 //             if(!empty($search->produit)){
 //                 // On reprend la requete
 //                 $query = $query
-//                     ->andWhere('p.id IN (:produits)') // on rajoute dans la requete les id des categories pour qu'il soit dans la liste des categories envoyé en parametre dans l'objet search  
+//                     ->andWhere('p.id IN (:produits)') // on rajoute dans la requete les id des categories pour qu'il soit dans la liste des categories envoyé en parametre dans l'objet search
 //                     ->setParameter('produits', $search->produit); // on passe le parametre de la recherche on verifie qu’une catégorie correspond a la recherche faite par l’utilisateur dans le parametre defini
 //             }
 
@@ -73,7 +130,7 @@ class ProduitsRepository extends ServiceEntityRepository
 //                 ->setParameter('string', "%{$search->string}%") // recherche partiel sur la recherche effectué
 //                 ->setMaxResults(2);
 //             }
-// 		//On retourne les résultats
+//         //On retourne les résultats
 //             return $query->getQuery()->getResult();
 //     }
 
@@ -81,41 +138,49 @@ class ProduitsRepository extends ServiceEntityRepository
 
 
 
+   // public function findByDepartement($id)
+    // {
+    //     return $this->createQueryBuilder('p')
+    //     ->SELECT('p') 
+    //     // ->FROM('produits')
+    //     ->INNERJOIN('departement','d' )
+    //     // ->ON('p.id = produits_departements.produits_id')
+    //     ->WHERE('produits_departements.departements_id = :depId')
+    //     ->setParameter('departementId', $id)
+    //     ->orderBy('p.id', 'ASC')
+    //     ->getQuery()
+    //     ->getResult()
+    //     ;
+    // }
 
 
+    // public function findByDepartement(ManagerRegistry $doctrine, int $id): ?Produits
+    // {
+    //     $entityManager = $this->getManager();
+    //     $entitymanager = $doctrine->get->getEntityManger();
+    //     $query = $entitymanager->createQuery(
+    //         'SELECT p, d
+    //         FROM App\Entity\Produits p
+    //         INNER JOIN p.departement d
+    //         WHERE d.id = :id'
+    //     )->setParameter('id', $id);
+
+    //     return $query->getOneOrNullResult();
+    // }
 
 
+    // public function produitParDepartement(ManagerRegistry $doctrine, int $id): ?Produits
+    // {
+    //     // $entityManager = $this->getManager();
+    //     $entitymanager = $doctrine->get->getEntityManger();
+    //     $query = $entitymanager->createQuery(
+    //         'SELECT * AS produit
+    //         FROM App\Entity\Produits p 
+    //         INNER JOIN App\Entity\Departements d
+    //         WHERE d.id = :id'
+    //     )->setParameter('id', $id);
 
-
-
-
-
-    // /**
-    //  * @return Produits[] Returns an array of Produits objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Produits
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+    //     $result = $query->execute();
+    //     return $result[0]['produit'];
+    // }
 }

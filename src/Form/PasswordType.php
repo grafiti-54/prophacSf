@@ -13,6 +13,13 @@ use Gregwar\CaptchaBundle\Type\CaptchaType;
 
 class UserPasswordType extends AbstractType
 {
+    /**
+     * Constructeur du formulaire réservé à l'administrateur pour changer le mot de passe d'un collaborateur
+     *
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
