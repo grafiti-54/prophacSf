@@ -9,8 +9,8 @@
         <img class="py-2" src="{{asset('assets/img/form/logo-prophac.svg')}}" alt="logo-prophac-blanc" width="25%">
         <h3 class="text-light py-5 ps-5">Administrateur</h3>
     </div>
-    <div class="container form-new-prophac py-3">
+    <div class="container form-new-prophac py-3 mb-5">
         {{ include('admin/departements/_form.html.twig') }}
-        <a class="btn btn-prophac ms-1 mt-2" href="{{ path('app_departements_index') }}">Retourner sur la liste des départements</a>
+        <a class="btn btn-prophac ms-1 mt-2 mb-5" href="{{ path('app_departements_index') }}">Retourner sur la liste des départements</a>
     </div> 
 {% endblock %}

@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 //Les collaborateurs de la société
 #[Route('/admin/collaborateurs')]
@@ -25,14 +26,31 @@ class CollaborateursController extends AbstractController
     public function __construct(EntityManagerInterface $entityManager){
         $this->entityManager = $entityManager;
     }
-    //Affichage de la liste des collaborateurs enregistré en base de donnée
-    #[Route('/', name: 'app_collaborateurs_index', methods: ['GET'])]
-    public function index(CollaborateursRepository $collaborateursRepository): Response
+
+    //Affichage de la liste des collaborateurs enregistré en base de donnée + pagination
+    #[Route('/all/{page?1}/{nbre?10}', name: 'app_collaborateurs_index', methods: ['GET', 'POST'])]
+    public function index(CollaborateursRepository $collaborateursRepository, ManagerRegistry $doctrine, $page, $nbre): Response
     {
+        // Pagination pour la page des collaborateurs
+        $repository = $doctrine->getRepository(Collaborateurs::class);
+        //Récupération du nombre de collaborateur
+        $nbPersonne = $repository->count([]);
+        //Calcul pour obtenir le nombre de page
+        $nbrePage = ceil($nbPersonne / $nbre);
+        // dd($nbrePage);
+        $collaborateurs = $repository->findBy([], [] , $nbre, ($page -1)*$nbre );
+
         return $this->render('admin/collaborateurs/index.html.twig', [
-            'collaborateurs' => $collaborateursRepository->findAll(),
+            //'collaborateurs' => $collaborateursRepository->findAll(),
+            'collaborateurs' => $collaborateurs,
+            'isPaginated' => true,
+            'nbrePage' => $nbrePage,
+            'page' => $page,
+            'nbre' => $nbre
+
         ]);
     }
+
     //Ajout d'un collaborateur
     #[Route('/new', name: 'app_collaborateurs_new', methods: ['GET', 'POST'])]
     public function new(Request $request, UserPasswordHasherInterface $passwordEncoder, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response

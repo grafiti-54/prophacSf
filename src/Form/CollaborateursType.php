@@ -15,6 +15,13 @@ use Symfony\Component\Validator\Constraints\File as ConstraintsFile;
 
 class CollaborateursType extends AbstractType
 {
+    /**
+     * Constructeur du formulaire reservé pour la modification d'un collaborateur pour l'administrateur
+     *
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder

@@ -6,6 +6,8 @@ use App\Repository\DepartementsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Response;
 
 #[ORM\Entity(repositoryClass: DepartementsRepository::class)]
 class Departements
@@ -25,6 +27,8 @@ class Departements
     private $collaborateur;
 
     #[ORM\ManyToMany(targetEntity: Produits::class, mappedBy: 'departement')]
+    // #[ORM\JoinTable(name: "Produits")]
+    // #[ORM\JoinColumn(name: "id")]
     private $produit;
 
     #[ORM\ManyToMany(targetEntity: Partenaires::class, mappedBy: 'departement')]
@@ -183,4 +187,13 @@ class Departements
 
         return $this;
     }
+
+    // public function voirProduit(ManagerRegistry $doctrine):Response
+    // {
+    //     $produit = $doctrine->getRepository(Produits::class)->findAll();
+
+    //     $departement = $produit->getNom();
+
+    //     return $this;
+    // }
 }

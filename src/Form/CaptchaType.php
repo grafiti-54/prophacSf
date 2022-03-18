@@ -8,6 +8,13 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class CaptchaType extends AbstractType
 {
+    /**
+     * Constructeur du captcha utilisé lors de la modification du mot de passe d'un collaborateur uniquement disponible pour l'administrateur du site
+     *
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder

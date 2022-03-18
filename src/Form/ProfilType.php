@@ -14,6 +14,13 @@ use Symfony\Component\Validator\Constraints\File as ConstraintsFile;
 
 class ProfilType extends AbstractType
 {
+    /**
+     * Constructeur du formulaire réservé aux collaborateurs qui souhaitent modifier leurs données depuis la page de profil
+     *
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -46,18 +53,6 @@ class ProfilType extends AbstractType
             ->add('numero')
 
         ;
-        // Data transformer
-        // $builder->get('Roles')
-        //     ->addModelTransformer(new CallbackTransformer(
-        //         function ($rolesArray) {
-        //             // transform the array to a string
-        //             return count($rolesArray) ? $rolesArray[0] : null;
-        //         },
-        //         function ($rolesString) {
-        //             // transform the string back to an array
-        //             return [$rolesString];
-        //         }
-        //     ));
     }
 
     public function configureOptions(OptionsResolver $resolver): void

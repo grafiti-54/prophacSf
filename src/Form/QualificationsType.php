@@ -12,10 +12,16 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class QualificationsType extends AbstractType
 {
+    /**
+     * Constructeur du formulaire pour l'ajout et la modification d'une qualification
+     *
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            // ->add('libelle')
             ->add('libelle', TextType::class, [
                 'attr' => [
                     'placeholder' => "Saisir une nouvelle qualification",

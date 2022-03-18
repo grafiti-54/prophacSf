@@ -1,5 +1,61 @@
 <?php
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// NE PAS UTILISER POUR LE MOMENT EN COURS DE DEVELOPPEMENT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 namespace App\Form;
 
 use App\Entity\Images;
@@ -11,6 +67,13 @@ use Symfony\Component\Validator\Constraints\File as ConstraintsFile;
 
 class ImagesType extends AbstractType
 {
+    /**
+     * Constructeur du formulaire reservé pour la modification et l'ajout d'image
+     *
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder

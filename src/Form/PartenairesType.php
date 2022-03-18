@@ -13,6 +13,13 @@ use Symfony\Component\Validator\Constraints\File as ConstraintsFile;
 
 class PartenairesType extends AbstractType
 {
+    /**
+     * Constructeur du formulaire reservé pour la modification et la création d'un partenaire
+     *
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder

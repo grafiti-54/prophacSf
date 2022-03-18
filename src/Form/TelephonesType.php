@@ -10,6 +10,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class TelephonesType extends AbstractType
 {
+    /**
+     * Constructeur du formulaire reservé pour la modification et création des numéros de téléphone de la société
+     *
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
