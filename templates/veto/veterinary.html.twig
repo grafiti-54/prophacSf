@@ -16,5 +16,7 @@
 {# futur bouton vers annuaire veto #}
 <a href="{{path('app_veto.annuaire')}}">Annuaire veterinary</a>
   {# Section produit veto #}
-    <div class="container titre-section">Produits</div>
+    {# Liste des partenaire du département veterinary #}
+    <div class="container titre-section">Partenaires</div>
+    {{ dump(partenaires) }}
 {% endblock %}

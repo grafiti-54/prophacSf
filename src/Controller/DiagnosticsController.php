@@ -22,9 +22,10 @@ class DiagnosticsController extends AbstractController
          */
         $idDepartement  = 2;
         /**
-         * Recherche des produits liés au départment concerné
+         * Recherche des produits liés au départment concerné 
          */
         $produitDepartement = $doctrine->getRepository(Produits::class)->findProduitByDepartement($idDepartement);
+        
         
         /**
          * Recherche des partenaires liés au départment concerné
@@ -47,12 +48,18 @@ class DiagnosticsController extends AbstractController
          */
         $idDepartement  = 2;
         /**
-         * Recherche des collaborateurs liés au départment concerné
+         * Id du département service technique
+         */
+        $idServiceTechnique  = 9;
+        /**
+         * Recherche des collaborateurs liés au départment concerné et à celui du sevie technique
          */
         $collaborateurDepartement = $doctrine->getRepository(Collaborateurs::class)->findCollaborateurByDepartement($idDepartement);
+        $serviceTechnique = $doctrine->getRepository(Collaborateurs::class)->findCollaborateurByDepartement($idServiceTechnique);
 
         return $this->render('diagnostics/annuaire.html.twig',[
             'collaborateurs' => $collaborateurDepartement,
+            'serviceTechnique' => $serviceTechnique,
         ]);
     }
 }

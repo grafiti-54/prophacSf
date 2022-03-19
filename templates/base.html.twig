@@ -1,279 +1,297 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    {# <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> #}
+		{# <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> #}
 
-    {# lien css bootstrap #}
-    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}"> 
+		{# lien css bootstrap #}
+		<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}"> <link
+		rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 
-    {# lien css FONT-AWESOME pour ADMIN #}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-
-    {# lien css navbar + carousel #}   
-    <link rel="stylesheet" href="{{asset('assets/css/navbar.css')}}">
-
-    {# lien css page département #}
-    <link rel="stylesheet" href="{{asset('assets/css/info.css')}}">
-
-    {# lien css footer #}   
-    <link rel="stylesheet" href="{{asset('assets/css/footer.css')}}">
-
-    {# lien css page département #}
-    <link rel="stylesheet" href="{{asset('assets/css/departements.css')}}">
-
-    {# lien css card-profil pour annuaire #}
-    <link rel="stylesheet" href="{{asset('assets/css/card-annuaire.css')}}">
-
-    {# lien css card-produit pour les produits présenté sur le site #}
-    <link rel="stylesheet" href="{{asset('assets/css/card-produit.css')}}">
-
-    
-
-    {% block stylesheets %}
-            {# {{ encore_entry_link_tags('app') }} #}
-    {% endblock %}
-    <title>{% block title %}Prophac - Prophac, fondé en 1946{% endblock %}</title>
-</head>
-
-{# HEADER #}
-<body>
-    <div class="logo">
-        <div><a href="{{path('app_accueil')}}"><img class="logo-prophac" src="{{asset('assets/img/Logo_Prophac_haute-resolution_rgb.png')}}"
-            alt="logo-phophac" /></a>
-        </div>
-    </div>
-    {# Info #}
-    <div class="info">
-      <span class="bloc"
-        ><span class="name"><strong>PROPHAC</strong></span
-        ><span class="statuts"
-          >Produits Pharmaceutiques et Chimiques s.à r.l.</span
-        ></span
-      >
-      <div class="bloc1">
-        <span class="sous-bloc1"
-          ><span class="rue">5, Rangwee</span
-          ><span class="cp-ville">L-2412 Howald</span></span
-        ><span class="sous-bloc1"
-          ><span class="bp">B.P. 2063</span
-          ><span class="cp-ville">L-1020 Luxembourg</span></span
-        ><span class="sous-bloc1"
-          ><span class="tel">Tél : (+352) 482 482-1</span
-          ><span class="fax">Fax : (+352) 482 482-482</span>
-        </span>
-      </div>
-      <div class="bloc2">
-        <span class="sous-bloc2">
-          <span class="horaire">Heures d’ouverture :</span>
-        </span>
-        <span class="sous-bloc2">
-        <span class="horaire">du lundi au vendredi de 8h00 – 12h00 </span
-        >
-          <span class="horaire">et de 13h00 – 17h00 sur rendez-vous</span></span
-        ><span class="sous-bloc2"
-          ><span class="parking">PARKING GRATUIT</span
-          ><span class="bus">Ligne bus: 30</span></span
-        >
-      </div>
-    </div>
-
-    {# Menu navigation #}
-    <header id="hd-navbar" class="hd-nav">
-        
-        <a class="hd-home" href="{{path('app_accueil')}}">HOME</a>
-        <div class="hd-dropdown-1">
-            <button class="hd-btn">DOMAINE D'ACTIVITÉS</button> 
-            <div class="hd-content">
-                <a href="{{path('app_diagnostics')}}">DIAGNOSTICS</a>
-                <a href="{{path('app_pharma')}}">PHARMACEUTICALS</a>
-                <a href="{{path('app_patient')}}">PATIENT INFORMATIONS AND DIABETES CARE</a> 
-                <a href="{{path('app_veto')}}">VETERINARY</a>
-            </div>
-        </div>
-        <div class="hd-dropdown-1">
-            <button class="hd-btn">PROPHAC</button>
-            <div class="hd-content">
-                <a href="#">ORGANIGRAMME</a>
-                <a href="#">HISTORIQUE</a>
-                <a href="#">ISO 9001</a>
-            </div>
-        </div>
-        <div class="hd-dropdown-1">
-            <button class="hd-btn">CONTACT</button>
-            <div class="hd-content">
-                <a href="#">ANNUAIRES</a>
-                <a href="#">FORMULAIRE</a>
-                <a href="#">PLAN</a>
-            </div>
-        </div>
-        <form class="form-inline my-2 my-lg-0 d-flex m-2">
-            <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Recherche">
-            <a href="#"> <img class="m-2"src="{{asset('assets/img/search.svg')}}" alt="loupe"> </a>
-        </form>
-        <a class="hd-icon" onclick="myFunction()">&#9776</a>
-        <!--Unicode menu hambourger-->
-    </header>
- {% block illustration %} 
- {# carousel #}
-<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="10000">
-          <img src="{{asset('assets/img/departement-diagnostics.jpg')}}" class="d-block w-100" alt="dep-diagnostics">
-          <div class="carousel-caption d-none d-md-block">
-            <a class="car-lien" href="{{path('app_diagnostics')}}"><h5 class="car-titre">DIAGNOSTICS</h5>
-            <p class="car-p">Analyseurs et réactifs pour les analyses médicales et les analyses de recherche bio-médicales.</p>
-            <img src="{{asset('assets/img/Picto_Diagno_demi-tons_rgb.png')}}" alt="diagnostics" class="car-picto"></a>
-            
-          </div>
-        </div>
-        <div class="carousel-item" data-bs-interval="4000">
-          <img src="{{asset('assets/img/department-pharmaceuticals.jpg')}}" class="d-block w-100" alt="dep-pharmaceuticals">
-          <div class="carousel-caption d-none d-md-block">
-            <a class="car-lien" href="{{path('app_pharma')}}"><h5 class="car-titre">PHARMACEUTICALS</h5>
-            <p class="car-p">Partenaire de l’industrie pharmaceutique au Grand-Duché de Luxembourg.</p>
-            <img src="{{asset('assets/img/Picto_Pharma_demi-tons_rgb.png')}}" alt="picto-pharma" class="car-picto"></a>
-            
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="{{asset('assets/img/department-patient-information.jpg')}}" class="d-block w-100" alt="dep-patient-diabete">
-          <div class="carousel-caption d-none d-md-block">
-            <a class="car-lien" href="{{path('app_patient')}}"><h5 class="car-titre">PATIENT INFORMATION & DIABETES CARE</h5>
-            <p class="car-p">Lecteurs de glycémie, pompes à insuline, thermomètres et tensiomètres.</p>
-            <img src="{{asset('assets/img/Picto_Diabet_demi-tons_rgb.png')}}" alt="picto-patient-diabete" class="car-picto"></a>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="{{asset('assets/img/department-veterinary.jpg')}}" class="d-block w-100" alt="dep-veterinary">
-          <div class="carousel-caption d-none d-md-block">
-            <a class="car-lien" href="{{path('app_veto')}}"><h5 class="car-titre">VETERINARY</h5>
-            <p class="car-p">Distribution d’une gamme importante de produits vétérinaires.</p>
-            <img src="{{asset('assets/img/Picto_Vete_demi-tons_rgb.png')}}" alt="picto-veterinary" class="car-picto"></a>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-    {% endblock %}
-
-    {% block body %}BLOCK BODY{% endblock %}
+		{# lien css Animation AOS #}
+		<link
+		rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
 
-{# FOOTER #}
+		{# lien css FONT-AWESOME pour ADMIN #}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 
-    <footer class="ft-footer">
-      <div class="ft-certificat-iso pb-3">
-        <img class="ft-iso" src="{{asset('assets/img/certif-iso.png')}}" alt="iso-9001" /> 
-      </div>
-      <div class="ft-departement pb-3 text-center">
-        <div class="ft-logo">
-          <a class="ft-image-departement" href="{{path('app_diagnostics')}}"
-            ><img
-              class="ft-logo-departement"
-              src="{{asset('assets/img/diagnostics.png')}}" 
-              alt="diagnostics"
-          /></a>
-        </div>
-        <div class="ft-info">
-          <a class="ft-nom" href="{{path('app_diagnostics')}}"><strong>DIAGNOSTICS</strong></a>
-          <a class="ft-phone" href="#">(+352) 482 482-500</a>
-          <a class="ft-mail" href="#">diagnostics@prophac.lu</a>
-        </div>
-      </div>
-      <div class="ft-departement pb-3 text-center">
-        <div class="ft-logo">
-          <a class="ft-image-departement" href="{{path('app_pharma')}}"
-            ><img
-              class="ft-logo-departement"
-              src="{{asset('assets/img/pharmaceuticals.png')}}" 
-              alt="pharmaceuticals"
-          /></a>
-        </div>
-        <div class="ft-info">
-          <a class="ft-nom" href="{{path('app_pharma')}}"><strong>PHARMACEUTICALS</strong></a>
-          <a class="ft-phone" href="#">(+352) 482 482-400</a>
-          <a class="ft-mail" href="#">pharma@prophac.lu</a>
-        </div>
-      </div>
-      <div class="ft-departement">
-        <div class="ft-logo">
-          <a class="ft-image-departement" href="{{path('app_patient')}}"
-            ><img
-              class="ft-logo-departement"
-              src="{{asset('assets/img/patient-information.png')}}" 
-              alt="patient-diabetes"
-          /></a>
-        </div>
-        <div class="ft-info">
-          <a class="ft-nom" href="{{path('app_patient')}}"
-            ><strong
-              >PATIENT INFORMATIONS<br />
-              & DIABETES CARE</strong
-            ></a
-          >
-          <a class="ft-phone" href="#">(+352) 482 482-502</a>
-          <a class="ft-mail" href="#">diagnostics@prophac.lu</a>
-        </div>
-      </div>
-      <div class="ft-departement pb-3">
-        <div class="ft-logo">
-          <a class="ft-image-departement" href="{{path('app_veto')}}"
-            ><img
-              class="ft-logo-departement"
-              src="{{asset('assets/img/veterinary.png')}}" 
-              alt="veterinary"
-          /></a>
-        </div>
-        <div class="ft-info">
-          <a class="ft-nom" href="{{path('app_veto')}}"><strong>VETERINARY</strong></a>
-          <a class="ft-phone" href="#">(+352) 482 482-600</a>
-          <a class="ft-mail" href="#">veto@prophac.lu</a>
-        </div>
-      </div>
-    </footer>
-    <div class="mentions text-center py-1"> <a href="#"><small class="text-light">Mentions légales</small></a></div>
+		{# lien css navbar + carousel #}
+		<link
+		rel="stylesheet" href="{{asset('assets/css/navbar.css')}}">
+
+		{# lien css page département #}
+		<link
+		rel="stylesheet" href="{{asset('assets/css/info.css')}}">
+
+		{# lien css footer #}
+		<link
+		rel="stylesheet" href="{{asset('assets/css/footer.css')}}">
+
+		{# lien css page département #}
+		<link
+		rel="stylesheet" href="{{asset('assets/css/departements.css')}}">
+
+		{# lien css card-profil pour annuaire #}
+		<link
+		rel="stylesheet" href="{{asset('assets/css/card-annuaire.css')}}">
+
+		{# lien css card-produit pour les produits présenté sur le site #}
+		<link rel="stylesheet" href="{{asset('assets/css/card-produit.css')}}">
 
 
+		{% block stylesheets %}
+			{# {{ encore_entry_link_tags('app') }} #}
+		{% endblock %}
+		<title>
+			{% block title %}Prophac - Prophac, fondé en 1946
+			{% endblock %}
+		</title>
+	</head>
 
-    <script>
-        // function navbar
-        function myFunction() {
-            var x = document.getElementById("hd-navbar");
-            if (x.className === "hd-nav") {
-                x.className += " hd-responsive";
-            } else {
-                x.className = "hd-nav";
-            }
-        }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-        
-        <script src="{{asset('assets/js/script.js')}}"></script>
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-</body>
+	{# HEADER #}
+	<body>
+		<div class="logo">
+			<div data-aos="flip-left" data-aos-delay="1500">
+				<a href="{{path('app_accueil')}}"><img class="logo-prophac" src="{{asset('assets/img/Logo_Prophac_haute-resolution_rgb.png')}}" alt="logo-phophac"/></a>
+			</div>
+		</div>
+		{# Info #}
+		<div class="info" data-aos="fade-right" data-aos-delay="3000">
+			<span class="bloc">
+				<span class="name">
+					<strong>PROPHAC</strong>
+				</span>
+				<span class="statuts">Produits Pharmaceutiques et Chimiques s.à r.l.</span>
+			</span>
+			<div class="bloc1">
+				<span class="sous-bloc1">
+					<span class="rue">5, Rangwee</span>
+					<span class="cp-ville">L-2412 Howald</span>
+				</span>
+				<span class="sous-bloc1">
+					<span class="bp">B.P. 2063</span>
+					<span class="cp-ville">L-1020 Luxembourg</span>
+				</span>
+				<span class="sous-bloc1">
+					<span class="tel">Tél : (+352) 482 482-1</span>
+					<span class="fax">Fax : (+352) 482 482-482</span>
+				</span>
+			</div>
+			<div class="bloc2">
+				<span class="sous-bloc2">
+					<span class="horaire">Heures d’ouverture :</span>
+				</span>
+				<span class="sous-bloc2">
+					<span class="horaire">du lundi au vendredi de 8h00 – 12h00
+					</span>
+					<span class="horaire">et de 13h00 – 17h00 sur rendez-vous</span>
+				</span>
+				<span class="sous-bloc2">
+					<span class="parking">PARKING GRATUIT</span>
+					<span class="bus">Ligne bus: 30</span>
+				</span>
+			</div>
+		</div>
+
+		{# Menu navigation #}
+		<header id="hd-navbar" class="hd-nav">
+
+			<a class="hd-home" href="{{path('app_accueil')}}">HOME</a>
+			<div class="hd-dropdown-1">
+				<button class="hd-btn">DOMAINE D'ACTIVITÉS</button>
+				<div class="hd-content">
+					<a href="{{path('app_diagnostics')}}">DIAGNOSTICS</a>
+					<a href="{{path('app_pharma')}}">PHARMACEUTICALS</a>
+					<a href="{{path('app_patient')}}">PATIENT INFORMATIONS AND DIABETES CARE</a>
+					<a href="{{path('app_veto')}}">VETERINARY</a>
+				</div>
+			</div>
+			<div class="hd-dropdown-1">
+				<button class="hd-btn">PROPHAC</button>
+				<div class="hd-content">
+					<a href="#">ORGANIGRAMME</a>
+					<a href="#">HISTORIQUE</a>
+					<a href="#">ISO 9001</a>
+				</div>
+			</div>
+			<div class="hd-dropdown-1">
+				<button class="hd-btn">CONTACT</button>
+				<div class="hd-content">
+					<a href="#">ANNUAIRES</a>
+					<a href="#">FORMULAIRE</a>
+					<a href="#">PLAN</a>
+				</div>
+			</div>
+			<form class="form-inline my-2 my-lg-0 d-flex m-2">
+				<input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Recherche">
+				<a href="#">
+					<img class="m-2" src="{{asset('assets/img/search.svg')}}" alt="loupe">
+				</a>
+			</form>
+			<a class="hd-icon" onclick="myFunction()">&#9776</a>
+			<!--Unicode menu hambourger-->
+		</header>
+		{% block illustration %}
+			{# carousel #}
+			<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+				<div class="carousel-indicators">
+					<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+					<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+					<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+					<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+				</div>
+				<div class="carousel-inner">
+					<div class="carousel-item active" data-bs-interval="10000">
+						<img src="{{asset('assets/img/departement-diagnostics.jpg')}}" class="d-block w-100" alt="dep-diagnostics">
+						<div class="carousel-caption d-none d-md-block">
+							<a class="car-lien" href="{{path('app_diagnostics')}}">
+								<h5 class="car-titre">DIAGNOSTICS</h5>
+								<p class="car-p">Analyseurs et réactifs pour les analyses médicales et les analyses de recherche bio-médicales.</p>
+								<img src="{{asset('assets/img/Picto_Diagno_demi-tons_rgb.png')}}" alt="diagnostics" class="car-picto"></a>
+
+						</div>
+					</div>
+					<div class="carousel-item" data-bs-interval="4000">
+						<img src="{{asset('assets/img/department-pharmaceuticals.jpg')}}" class="d-block w-100" alt="dep-pharmaceuticals">
+						<div class="carousel-caption d-none d-md-block">
+							<a class="car-lien" href="{{path('app_pharma')}}">
+								<h5 class="car-titre">PHARMACEUTICALS</h5>
+								<p class="car-p">Partenaire de l’industrie pharmaceutique au Grand-Duché de Luxembourg.</p>
+								<img src="{{asset('assets/img/Picto_Pharma_demi-tons_rgb.png')}}" alt="picto-pharma" class="car-picto"></a>
+
+						</div>
+					</div>
+					<div class="carousel-item">
+						<img src="{{asset('assets/img/department-patient-information.jpg')}}" class="d-block w-100" alt="dep-patient-diabete">
+						<div class="carousel-caption d-none d-md-block">
+							<a class="car-lien" href="{{path('app_patient')}}">
+								<h5 class="car-titre">PATIENT INFORMATION & DIABETES CARE</h5>
+								<p class="car-p">Lecteurs de glycémie, pompes à insuline, thermomètres et tensiomètres.</p>
+								<img src="{{asset('assets/img/Picto_Diabet_demi-tons_rgb.png')}}" alt="picto-patient-diabete" class="car-picto"></a>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<img src="{{asset('assets/img/department-veterinary.jpg')}}" class="d-block w-100" alt="dep-veterinary">
+						<div class="carousel-caption d-none d-md-block">
+							<a class="car-lien" href="{{path('app_veto')}}">
+								<h5 class="car-titre">VETERINARY</h5>
+								<p class="car-p">Distribution d’une gamme importante de produits vétérinaires.</p>
+								<img src="{{asset('assets/img/Picto_Vete_demi-tons_rgb.png')}}" alt="picto-veterinary" class="car-picto"></a>
+						</div>
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+		{% endblock %}
+
+		{% block body %}BLOCK BODY
+		{% endblock %}
+
+
+		{# FOOTER #}
+		<div>
+			<footer class="ft-footer">
+				<div class="ft-certificat-iso pb-3">
+					<img class="ft-iso" src="{{asset('assets/img/certif-iso.png')}}" alt="iso-9001"/>
+				</div>
+				<div class="ft-departement pb-3 text-center">
+					<div class="ft-logo">
+						<a class="ft-image-departement" href="{{path('app_diagnostics')}}"><img class="ft-logo-departement" src="{{asset('assets/img/diagnostics.png')}}" alt="diagnostics"/></a>
+					</div>
+					<div class="ft-info">
+						<a class="ft-nom" href="{{path('app_diagnostics')}}">
+							<strong>DIAGNOSTICS</strong>
+						</a>
+						<a class="ft-phone" href="#">(+352) 482 482-500</a>
+						<a class="ft-mail" href="#">diagnostics@prophac.lu</a>
+					</div>
+				</div>
+				<div class="ft-departement pb-3 text-center">
+					<div class="ft-logo">
+						<a class="ft-image-departement" href="{{path('app_pharma')}}"><img class="ft-logo-departement" src="{{asset('assets/img/pharmaceuticals.png')}}" alt="pharmaceuticals"/></a>
+					</div>
+					<div class="ft-info">
+						<a class="ft-nom" href="{{path('app_pharma')}}">
+							<strong>PHARMACEUTICALS</strong>
+						</a>
+						<a class="ft-phone" href="#">(+352) 482 482-400</a>
+						<a class="ft-mail" href="#">pharma@prophac.lu</a>
+					</div>
+				</div>
+				<div class="ft-departement">
+					<div class="ft-logo">
+						<a class="ft-image-departement" href="{{path('app_patient')}}"><img class="ft-logo-departement" src="{{asset('assets/img/patient-information.png')}}" alt="patient-diabetes"/></a>
+					</div>
+					<div class="ft-info">
+						<a class="ft-nom" href="{{path('app_patient')}}">
+							<strong>PATIENT INFORMATIONS<br/>
+								& DIABETES CARE</strong>
+						</a>
+						<a class="ft-phone" href="#">(+352) 482 482-502</a>
+						<a class="ft-mail" href="#">diagnostics@prophac.lu</a>
+					</div>
+				</div>
+				<div class="ft-departement pb-3">
+					<div class="ft-logo">
+						<a class="ft-image-departement" href="{{path('app_veto')}}"><img class="ft-logo-departement" src="{{asset('assets/img/veterinary.png')}}" alt="veterinary"/></a>
+					</div>
+					<div class="ft-info">
+						<a class="ft-nom" href="{{path('app_veto')}}">
+							<strong>VETERINARY</strong>
+						</a>
+						<a class="ft-phone" href="#">(+352) 482 482-600</a>
+						<a class="ft-mail" href="#">veto@prophac.lu</a>
+					</div>
+				</div>
+			</footer>
+			<div class="mentions text-center py-1">
+				<a href="#">
+					<small class="text-light">Mentions légales</small>
+				</a>
+			</div>
+		</div>
+
+		{# SCRIPT MENU #}
+		<script>
+			// function navbar
+function myFunction() {
+var x = document.getElementById("hd-navbar");
+if (x.className === "hd-nav") {
+x.className += " hd-responsive";
+} else {
+x.className = "hd-nav";
+}
+}
+		</script>
+		{# SCRIPT BOOTSTRAP #}
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+		{# SCRIPT MENU RESPONSIVE #}
+		<script src="{{asset('assets/js/script.js')}}"></script>
+		{# SCRIPT AOS #}
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<script>
+			AOS.init();
+		</script>
+
+		{# BLOCK AJOUT D AUTRES LIENS JS SPECIFIQUES DANS LES PAGES #}
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+
+
+	</body>
 
 </html>

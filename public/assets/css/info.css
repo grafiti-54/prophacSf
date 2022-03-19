@@ -1,3 +1,6 @@
+/* CSS DES INFORMATIONS SUR L ENTREPRISE EN HAUT DU MENU */
+
+
 .info{
     width: 100vw auto;
     height: 5em;
@@ -12,9 +15,9 @@
     /* color: white; */
 }
 
-.bloc{
+/* .bloc{
     margin: 1.2em;
-}
+} */
 
 .sous-bloc1, .sous-bloc2{
     display: flex;

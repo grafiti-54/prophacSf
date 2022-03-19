@@ -20,15 +20,15 @@
     </div>
     {% endif %}
 
-    <h1 class="h3 mb-2 font-weight-normal text-centrer"></h1>
-    <div class="container md-container-fluid form-admin mb-5">
+    
+    <div class="container md-container-fluid form-admin my-5">
         <form class="text-center" method="post">
             <div class="header-form-admin d-flex justify-content-center mb-4">
                 <img class="py-2" src="{{asset('assets/img/form/logo-prophac.svg')}}" alt="logo-prophac-blanc"
                     width="25%">
                 <h3 class="text-light py-5 ps-5">Administrateur</h3>
             </div>
-            <div class="mb-3 d-flex justify-content-center py-2">
+            <div class="mb-3 d-flex justify-content-center">
                 {# <label for="inputEmail">Email</label> #}
                 <input type="email" placeholder="Login" class="form-control w-50" value="{{ last_username }}"
                     name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>

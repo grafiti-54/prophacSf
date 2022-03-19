@@ -23,7 +23,7 @@
 	<section class="container">
 		<div class="row d-flex justify-content-center">
 			{% for collaborateur in collaborateurs %}
-				<div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+				<div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 col-xxl-3" data-aos="zoom-in" data-aos-duration="2000">
 					<div class="card card-annuaire my-3">
 						<img src="../../../uploads/{{ collaborateur.photo}}" alt="photo-{{ collaborateur.nom }}-{{ collaborateur.prenom }}" class="img-fluid"/>
 						<div class="card-body card-info">
@@ -43,7 +43,7 @@
 								</p>
 							</div>
 							<div class="e-mail d-flex">
-								<img src="{{asset('assets/img/logo-annuaire/envelope.svg')}}" alt="icon-envelope" class="mb-3"><a class="ms-3" href="mailto:{{ collaborateur.email }}">{{ collaborateur.email }}</a>
+								<img src="{{asset('assets/img/logo-annuaire/envelope.svg')}}" alt="icon-envelope" class="mb-3"><a href="mailto:{{ collaborateur.email }}"class="ms-3">{{ collaborateur.email }}</a>
 							</div>
 							<div class="telephone d-flex">
 								<img src="{{asset('assets/img/logo-annuaire/telephone-fill.svg')}}" alt="icon-telephone" class="mb-3"><p class="ms-3">{{ collaborateur.numero }}</p>
