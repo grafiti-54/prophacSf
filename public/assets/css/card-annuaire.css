@@ -33,7 +33,9 @@
     margin-top: 30px;
     
 }
-
+.e-mail a{
+    cursor: pointer;
+}
 /* .card-info{
     height: 780px;
 } */

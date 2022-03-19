@@ -13,7 +13,8 @@
 {% endblock %}
 
 {% block body %}
-<a href="{{path('app_pharma.annuaire')}}">Annuaire diagnostics</a>
+<a href="{{path('app_pharma.annuaire')}}">Annuaire pharma</a>
   <!--sous titre-->
-    <div class="container titre-section">Produits</div>
+    <div class="container titre-section">Partenaires</div>
+    {{ dump(partenaires) }}
 {% endblock %}
