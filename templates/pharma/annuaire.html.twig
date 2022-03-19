@@ -15,34 +15,41 @@
 {% endblock %}
 
 {% block body %}
-	
-	<div class="container titre-section">Annuaire Pharmaceuticals</div>
+	{# {{ dump(collaborateurs) }} #}
+	{# Liste des collaborateurs du département pharmaceuticals #}
+	<div class="container titre-section">Annuaire pharmaceuticals</div>
 	<section class="container">
 		<div class="row d-flex justify-content-center">
-			{# Future boucle d'affihage #}
-			<div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
-				<div class="card card-annuaire my-3">
-					<img src="{{asset('assets/img/logo-annuaire/BlasiusR_5578-640x640.jpg')}}" class="img-fluid" alt="photo-profil"/>
-					<div class="card-body ">
-						<div class="name d-flex">
-							<img src="{{asset('assets/img/logo-annuaire/name.svg')}}" alt="icon-identite" class="mb-3"><p class="ms-3 d-block"></p>
-							<p>
-								<span>Name</span>
-								Firstname</p>
-						</div>
-						<div class="fonction d-flex">
-							<img src="{{asset('assets/img/logo-annuaire/valise.svg')}}" alt="icon-valise" class="mb-3"><p class="ms-3">Fonction</p>
-						</div>
-						<div class="e-mail d-flex">
-							<img src="{{asset('assets/img/logo-annuaire/envelope.svg')}}" alt="icon-envelope" class="mb-3"><a class="ms-3">mail@prophac.lu</a>
-						</div>
-						<div class="telephone d-flex">
-							<img src="{{asset('assets/img/logo-annuaire/telephone-fill.svg')}}" alt="icon-telephone" class="mb-3"><p class="ms-3">+352 482 482 550</p>
+			{% for collaborateur in collaborateurs %}
+				<div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+					<div class="card card-annuaire my-3">
+						<img src="../../../uploads/{{ collaborateur.photo}}" alt="photo-{{ collaborateur.nom }}-{{ collaborateur.prenom }}" class="img-fluid"/>
+						<div class="card-body card-info">
+							<div class="name d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/name.svg')}}" alt="icon-identite" class="mb-3"><p class="ms-3 d-block"></p>
+								<p>
+									<span>{{ collaborateur.nom }}</span>
+									{{ collaborateur.prenom }}</p>
+							</div>
+							<div class="fonction d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/valise.svg')}}" alt="icon-valise" class="mb-3">
+								<p class="ms-3">
+									{% for qualifications in collaborateur.qualification %}
+										{{ qualifications}}
+										<br>
+									{% endfor %}
+								</p>
+							</div>
+							<div class="e-mail d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/envelope.svg')}}" alt="icon-envelope" class="mb-3"><a class="ms-3" href="mailto:{{ collaborateur.email }}">{{ collaborateur.email }}</a>
+							</div>
+							<div class="telephone d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/telephone-fill.svg')}}" alt="icon-telephone" class="mb-3"><p class="ms-3">{{ collaborateur.numero }}</p>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			{# Fin boucle d'affihage #}
+			{% endfor %}
 		</div>
 	</section>
 {% endblock %}
