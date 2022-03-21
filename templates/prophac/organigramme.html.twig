@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+{% block title %}Annuaire - Prophac
+{% endblock %}
+{% block illustration %}
+	<div class="departement annuaire-container">
+		<h1 class="titre-departement">ANNUAIRE</h1>
+	</div>
+{% endblock %}
+
+{% block stylesheets %}
+			<link rel="stylesheet" href="{{asset('assets/css/organigramme.css')}}">
+		{% endblock %}
+
+
+{% block body %}
+
+<div class="content mt-4">
+    <figure class="org-chart cf">
+      <ul class="administration">
+        <li>
+          <ul class="director">
+            <li>
+              <!--Direction-->
+              <a href="#"><span class="name">Philippe ZIRNHELD</span><br><span class="role">Managing Director</span></a>
+              <a href="#"><span class="name">Romain BLASIUS, PhD</span><br><span class="role">General Manager</span></a>
+              <ul class="subdirector">
+                <li><a href="#"><span class="name">Romain BLASIUS</span><br><span class="role">Management</span></a></li>
+              </ul>
+              <ul class="departments cf">
+                <li><a href="#"><span class="name">Carlo MAINZ</span><br><span class="role">Administration, Management</span></a></li>
+              <!--departement diagnostique-->
+                <li class="department dep-a">
+                  <a href="#"><img src="{{asset('assets/img/Picto_Diagno_demi-tons_rgb.png')}}" class="mt-3" alt="departement-diagnostics"></a>
+                  <ul class="sections">
+                    <li class="section"><a href="#"><span class="names">Romain BLASIUS</span><br><span class="roles">PhD</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Herminia CHIAIA</span><br><span class="roles">ASSISTANT</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Elisabete PEREIRA</span><br><span class="roles">ASSISTANT</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Andrea DA CRUZ MARQUES</span><br><span class="roles">ASSISTANT</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Emilie GRIMONT</span><br><span class="roles">APPLICATION
+                      SPECIALISTS</span></a></li>
+                    <li class="section"><a href="#"><span class="names">MANGERICH Anne</span><br><span class="roles">APPLICATION
+                      SPECIALISTS</span></a></li>
+                    <li class="section"><a href="#"><span class="names">THOMA Matthieu GUILLERM</span><br><span class="roles">APPLICATION
+                      SPECIALISTS</span></a></li>
+                  </ul>
+                </li>
+                <!--departement pharmacie-->
+                <li class="department dep-b">
+                  <a href="#"><img src="{{asset('assets/img/Picto_Pharma_demi-tons_rgb.png')}}" class="mt-3" alt="departement-pharma"></a>
+                  <ul class="sections">
+                    <li class="section"><a href="#"><span class="names">Romain BLASIUS</span><br><span class="roles">PhD</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Nermina RAMDEDOVIC</span><br><span class="roles">ASSISTANT</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Daniel MONHOVEN</span><br><span class="roles">MEDICAL
+                      INFORMATION</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Emilie DAVID</span><br><span class="roles">MEDICAL
+                      INFORMATION</span></a></li>
+                      <li class="section"><a href="#"><span class="names">Thierry MOUCHETTE</span><br><span class="roles">MEDICAL
+                        INFORMATION</span></a></li>
+                      <li class="section"><a href="#"><span class="names">Vjera SCHMITZ</span><br><span class="roles">MEDICAL
+                        INFORMATION</span></a></li>
+                  </ul>
+                </li>
+                <!--departement patient-diabete-->
+                <li class="department dep-c">
+                  <a href="#"><img src="{{asset('assets/img/Picto_Diabet_demi-tons_rgb.png')}}" class="mt-3" alt="departement-diabet"></a>
+                  <ul class="sections">
+                    <li class="section"><a href="#"><span class="names">Romain BLASIUS</span><br><span class="roles">PhD</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Emilie DAVID</span><br><span class="roles">ASSISTANT</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Elisabete PEREIRA</span><br><span class="roles">ASSISTANT</span></a></li>
+                  </ul>
+                </li>
+                <!--departement veterinaire-->
+                <li class="department dep-d">
+                  <a href="#"><img src="{{asset('assets/img/Picto_Vete_demi-tons_rgb.png')}}" class="mt-3" alt="departement-veto"></a>
+                  <ul class="sections">
+                    <li class="section"><a href="#"><span class="names">Marianne LEQUEUX</span><br><span class="roles">VETERINARY</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Virginie FIEVEZ</span><br><span class="roles">VETERINARY</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Sylvie GEORGE</span><br><span class="roles">ASSISTANT</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Magali LARCHER</span><br><span class="roles">ASSISTANT</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Sandra BERCHEM</span><br><span class="roles">ASSISTANT</span></a></li>
+                  </ul>
+                </li>
+                <!--Service technique-->
+                <li class="department dep-e">
+                  <a href="#"><span>SERVICE TECHNIQUE</span></a>
+                  <ul class="sections">
+                    <li class="section"><a href="#"><span class="names">Rick POZZOBON</span><br><span class="roles">Service Manager</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Serge LUCAS</span><br><span class="roles">Service Engineer</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Jacques MARX</span><br><span class="roles">Service Engineer</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Marco CASTELLANI</span><br><span class="roles">Service Engineer</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Christopher SPORRER</span><br><span class="roles">Service Engineer</span></a></li>
+                  </ul>
+                </li>
+                <!--Colaborateurs prophac-->
+                <li class="department dep-f">
+                  <a href="#"><span><img class="logo-organigramme" src="{{asset('assets/img/logo-prophac.svg')}}" alt="logo-prophac"></span></a>
+                  <ul class="sections">
+                    <li class="section"><a href="#"><span class="names">Vincent LALLEMAND</span><br><span class="roles">IT & ISO 9001</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Christian VIKLOVSKI</span><br><span class="roles">LOGISTICS</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Nermina RAMDECOVIC</span><br><span class="roles">COMMUNICATION</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Emilie GRIMOND</span><br><span class="roles">PHARMACIST</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Vjera SCHMITZ</span><br><span class="roles">PHARMACO-VIGILANCE</span></a></li>
+                  </ul>
+                </li>
+                <li class="department dep-g">
+                  <a href="#"><span>SERVICE LOGISTIQUE</span></a>
+                  <ul class="sections">
+                    <li class="section"><a href="#"><span class="names">Christian VIKLOVSZKI</span><br><span class="roles">Responsable Logistique</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Karine BOHN</span><br><span class="roles">Service Logistics</span></a></li>
+                    <li class="section"><a href="#"><span class="names">David VIOT</span><br><span class="roles">Service Logistics</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Jean-Christopher HASCHER</span><br><span class="roles">Service Logistics</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Jonathan RIEUBLANC</span><br><span class="roles">Service Logistics</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Chris SCHUMACHER</span><br><span class="roles">Service Logistics</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Richard ALVES QUEIROS</span><br><span class="roles">Service Logistics</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Julien MERRA</span><br><span class="roles">Service Logistics</span></a></li>
+                    <li class="section"><a href="#"><span class="names">Sylvain CESAR</span><br><span class="roles">Service Logistics</span></a></li>
+                    
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </figure>
+  </div>
+
+{% endblock %}
