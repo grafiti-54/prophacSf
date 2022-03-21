@@ -107,3 +107,8 @@ figcaption p{
 .card-perso:hover::after {
     transform: scaleY(1)
 }
+
+.logo-partenaire{
+    height: 150px;
+    width: 150px;
+}

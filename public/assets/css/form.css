@@ -46,6 +46,21 @@
     font-size: 0.9em;
 }
 
+.btn-danger:hover{
+    color: white !important;
+    background-color: red !important;
+}
+
+.btn-success:hover{
+    color: white !important;
+    background-color: green !important;
+}
+
+.btn-warning{
+    color: orange !important;
+    background-color: white !important;
+}
+
 /* Formulaire d'ajout CRUD */
 .form-new-prophac{
     background-color: rgb(207, 216, 240) !important;

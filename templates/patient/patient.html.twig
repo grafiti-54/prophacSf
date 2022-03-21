@@ -15,8 +15,39 @@
   <!--sous titre-->
   <a href="{{path('app_patient.annuaire')}}">Annuaire patient</a>
     <div class="container titre-section">Produits</div>
-    {# liste des produits #}
-    {{ dump(produits) }}
+    {# liste des produits du département patient information & diabetes care #}
+    <section class="py-4 my-3">
+        <div class="container">
+            <div class="row">
+              {# {{ dump(produits) }} #}
+            {% for produit in produits %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-perso my-3">
+                        <img class="image-produit" src="../../../uploads/{{ produit.photo}}" class="img-fluid" alt="photo-{{ produit.nom }} " />
+                        <figcaption class="overlay">
+                            <p> {{ produit.description }} </p>
+                        </figcaption>
+                        <div class="card-body text-center">
+                            <a href="{{ produit.lien }} " target="_blank" class="btn btn-produit">{{ produit.nom }}</a>
+                        </div>
+                    </div>
+                </div>
+        {% endfor %}
+            </div>
+        </div>
+    </section>
+    {# Liste des partenaire du département patients & informations diabetes #}
     <div class="container titre-section">Partenaires</div>
-    {{ dump(partenaires) }}
+    {# {{ dump(partenaires) }} #}
+	<div class="container">
+		<div class="row text-center text-lg-start">
+			{% for partenaire in partenaires %}
+				<div class="col-lg-3 col-md-4 col-6">
+					<a href="{{ partenaire.siteInternet}}" target="_blank" class="d-block mb-4 h-100">
+						<img class="logo-partenaire" src="../../../uploads/{{ partenaire.logo}}" alt="logo-{{ partenaire.nom}}">
+					</a>
+				</div>
+        {% endfor %}
+			</div>
+	</div>
 {% endblock %}

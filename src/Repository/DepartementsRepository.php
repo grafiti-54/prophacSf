@@ -46,6 +46,17 @@ class DepartementsRepository extends ServiceEntityRepository
         }
     }
 
+
+    // public function findArticleByDepartement($id)
+    // {
+    //     $qb = $this->createQueryBuilder('p')
+    //         ->join('p.departement', 'd')
+    //         ->where('d.id = :id')
+    //         ->setParameter('id', $id)
+    //     ;
+    //     return $qb->getQuery()->getResult();
+    // }
+
     // public function produitParDepartement(ManagerRegistry $doctrine,int $id): ?Produits
     // {
         

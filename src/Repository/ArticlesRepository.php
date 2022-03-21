@@ -45,6 +45,18 @@ class ArticlesRepository extends ServiceEntityRepository
         }
     }
 
+    public function articleByIdDepartement($value)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.departement = :val')
+            ->setParameter('val', $value)
+            ->orderBy('a.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+  
     // /**
     //  * @return Articles[] Returns an array of Articles objects
     //  */
