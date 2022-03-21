@@ -1,0 +1,369 @@
+{% extends 'base.html.twig' %}
+{% block title %}Annuaire - Prophac
+{% endblock %}
+{% block illustration %}
+	<div class="departement annuaire-container">
+		<h1 class="titre-departement">ANNUAIRE</h1>
+	</div>
+{% endblock %}
+
+{% block body %}
+
+<div class="container titre-section">Direction</div>
+<section class="container">
+		<div class="row d-flex justify-content-center">
+			{% for collaborateur in direction %}
+				<div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 col-xxl-3" data-aos="zoom-in" data-aos-duration="2000">
+					<div class="card card-annuaire my-3">
+						<img src="../../../uploads/{{ collaborateur.photo}}" alt="photo-{{ collaborateur.nom }}-{{ collaborateur.prenom }}" class="img-fluid"/>
+						<div class="card-body card-info">
+							<div class="name d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/name.svg')}}" alt="icon-identite" class="mb-3"><p class="ms-3 d-block"></p>
+								<p>
+									<span>{{ collaborateur.nom }}</span>
+									{{ collaborateur.prenom }}
+								</p>
+							</div>
+							<div class="fonction d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/valise.svg')}}" alt="icon-valise" class="mb-3">
+								<p class="ms-3">
+									{% for qualifications in collaborateur.qualification %}
+										{{ qualifications}}
+									{% endfor %}
+								</p>
+							</div>
+							<div class="e-mail d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/envelope.svg')}}" alt="icon-envelope" class="mb-3"><a href="mailto:{{ collaborateur.email }}"class="ms-3">{{ collaborateur.email }}</a>
+							</div>
+							<div class="telephone d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/telephone-fill.svg')}}" alt="icon-telephone" class="mb-3"><p class="ms-3">{{ collaborateur.numero }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+<div class="container titre-section">Accueil</div>
+<section class="container">
+		<div class="row d-flex justify-content-center">
+			{% for collaborateur in accueil %}
+				<div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 col-xxl-3" data-aos="zoom-in" data-aos-duration="2000">
+					<div class="card card-annuaire my-3">
+						<img src="../../../uploads/{{ collaborateur.photo}}" alt="photo-{{ collaborateur.nom }}-{{ collaborateur.prenom }}" class="img-fluid"/>
+						<div class="card-body card-info">
+							<div class="name d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/name.svg')}}" alt="icon-identite" class="mb-3"><p class="ms-3 d-block"></p>
+								<p>
+									<span>{{ collaborateur.nom }}</span>
+									{{ collaborateur.prenom }}
+								</p>
+							</div>
+							<div class="fonction d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/valise.svg')}}" alt="icon-valise" class="mb-3">
+								<p class="ms-3">
+									{% for qualifications in collaborateur.qualification %}
+										{{ qualifications}}
+									{% endfor %}
+								</p>
+							</div>
+							<div class="e-mail d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/envelope.svg')}}" alt="icon-envelope" class="mb-3"><a href="mailto:{{ collaborateur.email }}"class="ms-3">{{ collaborateur.email }}</a>
+							</div>
+							<div class="telephone d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/telephone-fill.svg')}}" alt="icon-telephone" class="mb-3"><p class="ms-3">{{ collaborateur.numero }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+<div class="container titre-section">Diagnostics</div>
+<section class="container">
+		<div class="row d-flex justify-content-center">
+			{% for collaborateur in diagnostic %}
+				<div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 col-xxl-3" data-aos="zoom-in" data-aos-duration="2000">
+					<div class="card card-annuaire my-3">
+						<img src="../../../uploads/{{ collaborateur.photo}}" alt="photo-{{ collaborateur.nom }}-{{ collaborateur.prenom }}" class="img-fluid"/>
+						<div class="card-body card-info">
+							<div class="name d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/name.svg')}}" alt="icon-identite" class="mb-3"><p class="ms-3 d-block"></p>
+								<p>
+									<span>{{ collaborateur.nom }}</span>
+									{{ collaborateur.prenom }}
+								</p>
+							</div>
+							<div class="fonction d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/valise.svg')}}" alt="icon-valise" class="mb-3">
+								<p class="ms-3">
+									{% for qualifications in collaborateur.qualification %}
+										{{ qualifications}}
+									{% endfor %}
+								</p>
+							</div>
+							<div class="e-mail d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/envelope.svg')}}" alt="icon-envelope" class="mb-3"><a href="mailto:{{ collaborateur.email }}"class="ms-3">{{ collaborateur.email }}</a>
+							</div>
+							<div class="telephone d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/telephone-fill.svg')}}" alt="icon-telephone" class="mb-3"><p class="ms-3">{{ collaborateur.numero }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+<div class="container titre-section">Service technique</div>
+<section class="container">
+		<div class="row d-flex justify-content-center">
+			{% for collaborateur in technique %}
+				<div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 col-xxl-3" data-aos="zoom-in" data-aos-duration="2000">
+					<div class="card card-annuaire my-3">
+						<img src="../../../uploads/{{ collaborateur.photo}}" alt="photo-{{ collaborateur.nom }}-{{ collaborateur.prenom }}" class="img-fluid"/>
+						<div class="card-body card-info">
+							<div class="name d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/name.svg')}}" alt="icon-identite" class="mb-3"><p class="ms-3 d-block"></p>
+								<p>
+									<span>{{ collaborateur.nom }}</span>
+									{{ collaborateur.prenom }}
+								</p>
+							</div>
+							<div class="fonction d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/valise.svg')}}" alt="icon-valise" class="mb-3">
+								<p class="ms-3">
+									{% for qualifications in collaborateur.qualification %}
+										{{ qualifications}}
+									{% endfor %}
+								</p>
+							</div>
+							<div class="e-mail d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/envelope.svg')}}" alt="icon-envelope" class="mb-3"><a href="mailto:{{ collaborateur.email }}"class="ms-3">{{ collaborateur.email }}</a>
+							</div>
+							<div class="telephone d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/telephone-fill.svg')}}" alt="icon-telephone" class="mb-3"><p class="ms-3">{{ collaborateur.numero }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+<div class="container titre-section">Phamaceutials</div>
+<section class="container">
+		<div class="row d-flex justify-content-center">
+			{% for collaborateur in pharma %}
+				<div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 col-xxl-3" data-aos="zoom-in" data-aos-duration="2000">
+					<div class="card card-annuaire my-3">
+						<img src="../../../uploads/{{ collaborateur.photo}}" alt="photo-{{ collaborateur.nom }}-{{ collaborateur.prenom }}" class="img-fluid"/>
+						<div class="card-body card-info">
+							<div class="name d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/name.svg')}}" alt="icon-identite" class="mb-3"><p class="ms-3 d-block"></p>
+								<p>
+									<span>{{ collaborateur.nom }}</span>
+									{{ collaborateur.prenom }}
+								</p>
+							</div>
+							<div class="fonction d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/valise.svg')}}" alt="icon-valise" class="mb-3">
+								<p class="ms-3">
+									{% for qualifications in collaborateur.qualification %}
+										{{ qualifications}}
+									{% endfor %}
+								</p>
+							</div>
+							<div class="e-mail d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/envelope.svg')}}" alt="icon-envelope" class="mb-3"><a href="mailto:{{ collaborateur.email }}"class="ms-3">{{ collaborateur.email }}</a>
+							</div>
+							<div class="telephone d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/telephone-fill.svg')}}" alt="icon-telephone" class="mb-3"><p class="ms-3">{{ collaborateur.numero }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+<div class="container titre-section">Patients information & diabetes care</div>
+<section class="container">
+		<div class="row d-flex justify-content-center">
+			{% for collaborateur in patient %}
+				<div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 col-xxl-3" data-aos="zoom-in" data-aos-duration="2000">
+					<div class="card card-annuaire my-3">
+						<img src="../../../uploads/{{ collaborateur.photo}}" alt="photo-{{ collaborateur.nom }}-{{ collaborateur.prenom }}" class="img-fluid"/>
+						<div class="card-body card-info">
+							<div class="name d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/name.svg')}}" alt="icon-identite" class="mb-3"><p class="ms-3 d-block"></p>
+								<p>
+									<span>{{ collaborateur.nom }}</span>
+									{{ collaborateur.prenom }}
+								</p>
+							</div>
+							<div class="fonction d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/valise.svg')}}" alt="icon-valise" class="mb-3">
+								<p class="ms-3">
+									{% for qualifications in collaborateur.qualification %}
+										{{ qualifications}}
+									{% endfor %}
+								</p>
+							</div>
+							<div class="e-mail d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/envelope.svg')}}" alt="icon-envelope" class="mb-3"><a href="mailto:{{ collaborateur.email }}"class="ms-3">{{ collaborateur.email }}</a>
+							</div>
+							<div class="telephone d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/telephone-fill.svg')}}" alt="icon-telephone" class="mb-3"><p class="ms-3">{{ collaborateur.numero }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+<div class="container titre-section">Veterinary</div>
+<section class="container">
+		<div class="row d-flex justify-content-center">
+			{% for collaborateur in veterinary %}
+				<div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 col-xxl-3" data-aos="zoom-in" data-aos-duration="2000">
+					<div class="card card-annuaire my-3">
+						<img src="../../../uploads/{{ collaborateur.photo}}" alt="photo-{{ collaborateur.nom }}-{{ collaborateur.prenom }}" class="img-fluid"/>
+						<div class="card-body card-info">
+							<div class="name d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/name.svg')}}" alt="icon-identite" class="mb-3"><p class="ms-3 d-block"></p>
+								<p>
+									<span>{{ collaborateur.nom }}</span>
+									{{ collaborateur.prenom }}
+								</p>
+							</div>
+							<div class="fonction d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/valise.svg')}}" alt="icon-valise" class="mb-3">
+								<p class="ms-3">
+									{% for qualifications in collaborateur.qualification %}
+										{{ qualifications}}
+									{% endfor %}
+								</p>
+							</div>
+							<div class="e-mail d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/envelope.svg')}}" alt="icon-envelope" class="mb-3"><a href="mailto:{{ collaborateur.email }}"class="ms-3">{{ collaborateur.email }}</a>
+							</div>
+							<div class="telephone d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/telephone-fill.svg')}}" alt="icon-telephone" class="mb-3"><p class="ms-3">{{ collaborateur.numero }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+<div class="container titre-section">Communication</div>
+<section class="container">
+		<div class="row d-flex justify-content-center">
+			{% for collaborateur in communication %}
+				<div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 col-xxl-3" data-aos="zoom-in" data-aos-duration="2000">
+					<div class="card card-annuaire my-3">
+						<img src="../../../uploads/{{ collaborateur.photo}}" alt="photo-{{ collaborateur.nom }}-{{ collaborateur.prenom }}" class="img-fluid"/>
+						<div class="card-body card-info">
+							<div class="name d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/name.svg')}}" alt="icon-identite" class="mb-3"><p class="ms-3 d-block"></p>
+								<p>
+									<span>{{ collaborateur.nom }}</span>
+									{{ collaborateur.prenom }}
+								</p>
+							</div>
+							<div class="fonction d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/valise.svg')}}" alt="icon-valise" class="mb-3">
+								<p class="ms-3">
+									{% for qualifications in collaborateur.qualification %}
+										{{ qualifications}}
+									{% endfor %}
+								</p>
+							</div>
+							<div class="e-mail d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/envelope.svg')}}" alt="icon-envelope" class="mb-3"><a href="mailto:{{ collaborateur.email }}"class="ms-3">{{ collaborateur.email }}</a>
+							</div>
+							<div class="telephone d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/telephone-fill.svg')}}" alt="icon-telephone" class="mb-3"><p class="ms-3">{{ collaborateur.numero }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+<div class="container titre-section">Service informatique / ISO 9001:2022</div>
+<section class="container">
+		<div class="row d-flex justify-content-center">
+			{% for collaborateur in informatique %}
+				<div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 col-xxl-3" data-aos="zoom-in" data-aos-duration="2000">
+					<div class="card card-annuaire my-3">
+						<img src="../../../uploads/{{ collaborateur.photo}}" alt="photo-{{ collaborateur.nom }}-{{ collaborateur.prenom }}" class="img-fluid"/>
+						<div class="card-body card-info">
+							<div class="name d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/name.svg')}}" alt="icon-identite" class="mb-3"><p class="ms-3 d-block"></p>
+								<p>
+									<span>{{ collaborateur.nom }}</span>
+									{{ collaborateur.prenom }}
+								</p>
+							</div>
+							<div class="fonction d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/valise.svg')}}" alt="icon-valise" class="mb-3">
+								<p class="ms-3">
+									{% for qualifications in collaborateur.qualification %}
+										{{ qualifications}}
+									{% endfor %}
+								</p>
+							</div>
+							<div class="e-mail d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/envelope.svg')}}" alt="icon-envelope" class="mb-3"><a href="mailto:{{ collaborateur.email }}"class="ms-3">{{ collaborateur.email }}</a>
+							</div>
+							<div class="telephone d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/telephone-fill.svg')}}" alt="icon-telephone" class="mb-3"><p class="ms-3">{{ collaborateur.numero }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+<div class="container titre-section">Service logistique</div>
+<section class="container">
+		<div class="row d-flex justify-content-center">
+			{% for collaborateur in logistique %}
+				<div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 col-xxl-3" data-aos="zoom-in" data-aos-duration="2000">
+					<div class="card card-annuaire my-3">
+						<img src="../../../uploads/{{ collaborateur.photo}}" alt="photo-{{ collaborateur.nom }}-{{ collaborateur.prenom }}" class="img-fluid"/>
+						<div class="card-body card-info">
+							<div class="name d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/name.svg')}}" alt="icon-identite" class="mb-3"><p class="ms-3 d-block"></p>
+								<p>
+									<span>{{ collaborateur.nom }}</span>
+									{{ collaborateur.prenom }}
+								</p>
+							</div>
+							<div class="fonction d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/valise.svg')}}" alt="icon-valise" class="mb-3">
+								<p class="ms-3">
+									{% for qualifications in collaborateur.qualification %}
+										{{ qualifications}}
+									{% endfor %}
+								</p>
+							</div>
+							<div class="e-mail d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/envelope.svg')}}" alt="icon-envelope" class="mb-3"><a href="mailto:{{ collaborateur.email }}"class="ms-3">{{ collaborateur.email }}</a>
+							</div>
+							<div class="telephone d-flex">
+								<img src="{{asset('assets/img/logo-annuaire/telephone-fill.svg')}}" alt="icon-telephone" class="mb-3"><p class="ms-3">{{ collaborateur.numero }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+
+
+
+
+
+
+
+{% endblock %}
