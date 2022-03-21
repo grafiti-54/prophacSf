@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Articles;
 use App\Entity\Departements;
 use Doctrine\DBAL\Types\StringType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -28,7 +29,7 @@ class Articles1Type extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('contenu', TextareaType::class, [
+            ->add('contenu', CKEditorType::class, [
                 'help_html' => true,
                 'label' => "Saisir le texte de l'article",
                 'attr' => [

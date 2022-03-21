@@ -14,7 +14,18 @@
 
 {% block body %}
 <a href="{{path('app_pharma.annuaire')}}">Annuaire pharma</a>
-  <!--sous titre-->
+  {# Liste des partenaire du département pharmaceuticals #}
     <div class="container titre-section">Partenaires</div>
-    {{ dump(partenaires) }}
+    {# {{ dump(partenaires) }} #}
+	<div class="container">
+		<div class="row text-center text-lg-start">
+			{% for partenaire in partenaires %}
+				<div class="col-lg-3 col-md-4 col-6">
+					<a href="{{ partenaire.siteInternet}}" target="_blank" class="d-block mb-4 h-100">
+						<img class="logo-partenaire" src="../../../uploads/{{ partenaire.logo}}" alt="logo-{{partenaire.nom}}">
+					</a>
+				</div>
+        {% endfor %}
+			</div>
+	</div>
 {% endblock %}

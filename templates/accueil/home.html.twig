@@ -3,12 +3,15 @@
 {% block body %}
 {# carousel #}
 {# {{ dump(produits) }} #}
-{# {{ dump(departement) }} #}
+{{ dump(articles) }}
+
+
+{# {% autoescape false %} {{ article.contenu}}  {% endautoescape %} #}
 
  {# sous titre pour la section des produits #}
     <div class="container sous-titre">Produits</div>
 
-    {# exemple card produit #}
+    {# produit de la page d'accueil #}
     <section class="py-4 my-5">
         <div class="container">
             <div class="row">
