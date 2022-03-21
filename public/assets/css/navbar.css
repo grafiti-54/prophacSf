@@ -234,11 +234,11 @@ header.hd-responsive > a{
     
   }
 
-@media(max-width:915px){
+/* @media(max-width:915px){
   #carouselExampleDark{
     height: 25vh;
   }
-}
+} */
 @media(max-width:770px){
 .carousel-indicators{
     visibility: hidden;
@@ -251,3 +251,14 @@ header.hd-responsive > a{
 }
 
 }
+
+/* .logo-header{
+    height: 150px;
+    width: 150px;
+}
+
+@media(max-width: 770px){
+    .logo-header{
+        visibility: hidden;
+    }
+} */

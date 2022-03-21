@@ -15,23 +15,36 @@
 }
 /* image de présentation des 4 départements */
 .diagnostics-container{ 
-    background-image: url("../img/departement-diagnostics.jpg");
+    background-image: url("../img/diagnostics.jpg");
+    background-size: cover;
+    background-blend-mode: darken;
 }
 
 .pharma-container{
-    background-image: url("../img/department-pharmaceuticals.jpg");
+    background-image: url("../img/pharma.jpg");
+    background-blend-mode: darken;
+    background-size: cover;
 }
 
 .patient-container{
-    background-image: url("../img/department-patient-information.jpg");
+    background-image: url("../img/diabete.jpeg");
+    background-blend-mode:color-burn;
+    background-size: cover;
 }
 
 .veto-container{
     background-image: url("../img/department-veterinary.jpg");
 }
+
+/* image de présentation de l'annuaire */
+.annuaire-container{
+    background-image: url("../img/contact.jpg");
+}
+
+
 /* bloc de présentation des 4 départements */
-.diagnostics-container, .pharma-container, .patient-container, .veto-container{ 
-    height: 45vh;
+.diagnostics-container, .pharma-container, .patient-container, .veto-container, .annuaire-container{ 
+    height: 55vh;
     width: 100vw auto;
     background-position: center;
     background-size: cover;
@@ -68,5 +81,17 @@
     }
     .titre-departement{
         margin: 2em;
+    }
+}
+
+.logo-accueil{
+    width: 250px;
+    height: 250px;
+}
+
+@media(max-width: 700px){
+    .logo-accueil{
+        width: 150px;
+        height: 150px;
     }
 }

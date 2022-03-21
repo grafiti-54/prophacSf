@@ -1,34 +1,57 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{# carousel #}
-{# {{ dump(produits) }} #}
-{{ dump(articles) }}
 
+	<div class="container mt-2">
+		<div class="row text-center text-lg-start">
+			<div class="col-lg-3 col-md-4 col-6">
+				<a href="{{path('app_diagnostics')}}" target="_blank" class="d-block mb-4 h-100">
+					<img class="logo-accueil" src="{{asset('assets/img/diagnostics-1.png')}}" alt="picto-diagnostics">
+				</a>
+			</div>
+            <div class="col-lg-3 col-md-4 col-6">
+				<a href="{{path('app_pharma')}}" target="_blank" class="d-block mb-4 h-100">
+					<img class="logo-accueil" src="{{asset('assets/img/pharmaceuticals-1.png')}}" alt="picto-pharma">
+				</a>
+			</div>
+            <div class="col-lg-3 col-md-4 col-6">
+				<a href="{{path('app_patient')}}" target="_blank" class="d-block mb-4 h-100">
+					<img class="logo-accueil" src="{{asset('assets/img/patient-information-1.png')}}" alt="picto-patient">
+				</a>
+			</div>
+            <div class="col-lg-3 col-md-4 col-6">
+				<a href="{{path('app_veto')}}" target="_blank" class="d-block mb-4 h-100">
+					<img class="logo-accueil" src="{{asset('assets/img/veterinary-1.png')}}" alt="picto-veto">
+				</a>
+			</div>
+		</div>
+	</div>
+	{{ dump(articles) }}
 
-{# {% autoescape false %} {{ article.contenu}}  {% endautoescape %} #}
-
- {# sous titre pour la section des produits #}
-    <div class="container sous-titre">Produits</div>
-
-    {# produit de la page d'accueil #}
-    <section class="py-4 my-5">
-        <div class="container">
-            <div class="row">
-            {% for produit in produits %}
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-perso my-3">
-                        <img class="image-produit" src="../../../uploads/{{ produit.photo}}" class="img-fluid" alt="photo-{{ produit.nom }} " />
-                        <figcaption class="overlay">
-                            <p> {{ produit.description }} </p>
-                        </figcaption>
-                        <div class="card-body text-center">
-                            <a href="{{ produit.lien }} " target="_blank" class="btn btn-produit">{{ produit.nom }}</a>
-                        </div>
-                    </div>
-                </div>
-        {% endfor %}
-            </div>
-        </div>
-    </section>
+	{# {% autoescape false %} {{ article.contenu}}  {% endautoescape %} #}
+	{# sous titre pour la section des produits #}<div class="container sous-titre"> Produits</div>
+	{# produit de la page d'accueil #}
+	<section class="py-4 my-5">
+		<div class="container">
+			<div
+				class="row">
+				{# {{ dump(produits) }} #}
+				{% for produit in produits %}
+					<div class="col-md-6 col-lg-4">
+						<div class="card card-perso my-3">
+							<img class="image-produit" src="../../../uploads/{{ produit.photo}}" class="img-fluid" alt="photo-{{ produit.nom }} "/>
+							<figcaption class="overlay">
+								<p>
+									{{ produit.description }}
+								</p>
+							</figcaption>
+							<div class="card-body text-center">
+								<a href="{{ produit.lien }} " target="_blank" class="btn btn-produit">{{ produit.nom }}</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
 {% endblock %}
