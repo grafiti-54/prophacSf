@@ -3,6 +3,9 @@
 {% block title %}Admin - Prophac{% endblock %}
 
 {% block PageTitle %} Détail de l'article {{ article.titre }}{% endblock %}
+{% block stylesheets %}
+			<link rel="stylesheet" href="{{asset('assets/css/article.css')}}">
+		{% endblock %}
 
 {% block body %}
     <h1>Articles</h1>
@@ -23,7 +26,7 @@
             </tr>
             <tr>
                 <th>Contenu</th>
-                <td>{{ article.contenu }}</td>
+                <td>{% autoescape false %} {{ article.contenu}}  {% endautoescape %}</td>
             </tr>
             <tr>
                 <th>CreatedDate</th>
@@ -32,7 +35,7 @@
             <tr>
                 <th>Illustration</th>
                 {# <td>{{ article.illustration }}</td> #}
-                <td class="" ><img src="../../../uploads/{{ article.illustration}}" alt="{{article.titreIllustration}}" class="img-fluid" width="50%"></td>
+                <td class="" ><img src="../../../uploads/{{ article.illustration}}" alt="{{article.titreIllustration}}" class="img-fluid" width="350px"></td>
             </tr>
             <tr>
                 <th>TitreIllustration</th>

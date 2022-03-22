@@ -36,14 +36,23 @@
     background-image: url("../img/department-veterinary.jpg");
 }
 
-/* image de présentation de l'annuaire */
+/* image de présentation de l'annuaire complet */
 .annuaire-container{
     background-image: url("../img/contact.jpg");
 }
 
+/*image de présentation de l'organigramme*/
+.organigramme-container{
+    background-image: url("../img/organigramme.jpg");
+}
+/*image de présentation pour la page historique*/
+.historique-container{
+    background-image: url("../img/organigramme.jpg");
+}
+
 
 /* bloc de présentation des 4 départements */
-.diagnostics-container, .pharma-container, .patient-container, .veto-container, .annuaire-container{ 
+.diagnostics-container, .pharma-container, .patient-container, .veto-container, .annuaire-container, .organigramme-container, .historique-container{ 
     height: 55vh;
     width: 100vw auto;
     background-position: center;

@@ -11,7 +11,8 @@
     background-image: url("../img/footer.jpg"); 
     background-repeat: no-repeat;
     /* background-size: cover;  */
-    background-color: rgb(0, 51, 160); /* après background-image permet d'avoir un fond d'ecran en cas d'image manquante*/
+    background-color: rgb(0, 51, 160); 
+    /* après background-image permet d'avoir un fond d'ecran en cas d'image manquante*/
     background-position: right;
 }
 
