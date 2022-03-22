@@ -50,9 +50,15 @@
     background-image: url("../img/organigramme.jpg");
 }
 
+/*image de présentation pour la page iso-9001*/
+.iso-container{
+    background-image: url("../img/organigramme.jpg");
+    background-size:cover;
+    
+}
 
 /* bloc de présentation des 4 départements */
-.diagnostics-container, .pharma-container, .patient-container, .veto-container, .annuaire-container, .organigramme-container, .historique-container{ 
+.diagnostics-container, .pharma-container, .patient-container, .veto-container, .annuaire-container, .organigramme-container, .historique-container, .iso-container{ 
     height: 55vh;
     width: 100vw auto;
     background-position: center;
