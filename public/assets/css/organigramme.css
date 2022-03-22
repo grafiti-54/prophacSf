@@ -9,12 +9,12 @@
 }
 
 .content{
-    height: 200vh;
+    height: 250vh;
 }
 
 @media screen and (max-width: 830px){
     .content{
-        height: 515vh;
+        height: 565vh;
     }
 }
 

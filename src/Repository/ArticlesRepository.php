@@ -56,6 +56,18 @@ class ArticlesRepository extends ServiceEntityRepository
         ;
     }
 
+    public function FindOneArticleById($id)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.id = :val')
+            ->setParameter('val', $id)
+            ->orderBy('a.id', 'ASC')
+            ->getQuery()
+            ->getOneOrNullResult();
+        ;
+    }
+
+
   
     // /**
     //  * @return Articles[] Returns an array of Articles objects
