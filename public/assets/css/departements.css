@@ -13,10 +13,27 @@
     box-shadow: rgb(38, 57, 77) 0px 20px 15px -10px;
     margin-top: 30px;
 }
+.departement{
+    height: 55vh !important;
+}
+
+@media(max-width: 1000px){
+    .departement{
+        height: 35vh !important;
+    }
+}
+
+@media(max-width: 620px){
+    .departement{
+        height: 25vh !important;
+    }
+}
+
+
+
 /* image de présentation des 4 départements */
 .diagnostics-container{ 
     background-image: url("../img/diagnostics.jpg");
-    background-size: cover;
     background-blend-mode: darken;
 }
 
@@ -24,6 +41,7 @@
     background-image: url("../img/pharma.jpg");
     background-blend-mode: darken;
     background-size: cover;
+    background-position:center;
 }
 
 .patient-container{
@@ -48,6 +66,7 @@
 /*image de présentation pour la page historique*/
 .historique-container{
     background-image: url("../img/organigramme.jpg");
+    background-size: cover;
 }
 
 /*image de présentation pour la page iso-9001*/
@@ -62,8 +81,10 @@
 
 /* bloc de présentation des 4 départements */
 .diagnostics-container, .pharma-container, .patient-container, .veto-container, .annuaire-container, .organigramme-container, .historique-container, .iso-container, .contact-container{ 
-    height: 55vh;
-    width: 100vw auto;
+    width: 100%;
+    height: auto;
+    /* height: 55vh;
+    width: 100vw auto; */
     background-position: center;
     background-size: cover;
     display: flex;
@@ -100,6 +121,10 @@
     .titre-departement{
         margin: 2em;
     }
+    .logo-accueil{
+        width: 150px;
+        height: 150px;
+    }
 }
 
 .logo-accueil{
@@ -107,9 +132,3 @@
     height: 250px;
 }
 
-@media(max-width: 700px){
-    .logo-accueil{
-        width: 150px;
-        height: 150px;
-    }
-}

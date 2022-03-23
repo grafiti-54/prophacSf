@@ -77,7 +77,7 @@ header .hd-dropdown-1:hover .hd-content{ /* hover (au survol) du bouton*/
     position: absolute; /* le menu ne bouge pas au survole*/
     background-color: rgba(197, 190, 190, 0.9); /* fond des sous menu*/
     top:120px; /*marge pour affichage du menu plus bas*/
-    width: 120%;
+    width: 152%;
     padding: 15px 2px;
     box-sizing: border-box;
     transition: 1s;

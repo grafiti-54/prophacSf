@@ -7,14 +7,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-// Page certificat iso du site
-class IsoController extends AbstractController
-{
-    #[Route('/prophac/iso', name: 'app_iso')]
+class PolitiqueController extends AbstractController
+{   //Page politique de confidentialité du site
+    #[Route('/prophac/politique-de-confidentialite', name: 'app_politique')]
     public function index(ArticlesRepository $articlesRepository): Response
     {
-        $id = 2; // Correspond à l'id de l'article qui traite du sujet de l'iso:9001
-        return $this->render('prophac/iso-9001.html.twig',[
+        $id = 4; // Correspond à l'id de l'article sur la politique de confidentialité du site
+        return $this->render('prophac/politique.html.twig',[
             'article' => $articlesRepository->FindOneArticleById($id),
         ]);
     }
