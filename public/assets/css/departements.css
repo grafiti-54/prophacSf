@@ -56,9 +56,12 @@
     background-size:cover;
     
 }
+.contact-container{
+    background-image: url("../img/contact.jpg");
+}
 
 /* bloc de présentation des 4 départements */
-.diagnostics-container, .pharma-container, .patient-container, .veto-container, .annuaire-container, .organigramme-container, .historique-container, .iso-container{ 
+.diagnostics-container, .pharma-container, .patient-container, .veto-container, .annuaire-container, .organigramme-container, .historique-container, .iso-container, .contact-container{ 
     height: 55vh;
     width: 100vw auto;
     background-position: center;

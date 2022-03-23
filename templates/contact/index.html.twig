@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+{% block title %}Contact - Prophac
+{% endblock %}
+{% block illustration %}
+	<div class="departement contact-container">
+		<h1 class="titre-departement">CONTACT</h1>
+	</div>
+{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{asset('assets/css/contact.css')}}">
+	<link rel="stylesheet" href="{{asset('assets/css/captcha.css')}}">
+	<script src="{{asset('assets/js/captcha.js')}}"></script>
+{% endblock %}
+
+{% block body %}
+	{# Information de la société à coté du formulaire de contact #}
+	<div class="container my-5">
+		<div class="row g-5">
+			<div class="col-md-5">
+				<div class="d-flex mb-4">
+					<div class="info-contact me-3">
+						<span class="departement-contact">PROPHAC s.à r.l.
+						</span>
+						<p>5, RangweeL-2412 Howald</p>
+						<p>Heures d’ouverture :</p>
+						<p>du lundi au vendredi de 8h00 – 12h00 et de 13h00 – 17h00 sur rendez-vous</p>
+						<p>PARKING GRATUIT Ligne bus: 30</p>
+					</div>
+				</div>
+				<div class="d-flex mb-4">
+					<div class="logo-contact me-3">
+						<img src="{{asset('assets/img/Picto_Diagno_demi-tons_rgb.png')}}" alt="picto-diagnostics" width="70px">
+					</div>
+					<div class="info-contact">
+						<span class="departement-contact">Diagnostics</span>
+						<p class="tel-dep-contact">(+352) 482 482-500</p>
+						<a href="mailto:diagnostic@prophac.lu<">diagnostic@prophac.lu</a>
+					</div>
+				</div>
+				<div class="d-flex mb-4">
+					<div class="logo-contact me-3">
+						<img src="{{asset('assets/img/Picto_Pharma_demi-tons_rgb.png')}}" alt="picto-pharma" width="70px">
+					</div>
+					<div class="info-contact">
+						<span class="departement-contact">Pharmaceuticals</span>
+						<p class="tel-dep-contact">(+352) 482 482-400</p>
+						<a href="mailto:diagnostic@prophac.lu<">pharma@prophac.lu</a>
+					</div>
+				</div>
+				<div class="d-flex mb-4">
+					<div class="logo-contact me-3">
+						<img src="{{asset('assets/img/Picto_Diabet_demi-tons_rgb.png')}}" alt="picto-patient-diabete" width="70px">
+					</div>
+					<div class="info-contact">
+						<span class="departement-contact">Pattient information & diabetes care</span>
+						<p class="tel-dep-contact">(+352) 482 482-502</p>
+						<a href="mailto:diagnostic@prophac.lu<">diagnostics@prophac.lu</a>
+					</div>
+				</div>
+				<div class="d-flex mb-4">
+					<div class="logo-contact me-3">
+						<img src="{{asset('assets/img/Picto_Vete_demi-tons_rgb.png')}}" alt="picto-veterinary" width="70px">
+					</div>
+					<div class="info-contact">
+						<span class="departement-contact">Veterinary</span>
+						<p class="tel-dep-contact">(+352) 482 482-600</p>
+						<a href="mailto:diagnostic@prophac.lu<">veto@prophac.lu</a>
+					</div>
+				</div>
+			</div>
+			{# Formulaire de contact #}
+			<div class="col-md-7">
+				<h1 class="titre-contact mb-3">Contactez-nous</h1>
+				<form>
+					<div class="form-group mb-3">
+						{{ form_start(form) }}
+						{{ form_row(form.nom) }}
+					</div>
+					<div class="form-group mb-3">
+						{{ form_row(form.email) }}
+					</div>
+					<div class="form-group mb-3">
+						{{ form_row(form.sujet) }}
+					</div>
+					<div id="message" class="form-group mb-3">
+						{{ form_row(form.message) }}
+					</div>
+					<div
+						class="validation d-flex justify-content-around">
+						{# Captcha pour envoyer message du formulaire #}
+						<div id="captcha-container" class="container-captcha py-5">
+							<div id="captcha" class="captcha unselectable">
+								<script>
+									createCaptcha();
+								</script>
+							</div>
+							<div class="restart py-2">
+								<a href="#message" onclick="createCaptcha()">Recharger le captcha</a>
+							</div>
+							<div class="input">
+								<input type="text" name="reCaptcha" id="reCaptcha" placeholder="Saisir le captcha"/>
+							</div>
+							{# Message d'erreur du captcha incorrect #}
+							<div id="errCaptcha" class="errmsg"></div>
+							<div>
+								<input class="btn-prophac btn btn-form-admin my-3 px-4" type="button" value="Valider le captcha" onclick="validateCaptcha()"/>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-prophac my-4 px-5" height="20px" id="btn-captcha" hidden onclick="secCaptcha()">Envoyer</button>
+					</div>
+					{{ form_end(form) }}
+				</form>
+			</div>
+		</div>
+		{# Google map de la société #}
+		<div class="container titre-section my-3">Plan</div>
+		<div class="container text-center map-responsive mt-5">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2586.487030050307!2d6.139356715593567!3d49.588564479365715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479548eaf2eaaf31%3A0x24ae81963922dd0e!2sProphac!5e0!3m2!1sen!2sfr!4v1647799994969!5m2!1sen!2sfr" width="800 auto" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+		</div>
+	</div>
+{% endblock %}
