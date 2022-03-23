@@ -12,6 +12,7 @@
             <tr>
                 <th>Id</th>
                 <th>Titre</th>
+                <th>Departement</th>
                 {# <th>Contenu</th> #}
                 <th>CreatedDate</th>
                 {# <th>Illustration</th> #}
@@ -25,6 +26,7 @@
             <tr class="table-{% if loop.index is odd %} list-prophac{% else %} blanc {% endif %}">
                 <td>{{ article.id }}</td>
                 <td>{{ article.titre }}</td>
+                <td>{{ article.departement }}</td>
                 {# <td>{{ article.contenu }}</td> #}
                 <td>{{ article.createdDate ? article.createdDate|date('Y-m-d') : '' }}</td>
                 {# <td class="text-center" ><img src="../../../uploads/{{ article.illustration}}" alt="{{article.titreIllustration}}" class="img-fluid" width="25%"></td> #}

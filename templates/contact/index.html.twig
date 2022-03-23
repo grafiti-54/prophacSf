@@ -18,7 +18,7 @@
 		<div class="row g-5">
 			<div class="col-md-5">
 				<div class="d-flex mb-4">
-					<div class="info-contact me-3">
+					<div class="info-prophac-contact me-3">
 						<span class="departement-contact">PROPHAC s.à r.l.
 						</span>
 						<p>5, RangweeL-2412 Howald</p>
@@ -71,7 +71,6 @@
 			{# Formulaire de contact #}
 			<div class="col-md-7">
 				<h1 class="titre-contact mb-3">Contactez-nous</h1>
-				<form>
 					<div class="form-group mb-3">
 						{{ form_start(form) }}
 						{{ form_row(form.nom) }}
@@ -87,11 +86,10 @@
 					</div>
 					<div
 						class="validation d-flex justify-content-around">
-						{# Captcha pour envoyer message du formulaire #}
 						<div id="captcha-container" class="container-captcha py-5">
 							<div id="captcha" class="captcha unselectable">
 								<script>
-									createCaptcha();
+									createCaptcha();                    
 								</script>
 							</div>
 							<div class="restart py-2">
@@ -100,16 +98,15 @@
 							<div class="input">
 								<input type="text" name="reCaptcha" id="reCaptcha" placeholder="Saisir le captcha"/>
 							</div>
-							{# Message d'erreur du captcha incorrect #}
+							
 							<div id="errCaptcha" class="errmsg"></div>
 							<div>
 								<input class="btn-prophac btn btn-form-admin my-3 px-4" type="button" value="Valider le captcha" onclick="validateCaptcha()"/>
 							</div>
 						</div>
-						<button type="submit" class="btn btn-prophac my-4 px-5" height="20px" id="btn-captcha" hidden onclick="secCaptcha()">Envoyer</button>
+						<button type="submit" class="btn btn-prophac my-4 px-5" height="20px" id="btn-captcha" hidden onclick="secCaptcha()">Envoyer votre message</button>
 					</div>
 					{{ form_end(form) }}
-				</form>
 			</div>
 		</div>
 		{# Google map de la société #}
