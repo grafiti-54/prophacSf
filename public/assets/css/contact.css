@@ -1,0 +1,50 @@
+/* Fichier css de la page du formulaire de contact */
+
+.tel-dep-contact{
+    margin-bottom: 0px;
+}
+
+.departement-contact{
+    font-weight: bold !important;
+    color: rgb(0, 51, 160);
+    text-transform:uppercase;
+}
+
+.info-contact a {
+    text-decoration: none;
+}
+
+.titre-contact{
+    color: rgb(0, 51, 160);
+}
+
+
+.map-responsive {
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+    margin-left: 10%;
+    }
+    
+    .map-responsive iframe {
+    left:0;
+    top:0;
+    height:80%;
+    width:80%;
+    position:absolute;
+}
+
+/*Bouton de validation de formulaire style prophac */
+.btn-prophac{
+    background-color: rgb(0, 51, 160);
+    color: white;
+    border-radius: 25px;
+    height: 40px;
+    
+}
+
+/*Survol bouton style prophac admin */
+.btn-prophac:hover{
+    color:burlywood;
+}
