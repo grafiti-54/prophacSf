@@ -54,6 +54,7 @@ footer a{
         
         height: 85vh;
         background-image: none; 
+        background-color:rgb(0, 51, 160) ;
     }
     .ft-certificat-iso{
         display: none;

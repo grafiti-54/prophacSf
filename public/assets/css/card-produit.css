@@ -112,3 +112,7 @@ figcaption p{
     height: 150px;
     width: 150px;
 }
+
+.logo-partenaire:hover{
+border: 5px solid rgba(0, 51, 160, 0.433);
+}

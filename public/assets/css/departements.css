@@ -34,7 +34,7 @@
 /* image de présentation des 4 départements */
 .diagnostics-container{ 
     background-image: url("../img/diagnostics.jpg");
-    background-blend-mode: darken;
+    
 }
 
 .pharma-container{
@@ -85,8 +85,10 @@
     height: auto;
     /* height: 55vh;
     width: 100vw auto; */
-    background-position: center;
+    background-blend-mode: darken;
     background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -132,3 +134,38 @@
     height: 250px;
 }
 
+/* Cercle de présentation sur la page d'accueil*/
+
+.block {
+    text-align: center;
+    vertical-align: middle;
+}
+.circle {
+    background: linear-gradient(145deg, #003EC5, #002677);
+border-radius: 100%;
+box-shadow: inset 6.61px 6.61px 16px #00277B, inset -6.61px -6.61px 16px #003DC1;
+    border-radius: 200px;
+    color: white;
+    height: 200px;
+    font-weight: bold;
+    width: 200px;
+    display: table;
+    margin: 20px auto;
+}
+
+.circle h2{
+    margin-top: 25%;
+}
+
+.circle p {
+    vertical-align: middle;
+    display: table-cell;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+}
+
+.circle a{
+    text-decoration: none;
+    color: white;
+}

@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Collaborateurs;
-use App\Entity\Partenaires;
-use Doctrine\Persistence\ManagerRegistry;
+use App\Repository\ArticlesRepository;
+use App\Repository\CollaborateursRepository;
+use App\Repository\PartenairesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,36 +14,26 @@ class VetoController extends AbstractController
 {
     //Page veterinary
     #[Route('/', name: 'app_veto')]
-    public function accueilVeto(ManagerRegistry $doctrine): Response
+    public function accueilVeto(PartenairesRepository $partenairesRepository, ArticlesRepository $articlesRepository): Response
     {
-        /**
-         * Id du département diagnostics
-         */
+        //Id du département veterinary
         $idDepartement  = 5;
 
-        /**
-         * Recherche des partenaires liés au départment concerné
-         */
-        $partenaireDepartement = $doctrine->getRepository(Partenaires::class)->findPartenaireByDepartement($idDepartement);
         return $this->render('veto/veterinary.html.twig',[
-            'partenaires' => $partenaireDepartement,
+            'partenaires' => $partenairesRepository->findPartenaireByDepartement($idDepartement),
+            'articles' => $articlesRepository->articleByIdDepartement($idDepartement),
         ]);
     }
 
     //Page annuaire veterinary
     #[Route('/annuaire', name: 'app_veto.annuaire')]
-    public function annuaireVeto(ManagerRegistry $doctrine): Response
+    public function annuaireVeto(CollaborateursRepository $collaborateursRepository): Response
     {
-        /**
-         * Id du département diagnostics
-         */
+        //Id du département veterinary
         $idDepartement  = 5;
-        /**
-         * Recherche des collaborateurs liés au départment concerné
-         */
-        $collaborateurDepartement = $doctrine->getRepository(Collaborateurs::class)->findCollaborateurByDepartement($idDepartement);
+
         return $this->render('veto/annuaire.html.twig',[
-            'collaborateurs' => $collaborateurDepartement,
+            'collaborateurs' => $collaborateursRepository->findCollaborateurByDepartement($idDepartement),
         ]);
     }
 }
