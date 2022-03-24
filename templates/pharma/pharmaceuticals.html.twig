@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Pharmaceuticals - Prophac{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{asset('assets/css/article.css')}}">
+{% endblock %}
 
 {% block illustration %}
     <div class="departement pharma-container">
@@ -13,6 +16,34 @@
 {% endblock %}
 
 {% block body %}
+{# article de la page pharmaceuticals #}
+{# {{ dump(articles) }} #}
+<section id="article" class="article">
+	<div class="container">
+		{% for article in articles %}
+		<div class="row">
+			<div class="col-lg-12 pt-lg-0">
+				<br />
+				<div class="float-end m-3">
+					<div class="d-flex image-article">
+						<img src="../../../uploads/{{ article.illustration}}"
+							class="{% if loop.index is odd %}float-end imgshadow{% else %}float-start imgshadow{% endif %}"
+							alt="{{ article.titreIllustration}}" height="500px">
+					</div>
+					<small class="legende-illustration text-end" height="25px">{{ article.legendeIllustration}}</small>
+				</div>
+				<div class="m-3">
+					{% autoescape false %}
+					{{ article.contenu}}
+					{% endautoescape %}
+					</p>
+				</div>
+			</div>
+			<hr>
+			{% endfor %}
+		</div>
+	</div>
+</section>
 <a href="{{path('app_pharma.annuaire')}}">Annuaire pharma</a>
   {# Liste des partenaire du département pharmaceuticals #}
     <div class="container titre-section">Partenaires</div>

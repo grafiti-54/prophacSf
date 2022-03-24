@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 {% block title %}Patient Information And Diabetes Care - Prophac{% endblock %}
 
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{asset('assets/css/article.css')}}">
+{% endblock %}
+
 {% block illustration %}
     <div class="departement patient-container">
         <h1 class="titre-departement">PATIENT INFORMATION & DIABETES CARE</h1>
@@ -12,6 +16,34 @@
 {% endblock %}
 
 {% block body %}
+{# articles de la page patients informations #}
+{# {{ dump(articles) }} #}
+<section class="article">
+	<div class="container">
+		{% for article in articles %}
+		<div class="row">
+			<div class="col-lg-12 pt-lg-0">
+				<br />
+				<div class="float-end m-3">
+					<div class="d-flex image-article">
+						<img src="../../../uploads/{{ article.illustration}}"
+							class="{% if loop.index is odd %}float-end imgshadow{% else %}float-start imgshadow{% endif %}"
+							alt="{{ article.titreIllustration}}">
+					</div>
+					<small class="legende-illustration text-end" height="25px">{{ article.legendeIllustration}}</small>
+				</div>
+				<div class="m-3">
+					{% autoescape false %}
+					{{ article.contenu}}
+					{% endautoescape %}
+					</p>
+				</div>
+			</div>
+			<hr>
+			{% endfor %}
+		</div>
+	</div>
+</section>
   <!--sous titre-->
   <a href="{{path('app_patient.annuaire')}}">Annuaire patient</a>
     <div class="container titre-section">Produits</div>

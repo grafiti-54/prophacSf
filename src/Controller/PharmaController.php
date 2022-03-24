@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Collaborateurs;
-use App\Entity\Partenaires;
+use App\Repository\ArticlesRepository;
+use App\Repository\CollaborateursRepository;
+use App\Repository\PartenairesRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,37 +17,26 @@ class PharmaController extends AbstractController
 {   
     //Page pharmaceuticals
     #[Route('/', name: 'app_pharma')]
-    public function accueilPharma(ManagerRegistry $doctrine): Response
+    public function accueilPharma(ArticlesRepository $articlesRepository, PartenairesRepository $partenairesRepository): Response
     {
-        /**
-         * Id du département pharmaceuticals
-         */
+        // Id du département pharmaceuticals
         $idDepartement  = 3;
-        /**
-         * Recherche des partenaires liés au départment concerné
-         */
-        $partenaireDepartement = $doctrine->getRepository(Partenaires::class)->findPartenaireByDepartement($idDepartement);
-
+    
         return $this->render('pharma/pharmaceuticals.html.twig',[
-            'partenaires' => $partenaireDepartement,
+            'partenaires' => $partenairesRepository->findPartenaireByDepartement($idDepartement),
+            'articles' => $articlesRepository->articleByIdDepartement($idDepartement),
         ]);
     }
 
     //Page annuaire pharmaceuticals
     #[Route('/annuaire', name: 'app_pharma.annuaire')]
-    public function annuairePharma(ManagerRegistry $doctrine): Response
+    public function annuairePharma(CollaborateursRepository $collaborateursRepository): Response
     {
-        /**
-         * Id du département pharmaceuticals
-         */
+        //Id du département pharmaceuticals
         $idDepartement  = 3;
-        /**
-         * Recherche des collaborateurs liés au départment concerné
-         */
-        $collaborateurDepartement = $doctrine->getRepository(Collaborateurs::class)->findCollaborateurByDepartement($idDepartement);
 
         return $this->render('pharma/annuaire.html.twig',[
-            'collaborateurs' => $collaborateurDepartement,
+            'collaborateurs' => $collaborateursRepository->findCollaborateurByDepartement($idDepartement),
         ]);
     }
 }

@@ -1,20 +1,132 @@
 {% extends 'base.html.twig' %}
 {% block title %}Diagnostics - Prophac
 {% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{asset('assets/css/article.css')}}">
+{% endblock %}
 {% block illustration %}
 	<div class="departement diagnostics-container">
 		<h1 class="titre-departement">DIAGNOSTICS</h1>
 		<p class="sous-titre-departement">
 			Analyseurs et réactifs pour les analyses médicales et les analyses de
-			            recherche bio-médicales.
+			recherche bio-médicales.
 		</p>
 		<img class="picto" src="{{asset('assets/img/Picto_Diagno_demi-tons_rgb.png')}}" alt="Picto DIAGNOSTICS"/>
 	</div>
 {% endblock %}
 
 {% block body %}
-	<!--sous titre-->
+{# articles de la page diagnostics #}
+	{# {{ dump(articles) }} #}
+	<section class="article">
+		<div class="container">
+			{% for article in articles %}
+				<div class="row">
+					<div class="col-lg-12 pt-lg-0">
+						<br/>
+						<div class="float-end m-3">
+							<div class="d-flex image-article">
+								<img src="../../../uploads/{{ article.illustration}}" class="{% if loop.index is odd %}float-end imgshadow{% else %}float-start imgshadow{% endif %}" alt="{{ article.titreIllustration}}">
+							</div>
+							<small class="legende-illustration text-end" height="25px">{{ article.legendeIllustration}}</small>
+						</div>
+						<div class="m-3">
+							{% autoescape false %}
+								{{ article.contenu}}
+							{% endautoescape %}
+						</p>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+	{# Acces à l'annuaire des collaborateurs du département diagnostics #}
 	<a href="{{path('app_diagnostics.annuaire')}}">Annuaire diagnostics</a>
+{# section analyse medicales #}
+{# {{ dump(analyse) }} #}
+<div class="container titre-section">{{ analyse.titre}}</div>
+	<section class="article">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 pt-lg-0">
+                    <br />
+                    <div class="float-start m-3">
+                        <div class="d-flex image-article">
+                            <img src="../../../uploads/{{ analyse.illustration}}" class="float-start imgshadow" alt="{{ analyse.titreIllustration}}">
+                        </div>
+                        <small class="legende-illustration text-end" height="25px">{{ analyse.legendeIllustration}}</small>
+                    </div>
+                    <div class="m-3">
+                        {% autoescape false %} {{ analyse.contenu}}  {% endautoescape %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	{# section recherche medicales #}
+{# {{ dump(recherche) }} #}
+<div class="container titre-section">{{ recherche.titre}}</div>
+	<section class="article">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 pt-lg-0">
+                    {# <br />
+                    <div class="float-start m-3">
+                        <div class="d-flex image-article">
+                            <img src="../../../uploads/{{ recherche.illustration}}" class="float-start imgshadow" alt="{{ recherche.titreIllustration}}">
+                        </div>
+                        <small class="legende-illustration text-end" height="25px">{{ recherche.legendeIllustration}}</small>
+                    </div> #}
+                    <div class="m-3">
+                        {% autoescape false %} {{ recherche.contenu}}  {% endautoescape %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{# section grand public #}
+{# {{ dump(public) }} #}
+<div class="container titre-section">{{ public.titre}}</div>
+	<section class="article">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 pt-lg-0">
+                    {# <br />
+                    <div class="float-start m-3">
+                        <div class="d-flex image-article">
+                            <img src="../../../uploads/{{ public.illustration}}" class="float-start imgshadow" alt="{{ public.titreIllustration}}">
+                        </div>
+                        <small class="legende-illustration text-end" height="25px">{{ public.legendeIllustration}}</small>
+                    </div> #}
+                    <div class="m-3">
+                        {% autoescape false %} {{ public.contenu}}  {% endautoescape %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	{# section service technique #}
+{# {{ dump(service) }} #}
+<div class="container titre-section">{{ service.titre}}</div>
+	<section class="article">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 pt-lg-0">
+                    {# <br />
+                    <div class="float-start m-3">
+                        <div class="d-flex image-article">
+                            <img src="../../../uploads/{{ public.illustration}}" class="float-start imgshadow" alt="{{ public.titreIllustration}}">
+                        </div>
+                        <small class="legende-illustration text-end" height="25px">{{ public.legendeIllustration}}</small>
+                    </div> #}
+                    <div class="m-3">
+                        {% autoescape false %} {{ service.contenu}}  {% endautoescape %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 	<div class="container titre-section">Produits</div>
 	{# liste des produits du département diagnostics #}
@@ -50,8 +162,7 @@
 						<img class="logo-partenaire" src="../../../uploads/{{ partenaire.logo}}" alt="logo-{{partenaire.nom}}">
 					</a>
 				</div>
-        {% endfor %}
-			</div>
+			{% endfor %}
+		</div>
 	</div>
-
 {% endblock %}

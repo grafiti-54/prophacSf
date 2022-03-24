@@ -29,7 +29,7 @@ class CollaborateursController extends AbstractController
 
     //Affichage de la liste des collaborateurs enregistré en base de donnée + pagination
     #[Route('/all/{page?1}/{nbre?10}', name: 'app_collaborateurs_index', methods: ['GET', 'POST'])]
-    public function index(CollaborateursRepository $collaborateursRepository, ManagerRegistry $doctrine, $page, $nbre): Response
+    public function index(ManagerRegistry $doctrine, $page, $nbre): Response
     {
         // Pagination pour la page des collaborateurs
         $repository = $doctrine->getRepository(Collaborateurs::class);
