@@ -6,6 +6,7 @@ use App\Entity\Collaborateurs;
 use App\Form\ProfilType;
 use App\Repository\CollaborateursRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,7 +17,10 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class ProfilController extends AbstractController
 {
     //Affichage du profil d'un utilisateur lorsqu'il est connecté
-    #[Route('/admin/profil', name: 'app_profil')]
+    #[
+        Route('/admin/profil', name: 'app_profil'),
+        IsGranted("ROLE_USER")
+    ]
     public function index(): Response
     {
         return $this->render('admin/profil/index.html.twig', [
@@ -24,7 +28,10 @@ class ProfilController extends AbstractController
         ]);
     }
     //Modification par un collaborateur de son profil lorsqu'il est connecté sur son compte
-    #[Route('profil/{id}/edit', name: 'app_profil_edit', methods: ['GET', 'POST'])]
+    #[
+        Route('profil/{id}/edit', name: 'app_profil_edit', methods: ['GET', 'POST']),
+        IsGranted("ROLE_USER")
+    ]
     public function edit(Request $request, Collaborateurs $collaborateur, CollaborateursRepository $collaborateursRepository, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         

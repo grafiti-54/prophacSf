@@ -5,13 +5,17 @@ namespace App\Controller;
 use App\Entity\Qualifications;
 use App\Form\QualificationsType;
 use App\Repository\QualificationsRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 //Gestion de la liste des qualifications de la société (crud)
-#[Route('/admin/qualifications')]
+#[
+    Route('/admin/qualifications'),
+    IsGranted("ROLE_ADMIN")
+]
 class QualificationsController extends AbstractController
 {
     //Affichage de la liste des qualificatons de la société

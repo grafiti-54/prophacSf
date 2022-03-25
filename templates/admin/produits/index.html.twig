@@ -5,8 +5,9 @@
 {% block PageTitle %} Liste des produits{% endblock %}
 
 {% block body %}
-{# {{form(form)}} #}
-    <a class="btn btn-prophac mb-3" href="{{ path('app_produits_new') }}">Ajouter un produit</a>
+    {% if is_granted('ROLE_REDACTEUR') %}
+        <a class="btn btn-prophac mb-3" href="{{ path('app_produits_new') }}">Ajouter un produit</a>
+    {% endif %}
     <table class="table mb-5">
         <thead>
             <tr>
@@ -28,8 +29,12 @@
                 {# <td>{{ produit.lien }}</td> #}
                 <td>
                     <a href="{{ path('app_produits_show', {'id': produit.id}) }}"><img src="{{asset('assets/img/logo-crud/read.svg')}}" alt="icon-show" width="25px" height ="25px"></a>
-                    <a class="ms-2" href="{{ path('app_produits_edit', {'id': produit.id}) }}"><img src="{{asset('assets/img/logo-crud/edit.svg')}}" alt="icon-edit" width="25px" height ="25px"></a>
-                    <a class="ms-2" href="{{ path('app_produits_delete', {'id': produit.id}) }}"><img src="{{asset('assets/img/logo-crud/delete.svg')}}" alt="icon-delete" width="25px" height ="25px"></a>
+                    {% if is_granted('ROLE_REDACTEUR') %}
+                        <a class="ms-2" href="{{ path('app_produits_edit', {'id': produit.id}) }}"><img src="{{asset('assets/img/logo-crud/edit.svg')}}" alt="icon-edit" width="25px" height ="25px"></a>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a class="ms-2" href="{{ path('app_produits_delete', {'id': produit.id}) }}"><img src="{{asset('assets/img/logo-crud/delete.svg')}}" alt="icon-delete" width="25px" height ="25px"></a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}

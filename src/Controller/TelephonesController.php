@@ -5,13 +5,17 @@ namespace App\Controller;
 use App\Entity\Telephones;
 use App\Form\TelephonesType;
 use App\Repository\TelephonesRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 //Gestion de la liste des numéros de téléphone de la société (crud)
-#[Route('/admin/telephones')]
+#[
+    Route('/admin/telephones'),
+    IsGranted("ROLE_ADMIN")
+]
 class TelephonesController extends AbstractController
 {
     //Affichage de la liste des numéro de téléphone de la société

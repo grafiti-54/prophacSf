@@ -33,8 +33,9 @@ class CollaborateursType extends AbstractType
                 'multiple' => false,
                 'expanded' => false,
                 'choices' => [
-                    'User' => 'ROLE_USER',
                     'Admin' => 'ROLE_ADMIN',
+                    'Redacteur' => 'ROLE_REDACTEUR',
+                    'User' => 'ROLE_USER',
                 ],
             ])
             ->add('photo', FileType::class, [

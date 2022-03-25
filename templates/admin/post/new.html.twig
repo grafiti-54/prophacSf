@@ -11,6 +11,9 @@
     </div>
     <div class="container form-new-prophac py-3 mb-5">
         {{ include('admin/post/_form.html.twig') }}
-        <a class="btn btn-prophac ms-1 mt-2 mb-5" href="{{ path('app_post_index') }}">Retourner sur la liste des articles</a>
+        {% if is_granted('ROLE_REDACTEUR') %}
+            <a class="btn btn-prophac ms-1 mt-2 mb-5" href="{{ path('app_post_index') }}">Retourner sur la liste des articles</a>
+        {% endif %}
+        <a class="btn btn-prophac ms-1 mt-2 mb-5" href="{{ path('app_profil') }}">Retourner sur mon profil</a>
     </div>
 {% endblock %}

@@ -6,7 +6,9 @@
 
 {% block body %}
 {# <a class="btn btn-prophac mb-3" href="{{ path('app_collaborateurs_new') }}">Ajouter un collaborateur</a> #}
-<a class="btn btn-prophac mb-3" href="{{ path('app_register') }}">Création d'un nouveau compte</a>
+{% if is_granted('ROLE_ADMIN') %}
+  <a class="btn btn-prophac mb-3" href="{{ path('app_register') }}">Création d'un nouveau compte</a>
+{% endif %}
 {# pagination #}
     {# {{ dump(collaborateurs) }} #}
     <table class="table mb-2">
@@ -35,8 +37,10 @@
                 {# <td>{{ collaborateur.photo }}</td> #}
                 <td>
                     <a href="{{ path('app_collaborateurs_show', {'id': collaborateur.id}) }}"><img src="{{asset('assets/img/logo-crud/read.svg')}}" alt="icon-show" width="25px" height ="25px"></a>
-                    <a class="ms-2" href="{{ path('app_collaborateurs_edit', {'id': collaborateur.id}) }}"><img src="{{asset('assets/img/logo-crud/edit.svg')}}" alt="icon-edit" width="25px" height ="25px"></a>
-                    <a class="ms-2" href="{{ path('app_collaborateurs_delete', {'id': collaborateur.id}) }}"><img src="{{asset('assets/img/logo-crud/delete.svg')}}" alt="icon-delete" width="25px" height ="25px"></a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                      <a class="ms-2" href="{{ path('app_collaborateurs_edit', {'id': collaborateur.id}) }}"><img src="{{asset('assets/img/logo-crud/edit.svg')}}" alt="icon-edit" width="25px" height ="25px"></a>
+                      <a class="ms-2" href="{{ path('app_collaborateurs_delete', {'id': collaborateur.id}) }}"><img src="{{asset('assets/img/logo-crud/delete.svg')}}" alt="icon-delete" width="25px" height ="25px"></a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}

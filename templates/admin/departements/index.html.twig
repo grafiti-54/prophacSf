@@ -22,9 +22,11 @@
                 <td class="w-25 text-center">{{ departement.nom }}</td>
                 <td class="w-25 text-center" ><img src="../../../uploads/{{ departement.logo}}" alt="picto-{{ departement.nom }}" class="img-fluid" width="15%"></td>
                 <td class="text-center">
+                {% if is_granted('ROLE_ADMIN') %}
                     <a href="{{ path('app_departements_show', {'id': departement.id})}}"><img src="{{asset('assets/img/logo-crud/read.svg')}}" alt="icon-show" width="25px" height ="25px"></a>
                     <a class="ms-2" href="{{ path('app_departements_edit', {'id': departement.id}) }}"><img src="{{asset('assets/img/logo-crud/edit.svg')}}" alt="icon-edit" width="25px" height ="25px"></a>
                     <a class="ms-2 w-25" href="{{ path('app_departements_delete', {'id': departement.id}) }}"><img src="{{asset('assets/img/logo-crud/delete.svg')}}" alt="icon-delete" width="25px" height ="25px"></a>
+                {% endif %}
                 </td>
             </tr>
         {% else %}

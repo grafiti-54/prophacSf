@@ -34,8 +34,12 @@
         </tbody>
     </table>
     <div class="d-flex">
-        <a class="btn btn-success text-light ms-2 mt-2" href="{{ path('app_partenaires_edit', {'id': partenaire.id}) }}">Modifier ce partenaire</a>
-        {{ include('admin/partenaires/_delete_form.html.twig') }}
+        {% if is_granted('ROLE_REDACTEUR') %}
+            <a class="btn btn-success text-light ms-2 mt-2" href="{{ path('app_partenaires_edit', {'id': partenaire.id}) }}">Modifier ce partenaire</a>
+        {% endif %}
+        {% if is_granted('ROLE_ADMIN') %}
+            {{ include('admin/partenaires/_delete_form.html.twig') }}
+        {% endif %}
     </div>
     <a class="btn btn-prophac ms-2 mt-2" href="{{ path('app_partenaires_index') }}">Retourner sur la liste des partenaires</a>    
 {% endblock %}
