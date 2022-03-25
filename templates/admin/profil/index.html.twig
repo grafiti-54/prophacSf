@@ -60,12 +60,17 @@
 					</div>
                     
 					<ul class="social-list">
+						<li><a href="https://www.facebook.com/"><img class="me-3" src="{{asset('assets/img/logo-crud/mail.svg')}}" alt="icon-mail" width="30px" height="30px"></a></li>
 					    <li><a href="https://www.facebook.com/"><img class="me-3" src="{{asset('assets/img/logo-crud/facebook.svg')}}" alt="icon-facebook" width="30px" height="30px"></a></li>
 					    <li><a href="https://www.google.fr/"><img class="me-3" src="{{asset('assets/img/logo-crud/google.svg')}}" alt="icon-google" width="30px" height="30px"></a></li>
 					    <li><a href="https://www.linkedin.com/feed/"><img class="me-3" src="{{asset('assets/img/logo-crud/linkedin.svg')}}" alt="icon-linkedin" width="30px" height="30px"></a></li>
 					</ul>
 					<div class="buttons">
-                        <a class="btn btn-prophac px-4" href="{{path('app_post_new')}}">Ajouter un article</a> 
+						{% if is_granted('ROLE_REDACTEUR') %}
+							<a class="btn btn-prophac px-4" href="{{path('app_post_collaborateur')}}">Ajouter un article</a> 
+						{% else %}
+							<a class="btn btn-prophac px-4" href="{{path('app_post_collaborateur')}}">Ajouter un article</a> 
+						{% endif %}
 						<a class="btn btn-prophac px-4" href="{{ path('app_profil_edit', {'id': app.user.id}) }}">Modifier mon profil</a>
 						<a class="btn btn-outline-primary px-4" href="{{path('app_logout')}}">Me déconnecter</a>
 					</div>

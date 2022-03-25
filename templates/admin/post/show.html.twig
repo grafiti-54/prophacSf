@@ -48,8 +48,12 @@
         </tbody>
     </table>
     <div class="d-flex">
-        <a class="btn btn-success text-light ms-2 mt-2" href="{{ path('app_post_edit', {'id': article.id}) }}">Modifier l'article</a>
-        {{ include('admin/post/_delete_form.html.twig') }}
+        {% if is_granted('ROLE_REDACTEUR') %}
+            <a class="btn btn-success text-light ms-2 mt-2" href="{{ path('app_post_edit', {'id': article.id}) }}">Modifier l'article</a>
+        {% endif %}
+        {% if is_granted('ROLE_ADMIN') %}
+            {{ include('admin/post/_delete_form.html.twig') }}
+        {% endif %}
     </div>
         <a class="btn btn-prophac ms-2 mt-2 mb-5" href="{{ path('app_post_index') }}">Retourner sur la liste des articles</a>    
 {% endblock %}

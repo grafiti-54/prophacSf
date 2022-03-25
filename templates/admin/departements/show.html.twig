@@ -50,8 +50,10 @@
         </tbody>
     </table>
     <div class="d-flex">
+    {% if is_granted('ROLE_ADMIN') %}
         <a class="btn btn-success text-light ms-2 mt-2" href="{{ path('app_departements_edit', {'id': departement.id}) }}">Modifier ce département</a>
         {{ include('admin/departements/_delete_form.html.twig') }}
+    {% endif %}    
     </div>
     <a class="btn btn-prophac ms-2 mt-2 mb-5" href="{{ path('app_departements_index') }}">Retourner sur la liste des départements</a>
 {% endblock %}

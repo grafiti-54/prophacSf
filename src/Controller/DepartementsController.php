@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Departements;
 use App\Form\DepartementsType;
 use App\Repository\DepartementsRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,11 +14,17 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 // Les départements de la société (crud coté admiistration)
-#[Route('/admin/departements')]
+#[
+    Route('/admin/departements'),
+    IsGranted('ROLE_ADMIN')
+]
 class DepartementsController extends AbstractController
 {
     //Vue sur l'ensemble des départements de la société
-    #[Route('/', name: 'app_departements_index', methods: ['GET'])]
+    #[
+        Route('/', name: 'app_departements_index', methods: ['GET']),
+        IsGranted("ROLE_REDACTEUR")
+    ]
     public function index(DepartementsRepository $departementsRepository): Response
     {
         return $this->render('admin/departements/index.html.twig', [
@@ -26,7 +33,10 @@ class DepartementsController extends AbstractController
         ]);
     }
     //Ajout d'un nouveau département
-    #[Route('/new', name: 'app_departements_new', methods: ['GET', 'POST'])]
+    #[
+        Route('/new', name: 'app_departements_new', methods: ['GET', 'POST']),
+        IsGranted("ROLE_ADMIN")
+    ]
     public function new(Request $request, DepartementsRepository $departementsRepository, SluggerInterface $slugger): Response
     {
         $departement = new Departements();
@@ -64,7 +74,10 @@ class DepartementsController extends AbstractController
     }
 
     // Detail d'un département
-    #[Route('/{id}', name: 'app_departements_show', methods: ['GET'])]
+    #[
+        Route('/{id}', name: 'app_departements_show', methods: ['GET']),
+        IsGranted("ROLE_REDACTEUR")
+    ]
     public function show(Departements $departement): Response
     {
         return $this->render('admin/departements/show.html.twig', [
@@ -72,7 +85,10 @@ class DepartementsController extends AbstractController
         ]);
     }
     //Modification d'un département
-    #[Route('/{id}/edit', name: 'app_departements_edit', methods: ['GET', 'POST'])]
+    #[
+        Route('/{id}/edit', name: 'app_departements_edit', methods: ['GET', 'POST']),
+        IsGranted("ROLE_ADMIN")
+    ]
     public function edit(Request $request, Departements $departement, DepartementsRepository $departementsRepository, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(DepartementsType::class, $departement);
@@ -108,7 +124,10 @@ class DepartementsController extends AbstractController
         ]);
     }
     //Suppression d'un département
-    #[Route('/{id}', name: 'app_departements_delete', methods: ['POST'])]
+    #[
+        Route('/{id}', name: 'app_departements_delete', methods: ['POST']),
+        IsGranted("ROLE_ADMIN")
+    ]
     public function delete(Request $request, Departements $departement, DepartementsRepository $departementsRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$departement->getId(), $request->request->get('_token'))) {

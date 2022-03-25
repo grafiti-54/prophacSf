@@ -11,6 +11,7 @@
     </div>    
     <div class="container form-admin py-5 mb-5">
         {{ include('admin/collaborateurs/_form.html.twig', {'button_label': 'Valider la mise à jour du collaborateur'}) }}
+        <a class="btn btn-warning text-light mt-2" href="{{ path('user.edit.password', {'id': collaborateur.id}) }}">Modifier le mot de passe du collaborateur</a>
         <a class="btn btn-prophac ms-1 mt-2" href="{{ path('app_collaborateurs_index') }}">Retourner sur la liste des collaborateurs</a>
     </div>
 {% endblock %}

@@ -43,8 +43,12 @@
         </tbody>
     </table>
     <div class="d-flex">
-        <a class="btn btn-success text-light ms-2 mt-2" href="{{ path('app_produits_edit', {'id': produit.id}) }}">Modifier le produit</a>
-        {{ include('admin/produits/_delete_form.html.twig') }}
+        {% if is_granted('ROLE_REDACTEUR') %}
+            <a class="btn btn-success text-light ms-2 mt-2" href="{{ path('app_produits_edit', {'id': produit.id}) }}">Modifier le produit</a>
+        {% endif %}
+        {% if is_granted('ROLE_ADMIN') %}
+            {{ include('admin/produits/_delete_form.html.twig') }}
+        {% endif %}
     </div>
     <a class="btn btn-prophac ms-2 mt-2 mb-5" href="{{ path('app_produits_index') }}">Retourner sur la liste des produits</a>
 {% endblock %}

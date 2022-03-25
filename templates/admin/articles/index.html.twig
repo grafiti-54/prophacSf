@@ -26,11 +26,13 @@
                 {# <td>{{ article.contenu }}</td> #}
                 <td>{{ article.departement }}</td>
                 <td>{{ article.createdDate ? article.createdDate|date('Y-m-d') : '' }}</td>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <td>
                     <a href="{{ path('app_articles_show', {'id': article.id}) }}"><img src="{{asset('assets/img/logo-crud/read.svg')}}" alt="icon-show" width="25px" height ="25px"></a>
                     <a class="ms-2" href="{{ path('app_articles_edit', {'id': article.id}) }}"><img src="{{asset('assets/img/logo-crud/edit.svg')}}" alt="icon-edit" width="25px" height ="25px"></a>
                     <a class="ms-2" href="{{ path('app_articles_delete', {'id': article.id}) }}"><img src="{{asset('assets/img/logo-crud/delete.svg')}}" alt="icon-delete" width="25px" height ="25px"></a>
                 </td>
+                {% endif %}
             </tr>
         {% else %}
             <tr>

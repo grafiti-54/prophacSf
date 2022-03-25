@@ -6,7 +6,9 @@
 
 {% block body %}
 {# {{ dump(articles) }} #}
-    <a class="btn btn-prophac mb-3" href="{{ path('app_post_new') }}">Ajouter un article</a>
+    {% if is_granted('ROLE_REDACTEUR') %}
+        <a class="btn btn-prophac mb-3" href="{{ path('app_post_new') }}">Ajouter un article</a>
+    {% endif %}
     <table class="table">
         <thead>
             <tr>
@@ -34,8 +36,12 @@
                 {# <td>{{ article.legendeIllustration }}</td> #}
                 <td>
                     <a href="{{ path('app_post_show', {'id': article.id}) }}"><img src="{{asset('assets/img/logo-crud/read.svg')}}" alt="icon-show" width="25px" height ="25px"></a>
-                    <a class="ms-2" href="{{ path('app_post_edit', {'id': article.id}) }}"><img src="{{asset('assets/img/logo-crud/edit.svg')}}" alt="icon-edit" width="25px" height ="25px"></a>
-                    <a class="ms-2" href="{{ path('app_post_delete', {'id': article.id}) }}"><img src="{{asset('assets/img/logo-crud/delete.svg')}}" alt="icon-delete" width="25px" height ="25px"></a>
+                    {% if is_granted('ROLE_REDACTEUR') %}
+                        <a class="ms-2" href="{{ path('app_post_edit', {'id': article.id}) }}"><img src="{{asset('assets/img/logo-crud/edit.svg')}}" alt="icon-edit" width="25px" height ="25px"></a>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a class="ms-2" href="{{ path('app_post_delete', {'id': article.id}) }}"><img src="{{asset('assets/img/logo-crud/delete.svg')}}" alt="icon-delete" width="25px" height ="25px"></a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
