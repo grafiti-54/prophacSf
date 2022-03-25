@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 
-//Gestions des produits qui sont affiché sur le site principal
+//Gestions des produits qui sont affiché sur le site principal (crud)
 #[Route('admin/produits')]
 class ProduitsController extends AbstractController
 {
@@ -135,19 +135,6 @@ class ProduitsController extends AbstractController
 }
 
 
-// ANCIEN TEST 
-
-// private $entityManager;
-    
-    // /**
-    //  * Fonction qui permet l'utilisateur de doctrine pour récupérer les données des produits
-    //  *
-    //  * @param EntityManagerInterface $entityManager
-    //  */
-    // public function __construct(EntityManagerInterface $entityManager)
-    // {
-    //     $this->entityManager = $entityManager;
-    // }
 
 
     //         //On récupére tout les produits

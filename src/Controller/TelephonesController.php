@@ -6,12 +6,11 @@ use App\Entity\Telephones;
 use App\Form\TelephonesType;
 use App\Repository\TelephonesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-//Gestion de la liste des numéros de téléphone de la société
+//Gestion de la liste des numéros de téléphone de la société (crud)
 #[Route('/admin/telephones')]
 class TelephonesController extends AbstractController
 {

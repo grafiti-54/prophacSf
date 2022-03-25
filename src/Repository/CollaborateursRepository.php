@@ -85,9 +85,9 @@ class CollaborateursRepository extends ServiceEntityRepository implements Passwo
     }
 
     /**
-     * Constructeur. Requete de recherche des collaborateurs qui appartiennent à un département
+     * Requete permettant de récupérer les collaborateurs qui appartiennent à un département
      *
-     * @param [type] $id
+     * @param [type] $id id du département
      * @return void
      */
     public function findCollaborateurByDepartement($id)

@@ -1,85 +1,90 @@
 {% extends 'base.html.twig' %}
-{% block title %}Patient Information And Diabetes Care - Prophac{% endblock %}
+{% block title %}Patient Information And Diabetes Care - Prophac
+{% endblock %}
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{asset('assets/css/article.css')}}">
 {% endblock %}
 
 {% block illustration %}
-    <div class="departement patient-container">
-        <h1 class="titre-departement">PATIENT INFORMATION & DIABETES CARE</h1>
-        <p class="sous-titre-departement">
-            Lecteurs de glycémie, pompes à insuline, thermomètres et tensiomètres.
-        </p>
-        <img class="picto" src="{{asset('assets/img/Picto_Diabet_demi-tons_rgb.png')}}" alt="Picto patient & diabete" />
-  </div>
+	<div class="departement patient-container">
+		<h1 class="titre-departement">PATIENT INFORMATION & DIABETES CARE</h1>
+		<p class="sous-titre-departement">
+			Lecteurs de glycémie, pompes à insuline, thermomètres et tensiomètres.
+		</p>
+		<img class="picto" src="{{asset('assets/img/Picto_Diabet_demi-tons_rgb.png')}}" alt="Picto patient & diabete"/>
+	</div>
 {% endblock %}
 
 {% block body %}
-{# articles de la page patients informations #}
-{# {{ dump(articles) }} #}
-<section class="article">
-	<div class="container">
-		{% for article in articles %}
-		<div class="row">
-			<div class="col-lg-12 pt-lg-0">
-				<br />
-				<div class="float-end m-3">
-					<div class="d-flex image-article">
-						<img src="../../../uploads/{{ article.illustration}}"
-							class="{% if loop.index is odd %}float-end imgshadow{% else %}float-start imgshadow{% endif %}"
-							alt="{{ article.titreIllustration}}">
+	{# articles de la page patients informations #}
+	{# {{ dump(articles) }} #}
+		<section class="article"> <div class="container">
+			{% for article in articles %}
+				<div class="row">
+					<div class="col-lg-12 pt-lg-0">
+						<br/>
+						<div class="float-end m-3">
+							<div class="d-flex image-article">
+								<img src="../../../uploads/{{ article.illustration}}" class="{% if loop.index is odd %}float-end imgshadow{% else %}float-start imgshadow{% endif %}" alt="{{ article.titreIllustration}}">
+							</div>
+							<small class="legende-illustration text-end" height="25px">{{ article.legendeIllustration}}</small>
+						</div>
+						<div class="m-3">
+							{% autoescape false %}
+								{{ article.contenu}}
+							{% endautoescape %}
+						</p>
 					</div>
-					<small class="legende-illustration text-end" height="25px">{{ article.legendeIllustration}}</small>
 				</div>
-				<div class="m-3">
-					{% autoescape false %}
-					{{ article.contenu}}
-					{% endautoescape %}
-					</p>
-				</div>
-			</div>
-			<hr>
+				<hr>
 			{% endfor %}
 		</div>
 	</div>
 </section>
-  <!--sous titre-->
-  <a href="{{path('app_patient.annuaire')}}">Annuaire patient</a>
-    <div class="container titre-section">Produits</div>
-    {# liste des produits du département patient information & diabetes care #}
-    <section class="py-4 my-3">
-        <div class="container">
-            <div class="row">
-              {# {{ dump(produits) }} #}
-            {% for produit in produits %}
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-perso my-3">
-                        <img class="image-produit" src="../../../uploads/{{ produit.photo}}" class="img-fluid" alt="photo-{{ produit.nom }} " />
-                        <figcaption class="overlay">
-                            <p> {{ produit.description }} </p>
-                        </figcaption>
-                        <div class="card-body text-center">
-                            <a href="{{ produit.lien }} " target="_blank" class="btn btn-produit">{{ produit.nom }}</a>
-                        </div>
-                    </div>
-                </div>
-        {% endfor %}
-            </div>
-        </div>
-    </section>
-    {# Liste des partenaire du département patients & informations diabetes #}
-    <div class="container titre-section">Partenaires</div>
-    {# {{ dump(partenaires) }} #}
+
+{#Bouton vers annuaire collaborateurs patients informations #}
+<div class="container">
+	<p>Prendre contact avec nos collaborateurs et spécialistes de ce département.</p>
+	<a href="{{path('app_patient.annuaire')}}" class="btn btn-annuaire my-2 px-5" height="20px">Annuaire Patients-information</a>
+</div>
+
+<div class="container titre-section">Produits</div>
+{# liste des produits du département patient information & diabetes care #}
+<section class="py-4 my-3">
 	<div class="container">
-		<div class="row text-center text-lg-start">
-			{% for partenaire in partenaires %}
-				<div class="col-lg-3 col-md-4 col-6">
-					<a href="{{ partenaire.siteInternet}}" target="_blank" class="d-block mb-4 h-100">
-						<img class="logo-partenaire" src="../../../uploads/{{ partenaire.logo}}" alt="logo-{{ partenaire.nom}}">
-					</a>
+		<div
+			class="row">
+			{# {{ dump(produits) }} #}
+			{% for produit in produits %}
+				<div class="col-md-6 col-lg-4">
+					<div class="card card-perso my-3">
+						<img class="image-produit" src="../../../uploads/{{ produit.photo}}" class="img-fluid" alt="photo-{{ produit.nom }} "/>
+						<figcaption class="overlay">
+							<p>
+								{{ produit.description }}
+							</p>
+						</figcaption>
+						<div class="card-body text-center">
+							<a href="{{ produit.lien }} " target="_blank" class="btn btn-produit">{{ produit.nom }}</a>
+						</div>
+					</div>
 				</div>
-        {% endfor %}
-			</div>
+			{% endfor %}
+		</div>
 	</div>
-{% endblock %}
+</section>
+{# Liste des partenaire du département patients & informations diabetes #}
+<div class="container titre-section">Partenaires</div>
+{# {{ dump(partenaires) }} #}
+<div class="container">
+	<div class="row text-center text-lg-start">
+		{% for partenaire in partenaires %}
+			<div class="col-lg-3 col-md-4 col-6">
+				<a href="{{ partenaire.siteInternet}}" target="_blank" class="d-block mb-4 h-100">
+					<img class="logo-partenaire" src="../../../uploads/{{ partenaire.logo}}" alt="logo-{{ partenaire.nom}}">
+				</a>
+			</div>
+		{% endfor %}
+	</div>
+</div>{% endblock %}

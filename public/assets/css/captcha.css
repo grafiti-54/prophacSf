@@ -1,4 +1,4 @@
-/* Captcha */
+/*CSS du Captcha */
 
   
 .container-captcha {
@@ -60,6 +60,4 @@
     -ms-user-select: none;
     user-select: none;
   }
-  /* #admin-btn{
-    visibility: hidden;
-  } */
+  

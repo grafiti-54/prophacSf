@@ -46,7 +46,7 @@ class ProduitsRepository extends ServiceEntityRepository
     }
 
     /**
-     * Requete pour slectionner les produits prioritaire à afficher sur la page d'accueil
+     * Requete pour récupérer les produits prioritaire à afficher sur la page d'accueil
      *
      * @param [type] $value true ou false
      * @return void
@@ -63,7 +63,7 @@ class ProduitsRepository extends ServiceEntityRepository
     }
 
     /**
-     * Constructeur. Requete de recherche des produits qui appartiennent à un département
+     * Requete permettant de récupérer des produits qui appartiennent à un département
      *
      * @param [type] $id id du département
      * 

@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-// Les départements de la société
+// Les départements de la société (crud coté admiistration)
 #[Route('/admin/departements')]
 class DepartementsController extends AbstractController
 {

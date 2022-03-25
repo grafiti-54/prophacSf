@@ -1,4 +1,4 @@
-/* CSS DES INFORMATIONS SUR L ENTREPRISE EN HAUT DU MENU */
+/* CSS DES INFORMATIONS SUR L ENTREPRISE EN HAUT DU MENU (horaire adresse ...) */
 
 
 .info{
@@ -14,10 +14,6 @@
     font-size: clamp(0.6rem,2.5vw,0.8rem);
     /* color: white; */
 }
-
-/* .bloc{
-    margin: 1.2em;
-} */
 
 .sous-bloc1, .sous-bloc2{
     display: flex;

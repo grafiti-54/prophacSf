@@ -1,35 +1,64 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Veterinary - Prophac{% endblock %}
+{% block title %}Veterinary - Prophac
+{% endblock %}
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{asset('assets/css/article.css')}}">
+{% endblock %}
 
 {% block illustration %}
-    <div class="departement veto-container">
-        <h1 class="titre-departement">VETERINARY</h1>
-        <p class="sous-titre-departement">
-            Distribution d’une gamme importante de produits vétérinaires.
-        </p>
-        <img class="picto" src="{{asset('assets/img/Picto_Vete_demi-tons_rgb.png')}}" alt="Picto Veterinary" />
-  </div>
+	<div class="departement veto-container">
+		<h1 class="titre-departement">VETERINARY</h1>
+		<p class="sous-titre-departement">
+			Distribution d’une gamme importante de produits vétérinaires.
+		</p>
+		<img class="picto" src="{{asset('assets/img/Picto_Vete_demi-tons_rgb.png')}}" alt="Picto Veterinary"/>
+	</div>
 {% endblock %}
 
 {% block body %}
-{# futur bouton vers annuaire veto #}
-<a href="{{path('app_veto.annuaire')}}">Annuaire veterinary</a>
-  {# Section produit veto #}
-    {# Liste des partenaire du département veterinary #}
-    <div class="container titre-section">Partenaires</div>
-    {# {{ dump(partenaires) }} #}
-	<div class="container">
-		<div class="row text-center text-lg-start">
-			{% for partenaire in partenaires %}
-				<div class="col-lg-3 col-md-4 col-6">
-					<a href="{{ partenaire.siteInternet}}" target="_blank" class="d-block mb-4 h-100 logo-partenaire">
-						<img  class="logo-partenaire" src="../../../uploads/{{ partenaire.logo}}" alt="logo-{{partenaire.nom}}">
-					</a>
+	{# article de la page veterinary #}
+	{# {{ dump(articles) }} #}
+		<section id="article" class="article"> <div class="container">
+			{% for article in articles %}
+				<div class="row">
+					<div class="col-lg-12 pt-lg-0">
+						<br/>
+						<div class="float-end m-3">
+							<div class="d-flex image-article">
+								<img src="../../../uploads/{{ article.illustration}}" class="{% if loop.index is odd %}float-end imgshadow{% else %}float-start imgshadow{% endif %}" alt="{{ article.titreIllustration}}" height="500px">
+							</div>
+							<small class="legende-illustration text-end" height="25px">{{ article.legendeIllustration}}</small>
+						</div>
+						<div class="m-3">
+							{% autoescape false %}
+								{{ article.contenu}}
+							{% endautoescape %}
+						</p>
+					</div>
 				</div>
-        {% endfor %}
-			</div>
+				<hr>
+			{% endfor %}
+		</div>
 	</div>
-{% endblock %}
+</section>
+{#Bouton vers annuaire collaborateurs veto #}
+<div class="container">
+	<p>Prendre contact avec nos collaborateurs et spécialistes de ce département.</p>
+	<a href="{{path('app_veto.annuaire')}}" class="btn btn-annuaire my-2 px-5" height="20px">Annuaire veterinary</a>
+</div>
+{# Section produit veto #}
+{# Liste des partenaire du département veterinary #}
+<div class="container titre-section">Partenaires</div>
+{# {{ dump(partenaires) }} #}
+<div class="container">
+	<div class="row text-center text-lg-start">
+		{% for partenaire in partenaires %}
+			<div class="col-lg-3 col-md-4 col-6">
+				<a href="{{ partenaire.siteInternet}}" target="_blank" class="d-block mb-4 h-100">
+					<img class="logo-partenaire" src="../../../uploads/{{ partenaire.logo}}" alt="logo-{{partenaire.nom}}">
+				</a>
+			</div>
+		{% endfor %}
+	</div>
+</div>{% endblock %}
