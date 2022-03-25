@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-//Gestions des articles qui seront postés sur le site principal
+//Gestions des articles qui seront postés sur le site principal (crud)
 #[Route('/admin/post')]
 class PostController extends AbstractController
 {

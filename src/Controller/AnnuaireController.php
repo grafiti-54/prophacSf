@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AnnuaireController extends AbstractController
-{
+{   //Page annuaire complet du site */
     #[Route('/prophac/annuaire', name: 'app_annuaire')]
     public function index(CollaborateursRepository $collaborateursRepository): Response
     {

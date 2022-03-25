@@ -21,7 +21,6 @@ class AccueilController extends AbstractController
         $prioritaire = true; 
         return $this->render('accueil/home.html.twig',[
             'produits' => $produitRepository->findByPrioritaire($prioritaire),
-            // 'article' => $articleAccueil,
             'articles' => $articlesRepository->articleByIdDepartement($idDepartement),
         ]);
     }

@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-//Gestion de la liste des qualifications de la société
+//Gestion de la liste des qualifications de la société (crud)
 #[Route('/admin/qualifications')]
 class QualificationsController extends AbstractController
 {

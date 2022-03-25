@@ -47,7 +47,7 @@ class PartenairesRepository extends ServiceEntityRepository
 
 
     /**
-     * Constructeur. Requete de recherche des partenaires qui appartiennent à un département
+     * Constructeur. Requete de récupérer des partenaires qui appartiennent à un département
      *
      * @param [type] $id id du département
      * 

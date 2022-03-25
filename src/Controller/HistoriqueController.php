@@ -3,11 +3,11 @@
 namespace App\Controller;
 
 use App\Repository\ArticlesRepository;
-use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+//Controlleur Page historique du site
 class HistoriqueController extends AbstractController
 {
     #[Route('/prophac/historique', name: 'app_historique')]

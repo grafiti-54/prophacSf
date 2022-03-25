@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
-//Les collaborateurs de la société
+//Les collaborateurs de la société coté administration du site (crud)
 #[Route('/admin/collaborateurs')]
 class CollaborateursController extends AbstractController 
 {

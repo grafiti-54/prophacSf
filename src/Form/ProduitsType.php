@@ -26,8 +26,6 @@ class ProduitsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        // $group =' ';
-
         $builder
             ->add('nom')
             ->add('description')

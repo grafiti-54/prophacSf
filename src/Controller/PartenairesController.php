@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-//Les partenaires de la société
+//Les partenaires de la société (crud administrateur)
 #[Route('/admin/partenaires')]
 class PartenairesController extends AbstractController
 {

@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Mailer\MailerInterface;
 
+//Controlleur de la page contact du site */
 #[Route('/prophac/contact')]
 class ContactController extends AbstractController
 {

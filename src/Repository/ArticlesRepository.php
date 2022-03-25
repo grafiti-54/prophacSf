@@ -45,6 +45,12 @@ class ArticlesRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * Requete permettant de récupérer les articles selon l'ID du départements
+     *
+     * @param [type] $value id du département
+     * @return void
+     */
     public function articleByIdDepartement($value)
     {
         return $this->createQueryBuilder('a')
@@ -56,6 +62,12 @@ class ArticlesRepository extends ServiceEntityRepository
         ;
     }
 
+    /**
+     * Requete permettant de récupérer un article selon son id
+     *
+     * @param [type] $id
+     * @return void
+     */
     public function FindOneArticleById($id)
     {
         return $this->createQueryBuilder('a')
