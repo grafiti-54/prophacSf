@@ -7,7 +7,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ProduitsRepository::class)]
+#[
+    ORM\Entity(repositoryClass: ProduitsRepository::class),
+    ORM\Table(name:"Produits"),
+    ORM\Index(columns:["nom","description"], flags:["fulltext"])
+]
+
 class Produits
 {
     #[ORM\Id]

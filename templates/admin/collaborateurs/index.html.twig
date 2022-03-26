@@ -5,6 +5,7 @@
 {% block PageTitle %} Liste des collaborateurs{% endblock %}
 
 {% block body %}
+{# Ajout rapide d'un collaborateur avec information complete #}
 {# <a class="btn btn-prophac mb-3" href="{{ path('app_collaborateurs_new') }}">Ajouter un collaborateur</a> #}
 {% if is_granted('ROLE_ADMIN') %}
   <a class="btn btn-prophac mb-3" href="{{ path('app_register') }}">Création d'un nouveau compte</a>
@@ -57,25 +58,11 @@
       <nav aria-label="col">
         <ul
           class="pagination">
-          {# Affichage du bouton previous lorsque ce n'est pas la 1ere page de la liste  #}
-          {# {% if page != 1 %}
-            <li class="page-item">
-              <a class="page-link" href=""{{ path('app_collaborateurs_index',{page: page - 1, nbre: nbre}) }}"">Previous</a>
-            </li>
-          {% endif %} #}
-          {# Boucle twig https://twig.symfony.com/doc/2.x/functions/range.html #}
           {% for i in range(1, nbrePage) %}
             <li {{ page == i ? 'class="page-item active"' }}>
               <a class="page-link" href="{{ path('app_collaborateurs_index',{page: i, nbre: nbre}) }}">{{ i }}</a>
             </li>
           {% endfor %}
-          {# <li class="page-item"> #}
-          {# Le bouton next ne sera pas affiché lorsque l'on est sur la derniere page #}
-            {# {% if page != nbrePage %}
-            <li class="page-item">
-              <a class="page-link" href=""{{ path('app_collaborateurs_index',{page: page +1, nbre:nbre}) }}"">Next</a>
-            </li>
-          {% endif %} #}
           </li>
         </ul>
       </nav>
