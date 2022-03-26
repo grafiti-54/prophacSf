@@ -79,7 +79,25 @@ class ProduitsRepository extends ServiceEntityRepository
     }
 
 
+    /**
+     * Recherche les produits en fonction du formulaire
+     *
+     * @return void
+     */
+    public function search($mots =null, $departement =null){
+        $query = $this->createQueryBuilder('p');
+        if($mots != null){
+            $query->Where('MATCH_AGAINST(p.nom, p.description) AGAINST(:mots boolean)>0')
+            ->setParameter('mots', $mots);
+        }
+        if($departement != null){
+            $query->leftJoin('p.departement', 'd');
+            $query->andWhere('d.id = :id')
+                ->setParameter('id', $departement);
+        }
 
+        return $query->getQuery()->getResult();
+    }
 
 
 

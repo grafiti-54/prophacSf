@@ -24,7 +24,7 @@ class AdminController extends AbstractController
 
     public function membre()
 {
-        //test si un utilisateur est connecté
+        //test si un utilisateur est connecté sinon l'acces lui est refusé
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         return $this->render('accueil/home.html.twig');
 }
