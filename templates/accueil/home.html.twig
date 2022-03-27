@@ -4,6 +4,10 @@
 {% endblock %}
 
 {% block body %}
+
+{# {{ render(controller('App\\Controller\\RechercheController::accueil', { 'form': form })) }} #}
+
+
 {# {{ form(form) }} #}
 <div class="container mt-2">
 	<div class="row text-center text-lg-start">
@@ -115,4 +119,5 @@
 			{% endfor %}
 		</div>
 	</div>
-</section>{% endblock %}
+</section>
+{% endblock %}

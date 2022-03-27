@@ -80,7 +80,7 @@ class ProduitsRepository extends ServiceEntityRepository
 
 
     /**
-     * Recherche les produits en fonction du formulaire
+     * Recherche les produits en fonction des mots clé 
      *
      * @return void
      */

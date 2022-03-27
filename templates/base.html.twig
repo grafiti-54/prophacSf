@@ -1,3 +1,4 @@
+{# {% extends 'recherche/_form.html.twig' %} #}
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -5,9 +6,11 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="icon" type="image/png"href="{{asset('assets/img/Logo_Prophac_haute-resolution_rgb.png')}}">
+		<link
+		rel="icon" type="image/png" href="{{asset('assets/img/Logo_Prophac_haute-resolution_rgb.png')}}">
 		{# lien css bootstrap #}
-		<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}"> <link
+		<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+		<link
 		rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 
 		{# lien css Animation AOS #}
@@ -111,27 +114,25 @@
 			<div class="hd-dropdown-1">
 				<button class="hd-btn">PROPHAC</button>
 				<div class="hd-content">
-					<a href="{{path('app_organigramme')}}">ORGANIGRAMME</a> 
-					<a href="{{path('app_historique')}}">HISTORIQUE</a> 
-					<a href="{{path('app_iso')}}">ISO 9001</a> 
+					<a href="{{path('app_organigramme')}}">ORGANIGRAMME</a>
+					<a href="{{path('app_historique')}}">HISTORIQUE</a>
+					<a href="{{path('app_iso')}}">ISO 9001</a>
 				</div>
 			</div>
 			<div class="hd-dropdown-1">
 				<button class="hd-btn">CONTACT</button>
 				<div class="hd-content">
 					<a href="{{path('app_annuaire')}}">ANNUAIRES</a>
-					<a href="{{path('app_contact')}}">FORMULAIRE</a> 
+					<a href="{{path('app_contact')}}">FORMULAIRE</a>
 					<a href="#">PLAN</a>
 				</div>
 			</div>
-			<form class="form-inline my-2 my-lg-0 d-flex m-2">
-				<input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Recherche">
-				<a href="#">
-					<img class="m-2" src="{{asset('assets/img/search.svg')}}" alt="loupe">
-				</a>
-			</form>
-			<a class="hd-icon" onclick="myFunction()">&#9776</a>
-			<!--Unicode menu hambourger-->
+			{# Barre de recherche dans le menu #}
+			{% include 'recherche/_form.html.twig' %}
+			{# Unicode menu hambourger #}
+			<a class="hd-icon" onclick="myFunction()">
+				&#9776</a>
+
 		</header>
 		{% block illustration %}
 			{# carousel #}
@@ -196,7 +197,6 @@
 		{% block body %}BLOCK BODY
 		{% endblock %}
 
-
 		{# FOOTER #}
 		<div>
 			<footer class="ft-footer">
@@ -254,7 +254,7 @@
 				</div>
 			</footer>
 			<div class="mentions text-center py-1">
-				<a href="{{path('app_politique')}}"> 
+				<a href="{{path('app_politique')}}">
 					<small class="text-light">Politique de confidentialité</small>
 				</a>
 			</div>
