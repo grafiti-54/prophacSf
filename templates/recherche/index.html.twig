@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset('assets/css/article.css')}}">
+{% endblock %}
+{% block illustration %}
+	<div class="departement patient-container">
+		<h1 class="titre-departement">Resultat de votre recherche</h1>
+		<img class="picto" src="{{asset('assets/img/Picto_Diabet_demi-tons_rgb.png')}}" alt="Picto patient & diabete"/>
+	</div>
+{% endblock %}
+
+{% block body %}
+{# sous titre pour la section des produits #}
+<div class="container sous-titre">
+	Produits</div>
+{# produit de la page d'accueil #}
+<section class="py-4 my-5">
+	<div class="container">
+		<div class="row">
+			{{ dump(produits) }}
+			{% for produit in produits %}
+			<div class="col-md-6 col-lg-4">
+				<div class="card card-perso my-3">
+					<img class="image-produit" src="../../../uploads/{{ produit.photo}}" class="img-fluid"
+						alt="photo-{{ produit.nom }} " />
+					<figcaption class="overlay">
+						<p>
+							{{ produit.description }}
+						</p>
+					</figcaption>
+					<div class="card-body text-center">
+						<a href="{{ produit.lien }} " target="_blank" class="btn btn-produit">{{ produit.nom }}</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+{% endblock %}

@@ -4,8 +4,9 @@ twig:
         'bootstrap_5_layout.html.twig',
         '@FOSCKEditor/Form/ckeditor_widget.html.twig'
         ]
-    
-
+        
+    # globals:
+    #     recherche: '@App\Generator\UuidGenerator'
 
     # globals:
     #     uuid: '@App\Generator\UuidGenerator'

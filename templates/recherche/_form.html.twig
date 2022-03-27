@@ -1,0 +1,9 @@
+{# Barre de reherche du menu du site #}
+
+<form class="form-inline my-2 my-lg-0 d-flex m-2" name="search_produits" method="post" action="{{ path('recherche') }}">
+			<input type="search" id="search_produits_mots" name="search_produits[mots]" class="form-control mr-sm-2" placeholder="Recherche produits" value="sars">
+			<button type="submit" id="search_produits_Rechercher" name="search_produits[Rechercher]"><img class="m-2" src="{{asset('assets/img/search.svg')}}" alt="loupe"></button>
+		{# <input type="hidden" id="search_produits__token" name="search_produits[_token]" value="e66e089de5bf9e41c8aeee007f8ce33.PssNjXLLZpfNdllkMyKzxh06pLh-AwChIWl5lgLA_qY.DYZlwBecDv-vFzdRRErG9mp_5tYueTLHUSE21GWFzvAImEzvNbJW46QAEA"> #}
+</form>
+
+
