@@ -3,7 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Articles;
+use App\Entity\Departements;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -52,6 +54,12 @@ class ArticlesType extends AbstractType
                         'mimeTypesMessage' => 'Veuiller inserer un jpeg ou un png',
                     ]),
                 ],
+            ])
+            ->add('departement', EntityType::class, [
+                'class' => Departements::class,
+                // 'attr' => [
+                //     'disabled' =>'true',
+                // ]
             ])
             ->add('titreIllustration')
             ->add('legendeIllustration')

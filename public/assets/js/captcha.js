@@ -37,12 +37,4 @@
           }
 
 
-        // function secCaptcha(){
-
-        //   if(document.getElementById("captcha-container").hidden == false){
-        //       echo(" Bien essayé !");
-        //   }else{
-        //     echo("Connection en cours");
-        //   }
-
-        // }
+      

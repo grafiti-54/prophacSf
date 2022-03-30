@@ -29,17 +29,6 @@
 			<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
 				<i class="fas fa-bars"></i>
 			</button>
-			{# Barre de recherche #}
-			{# <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-							<div class="input-group d-flex mt-5">
-								<a class="btn btn-primary" href="{{ path('app_recherche_admin') }}">Recherche avancée</a> #}
-			{# <input class="form-control" type="text" placeholder="Rechercher" aria-label="Search for..." aria-describedby="btnNavbarSearch"/>
-													<button class="btn btn-primary" id="btnNavbarSearch" type="button">
-														<i class="fas fa-search"></i>
-													</button> #}
-			{# {{form(form)}} #}
-			{# </div>
-						</form> #}
 			{# Menu de l'utilisateur profil et deconnexion #}
 				<ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4"> <li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -68,12 +57,12 @@
 					<div class="sb-sidenav-menu">
 						<div class="nav">
 							<div
-								class="mt-3 ms-2 me-2">{# {{ render(controller('App\\Controller\\RechercheAdminController::searchBar')) }} #}
+								class="mt-3 ms-2 me-2">
 							</div>
 							<div class="sb-sidenav-menu-heading">Accueil</div>
 							<a class="nav-link" href="{{path('app_profil')}}">
 								<div class="sb-nav-link-icon">
-									<i class="fas fa-tachometer-alt"></i>
+									<img src="{{asset('assets/img/logo-crud/user.svg')}}" alt="icon-show" width="15px" height="15px">
 								</div>
 								Mon profil
 							</a>
@@ -220,6 +209,7 @@
 							{% endif %}
 
 							{# Menu admin articles du site #}
+							{% if is_granted('ROLE_REDACTEUR') %}
 							<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#articles" aria-expanded="false" aria-controls="collapseLayouts">
 								<div class="sb-nav-link-icon">
 									<img src="{{asset('assets/img/logo-crud/articles.svg')}}" alt="icon-show" width="15px" height="15px">
@@ -234,11 +224,8 @@
 								<nav
 									class="sb-sidenav-menu-nested nav">
 									{# path() utilise comme parametre le name de la Route que l'on souhaite afficher #}
-									{% if is_granted('ROLE_REDACTEUR') %}
 										<a class="nav-link" href="{{path('app_post_index')}}">Liste des articles</a>
 										<a class="nav-link" href="{{path('app_post_new')}}">Ajouter un article</a>
-									{% else %}
-										<a class="nav-link" href="{{path('app_post_collaborateur')}}">Ajouter un article</a>
 									</nav>
 								</div>
 							{% endif %}

@@ -76,6 +76,12 @@ class ProduitsRepository extends ServiceEntityRepository
             ->setParameter('id', $id)
         ;
         return $qb->getQuery()->getResult();
+
+                // SELECT * 
+                // FROM `produits`
+                // INNER JOIN `produits_departements`
+                // ON produits.id = produits_id
+                // WHERE departements_id = 4;
     }
 
 

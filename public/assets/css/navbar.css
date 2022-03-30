@@ -175,6 +175,11 @@ header .hd-icon {
   color: white;
 }
 
+.car-lien:hover{
+  color:white;
+  
+}
+
 /* titre de chaque photo du carousel*/
 .car-titre {
   font-size: clamp(
