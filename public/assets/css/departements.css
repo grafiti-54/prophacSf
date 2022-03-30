@@ -29,29 +29,29 @@
     }
 }
 
-
-
 /* image de présentation des 4 départements */
 .diagnostics-container{ 
-    background-image: url("../img/diagnostics.jpg");
+    background-image: url("../img/diagnostics2.jpg");
+    background-size: cover;
+    background-position:center;
     
 }
 
 .pharma-container{
-    background-image: url("../img/pharma.jpg");
+    background-image: url("../img/pharma3.jpg");
     background-blend-mode: darken;
     background-size: cover;
     background-position:center;
 }
 
 .patient-container{
-    background-image: url("../img/diabete.jpeg");
+    background-image: url("../img/patient2.jpg");
     background-blend-mode:color-burn;
     background-size: cover;
 }
 
 .veto-container{
-    background-image: url("../img/department-veterinary.jpg");
+    background-image: url("../img/veto.jpg");
 }
 
 /* image de présentation de l'annuaire complet */
@@ -77,17 +77,24 @@
 }
 .contact-container{
     background-image: url("../img/contact.jpg");
+    background-size:cover;
+}
+
+.recherche-container{
+    background-image: url("../img/recherche.jpg");
+    background-size:cover;
 }
 
 /* bloc de présentation des 4 départements */
-.diagnostics-container, .pharma-container, .patient-container, .veto-container, .annuaire-container, .organigramme-container, .historique-container, .iso-container, .contact-container{ 
+.diagnostics-container, .pharma-container, .patient-container, .veto-container, .annuaire-container, .organigramme-container, .historique-container, .iso-container, .contact-container, .recherche-container{ 
     width: 100%;
     height: auto;
     /* height: 55vh;
     width: 100vw auto; */
     background-blend-mode: darken;
-    background-size: cover;
     background-attachment: fixed;
+    background-size: cover;
+    
     background-position: center;
     display: flex;
     flex-direction: column;
@@ -95,6 +102,11 @@
     align-items: center;
     text-align: center;
     color: white;
+}
+
+.recherche-container{
+    
+    font-size: 3em;
 }
 
 /*reduction de la taille du titre suivant la taille de l'ecran*/
@@ -142,8 +154,8 @@
 }
 .circle {
     background: linear-gradient(145deg, #003EC5, #002677);
-border-radius: 100%;
-box-shadow: inset 6.61px 6.61px 16px #00277B, inset -6.61px -6.61px 16px #003DC1;
+    border-radius: 100%;
+    box-shadow: inset 6.61px 6.61px 16px #00277B, inset -6.61px -6.61px 16px #003DC1;
     border-radius: 200px;
     color: white;
     height: 200px;
