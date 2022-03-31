@@ -5,7 +5,8 @@
 {% block stylesheets %}
 <link rel="stylesheet" href="{{asset('assets/css/form.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/captcha.css')}}">
-<script src="{{asset('assets/js/captcha.js')}}"></script>
+{# <script src="{{asset('assets/js/captcha.js')}}"></script> #}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 {% endblock %}
 
 {% block body %}
@@ -44,7 +45,7 @@
                     placeholder="Confirmer le mot de passe">
             </div> #}
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-            <div id="captcha-container" class="container-captcha py-5">
+            {# <div id="captcha-container" class="container-captcha py-5">
                 <div id="captcha"  class="captcha unselectable">
                     <script>createCaptcha();</script>
                 </div>
@@ -62,6 +63,10 @@
             <div class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-form-admin my-3 py-2 px-4btn-captcha" id="btn-captcha" hidden
                     onclick="secCaptcha()">Connexion</button>
+            </div> #}
+            <div class="g-recaptcha" data-sitekey="6LflyjAfAAAAABx6KODN7ppWipnimUNYkWxgkVe9"></div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-form-admin my-3 py-2 px-4btn-captcha">Connexion</button>
             </div>
         </form>
     </div>
