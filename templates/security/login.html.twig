@@ -3,10 +3,14 @@
 {% block title %}Prophac{% endblock %}
 {% block illustration %} {% endblock %}
 {% block stylesheets %}
+{# css formulaire de connexion #}
 <link rel="stylesheet" href="{{asset('assets/css/form.css')}}">
+{# css captcha perso #}
 <link rel="stylesheet" href="{{asset('assets/css/captcha.css')}}">
-{# <script src="{{asset('assets/js/captcha.js')}}"></script> #}
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{# script captcha perso #}
+<script src="{{asset('assets/js/captcha.js')}}"></script>
+{# captcha google #}
+{# <script src="https://www.google.com/recaptcha/api.js" async defer></script> #}
 {% endblock %}
 
 {% block body %}
@@ -22,7 +26,6 @@
     </div>
     {% endif %}
 
-    
     <div class="container md-container-fluid form-admin my-5">
         <form class="text-center" method="post">
             <div id="test" class="header-form-admin d-flex justify-content-center mb-4">
@@ -41,11 +44,11 @@
                     id="inputPassword" class="form-control" autocomplete="current-password" required>
             </div>
             {# <div class="mb-3 d-flex justify-content-center py-2">
-                <input type="password" class="form-control w-50" id="exampleInputPassword1"
-                    placeholder="Confirmer le mot de passe">
+                <input type="password" class="form-control w-50" id="confirmPassword"
+                    placeholder="Confirmer le mot de passe" autocomplete="current-password" required>
             </div> #}
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-            {# <div id="captcha-container" class="container-captcha py-5">
+            <div id="captcha-container" class="container-captcha py-5">
                 <div id="captcha"  class="captcha unselectable">
                     <script>createCaptcha();</script>
                 </div>
@@ -63,11 +66,12 @@
             <div class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-form-admin my-3 py-2 px-4btn-captcha" id="btn-captcha" hidden
                     onclick="secCaptcha()">Connexion</button>
-            </div> #}
-            <div class="g-recaptcha" data-sitekey="6LflyjAfAAAAABx6KODN7ppWipnimUNYkWxgkVe9"></div>
-            <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-form-admin my-3 py-2 px-4btn-captcha">Connexion</button>
             </div>
+            {# <div class="g-recaptcha" data-sitekey="6LflyjAfAAAAABx6KODN7ppWipnimUNYkWxgkVe9"></div> #}
+            {# bouton sans captcha #}
+            {# <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-form-admin my-3 py-2 px-4btn-captcha">Connexion</button>
+            </div> #}
         </form>
     </div>
 </form>

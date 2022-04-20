@@ -57,12 +57,10 @@ class CollaborateursController extends AbstractController
     {
         //IMPORTANT RAJOUTER (string) DANS  getPassword(): { return (string) $this->password;}
         $collaborateur = new Collaborateurs();
-        // $departement = new Departements();
         $form = $this->createForm(CollaborateursType::class, $collaborateur);
         $form->handleRequest($request);
         //Vérification lorsque le formulaire est envoyé ainsi que valide selon les conditions défini ci-dessous
         if ($form->isSubmitted() && $form->isValid()) {
-            
             //Ajout du departement lors de la création d'un collaborateur relation many to many mappedBy
             foreach($form['departements']->getData()->getValues() as $v){
                 $departement = $entityManager->getRepository(Departements::class)->find($v->getId());

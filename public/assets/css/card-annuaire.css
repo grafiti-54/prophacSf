@@ -1,5 +1,5 @@
 /*CSS des cards des collaborateurs pour la présentions sur las pages d'annuaire du site*/
-
+/* card annuaire */
 .card-annuaire{
     background-color: #DFEAF8 !important;
     border: none;
@@ -7,21 +7,29 @@
     width: 400px auto;
     box-shadow: rgb(38, 57, 77) 0px 10px 10px -10px;
 }
+/*Réglage taille des images de l'annuaire*/
 .card-annuaire img{
     max-height: 350px;
     background-position: center top;
 }
-
+/*Texte présentation des collaborateurs */
 .card-annuaire p, span{
     color: #0032A0;
     font-size: 1em;
 }
+/* Réglage nom de famille des collaborateurs */
 .card-annuaire span{
     text-transform: uppercase;
     font-weight: bold;
 }
+/*Changement de curseur pour le survol de l'adresser mail */
+.e-mail a{
+    cursor: pointer;
+}
 
-.sous-titre{
+
+
+/* .sous-titre{
     background-color: #0032A0;
     width: 100%;
     text-align: center;
@@ -33,10 +41,4 @@
     box-shadow: rgb(38, 57, 77) 0px 20px 15px -10px;
     margin-top: 30px;
     
-}
-.e-mail a{
-    cursor: pointer;
-}
-/* .card-info{
-    height: 780px;
 } */

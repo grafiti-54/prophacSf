@@ -15,7 +15,7 @@ class SecurityController extends AbstractController
     #[Route(path:'/', name:'app_login')]
 function login(
     AuthenticationUtils $authenticationUtils): Response {
-    
+        //Le collaborateur accede à sa page de profil si il est connecté 
         if ($this->getUser()) {
             return $this->redirectToRoute('app_profil');
         }

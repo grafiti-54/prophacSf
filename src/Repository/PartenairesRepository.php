@@ -32,7 +32,6 @@ class PartenairesRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
-
     /**
      * @throws ORMException
      * @throws OptimisticLockException
@@ -44,7 +43,6 @@ class PartenairesRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
-
 
     /**
      * Constructeur. Requete de récupérer des partenaires qui appartiennent à un département
@@ -62,33 +60,10 @@ class PartenairesRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    // SELECT * 
+    // FROM `partenaires`
+    // INNER JOIN `partenaires_departements`
+    // ON partenaires.id = partenaires_id
+    // WHERE departements_id = 4;
 
-    // /**
-    //  * @return Partenaires[] Returns an array of Partenaires objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Partenaires
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

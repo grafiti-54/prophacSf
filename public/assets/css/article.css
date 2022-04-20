@@ -1,5 +1,4 @@
 /* CSS des articles posté sur le site puis de ceux qui seront rajouté par les administrateurs */
-
 @font-face {
     font-family:'DIN Offc';
     src: url('font/fonts/DINOffc.eot');
@@ -19,7 +18,6 @@
 li{
     list-style:disc;
 }
-
 
 .article{
     list-style: circle;
@@ -44,7 +42,16 @@ li{
 
   @media screen and (max-width: 780px) {
     .image-article img{
-        width: 410px;
+        width: 400px;
+    }
+  }
+
+  @media screen and (max-width: 770px) {
+    .disposition {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
   }
 

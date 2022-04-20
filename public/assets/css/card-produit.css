@@ -75,6 +75,8 @@ figcaption p{
 
 .image-produit{
     height: 300px;
+    width: 100%;
+    height: 100% auto;
 }
 
 
@@ -116,3 +118,27 @@ figcaption p{
 .logo-partenaire:hover{
 border: 5px solid rgba(0, 51, 160, 0.433);
 }
+
+
+
+@media(max-width: 450px){
+    .btn-produit:hover{
+        color: white;
+        font-size: 0.7em;
+        
+    } 
+ }
+
+ @media(max-width: 767px){
+    .card-perso{
+        background-color: #DFEAF8;
+        border: none;
+        height: 300px ;
+        width: 400px auto;
+        box-shadow: rgb(68, 97, 128) 0px 15px 10px -10px;
+    }
+    .card-perso img{
+        max-height: 200px;
+        background-position: center top;
+    }
+ }

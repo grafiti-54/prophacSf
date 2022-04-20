@@ -11,22 +11,22 @@
 {# {{ form(form) }} #}
 <div class="container mt-2">
 	<div class="row text-center text-lg-start">
-		<div class="col-lg-3 col-md-4 col-6">
+		<div class="col-lg-3 col-md-6 col-6">
 			<a href="{{path('app_diagnostics')}}" class="d-block mb-4 h-100">
 				<img class="logo-accueil" src="{{asset('assets/img/diagnostics-1.png')}}" alt="picto-diagnostics">
 			</a>
 		</div>
-		<div class="col-lg-3 col-md-4 col-6">
+		<div class="col-lg-3 col-md-6 col-6">
 			<a href="{{path('app_pharma')}}" class="d-block mb-4 h-100">
 				<img class="logo-accueil" src="{{asset('assets/img/pharmaceuticals-1.png')}}" alt="picto-pharma">
 			</a>
 		</div>
-		<div class="col-lg-3 col-md-4 col-6">
+		<div class="col-lg-3 col-md-6 col-6">
 			<a href="{{path('app_patient')}}" class="d-block mb-4 h-100">
 				<img class="logo-accueil" src="{{asset('assets/img/patient-information-1.png')}}" alt="picto-patient">
 			</a>
 		</div>
-		<div class="col-lg-3 col-md-4 col-6">
+		<div class="col-lg-3 col-md-6 col-6">
 			<a href="{{path('app_veto')}}" class="d-block mb-4 h-100">
 				<img class="logo-accueil" src="{{asset('assets/img/veterinary-1.png')}}" alt="picto-veto">
 			</a>
@@ -69,7 +69,7 @@
 	<div class="container">
 		{% for article in articles %}
 		<div class="row">
-			<div class="col-lg-12 pt-lg-0">
+			<div class="col-lg-12 pt-lg-0 disposition">
 				<br />
 				<div class="float-end m-3">
 					<div class="d-flex image-article">
@@ -77,12 +77,13 @@
 							class="{% if loop.index is odd %}float-end imgshadow{% else %}float-start imgshadow{% endif %}"
 							alt="{{ article.titreIllustration}}">
 					</div>
-					<small class="legende-illustration text-end" height="25px">{{ article.legendeIllustration}}</small>
+					<small class="legende-illustration text-end ms-3" height="25px">{{ article.legendeIllustration}}</small>
 				</div>
 				<div class="m-3">
-					{% autoescape false %}
-					{{ article.contenu}}
-					{% endautoescape %}
+					<p>
+						{% autoescape false %}
+						{{ article.contenu}}
+						{% endautoescape %}
 					</p>
 				</div>
 			</div>
@@ -91,7 +92,6 @@
 		</div>
 	</div>
 </section>
-
 
 {# sous titre pour la section des produits #}
 <div class="container sous-titre">
@@ -102,7 +102,7 @@
 		<div class="row">
 			{# {{ dump(produits) }} #}
 			{% for produit in produits %}
-			<div class="col-md-6 col-lg-4">
+			<div class="col-md-6 col-lg-4 col-sm-6">
 				<div class="card card-perso my-3">
 					<img class="image-produit" src="../../../uploads/{{ produit.photo}}" class="img-fluid"
 						alt="photo-{{ produit.nom }} " />

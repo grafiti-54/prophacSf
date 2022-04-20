@@ -10,7 +10,7 @@
 	<small class="text-center h4">
 		Bonjour
 		{{ app.user.prenom }},
-        aujourd'hui nous sommes le {{ "now"|date("d/m/Y", "Europe/Paris") }}
+        {# aujourd'hui nous sommes le {{ "now"|date("d/m/Y", "Europe/Paris") }} #}
 	</small>
 {% endblock %}
 
@@ -19,6 +19,7 @@
 		<div class="container mt-3 mb-5"> <div class="row d-flex justify-content-center">
 			<div class="col-md-8">
 				<div class="card card-profil p-3 py-4">
+				{# Photo de prsentation du collaborateur #}
 					<div class="text-center my-3">
 						<img src="../../../uploads/{{ app.user.photo}}" width="30%" class="rounded-circle">
 					</div>
@@ -26,30 +27,35 @@
 						<span class="bg-secondary p-2 px-4 rounded text-white">Connecté</span>
 					</div>
 					<span class="text-center mt-3">
+					{# Qualifications du collaborateur au sein de la société #}
                     <img class="me-1" src="{{asset('assets/img/logo-crud/valise-profil.svg')}}" alt="icon-quaification" width="20px" height="20px">
 						{% for qualification in app.user.qualification %}
 							{{ qualification}}
 							<br>
 						{% endfor %}
 					</span>
+					{# Nom et prenom du collaborateur #}
 					<div class="px-4 mt-1">
 						<p class="fonts">
 							<img class="me-3" src="{{asset('assets/img/logo-crud/name.svg')}}" alt="icon-name" width="20px" height="20px">
 							{{ app.user.nom | upper}} {{ app.user.prenom}}
 						</p>
 					</div>
+					{# Numéro de telephone du collaborateur #}
 					<div class="px-4 mt-1">
 						<p class="fonts">
 							<img class="me-3" src="{{asset('assets/img/logo-crud/telephone-fill.svg')}}" alt="icon-tel" width="20px" height="20px">
 							{{ app.user.numero}}
 						</p>
 					</div>
+					{# E-mail du collaborateur #}
                     <div class="px-4 mt-1">
 						<p class="fonts">
 							<img class="me-3" src="{{asset('assets/img/logo-crud/envelope.svg')}}" alt="icon-email" width="20px" height="20px">
 							{{ app.user.email}} 
 						</p>
 					</div>
+					{# Departement d'activité du collaborateur #}
                     <div class="px-4 mt-1">
 						<p class="fonts">
                         <img class="me-3" src="{{asset('assets/img/logo-crud/departement-profil.svg')}}" alt="icon-departement" width="20px" height="20px">
@@ -58,13 +64,14 @@
                             {% endfor %}
 						</p>
 					</div>
-                    
+                    {# Reseaux sociaux #}
 					<ul class="social-list">
 						<li><a href="https://www.facebook.com/"><img class="me-3" src="{{asset('assets/img/logo-crud/mail.svg')}}" alt="icon-mail" width="30px" height="30px"></a></li>
 					    <li><a href="https://www.facebook.com/"><img class="me-3" src="{{asset('assets/img/logo-crud/facebook.svg')}}" alt="icon-facebook" width="30px" height="30px"></a></li>
 					    <li><a href="https://www.google.fr/"><img class="me-3" src="{{asset('assets/img/logo-crud/google.svg')}}" alt="icon-google" width="30px" height="30px"></a></li>
 					    <li><a href="https://www.linkedin.com/feed/"><img class="me-3" src="{{asset('assets/img/logo-crud/linkedin.svg')}}" alt="icon-linkedin" width="30px" height="30px"></a></li>
 					</ul>
+					{# Actions possible selon le role #}
 					<div class="buttons">
 						{% if is_granted('ROLE_REDACTEUR') %}
 							<a class="btn btn-prophac px-4" href="{{path('app_post_new')}}">Ajouter un article</a> 

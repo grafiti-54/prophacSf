@@ -126,6 +126,12 @@
     
 }
 
+@media(max-width: 625px){ 
+    .picto{ 
+        visibility: hidden;
+    }
+}
+
 /* Réglage responsive */
 @media(max-width: 700px){ 
     .sous-titre-departement{
@@ -144,6 +150,14 @@
 .logo-accueil{
     width: 250px;
     height: 250px;
+}
+
+
+@media(max-width: 550px){ 
+    .logo-accueil{
+        width: 150px;
+        height: 150px;
+    }
 }
 
 /* Cercle de présentation sur la page d'accueil*/

@@ -2,11 +2,9 @@
 
 namespace App\Controller;
 
-use App\Classe\Search;
 use App\Entity\Departements;
 use App\Entity\Produits;
 use App\Form\ProduitsType;
-use App\Form\SearchType;
 use App\Repository\ProduitsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,7 +21,7 @@ class ProduitsController extends AbstractController
 {
     //Affichage de la liste des produits 
     #[Route('/', name: 'app_produits_index', methods: ['GET'])]
-    public function index(ProduitsRepository $produitsRepository, Request $request ): Response
+    public function index(ProduitsRepository $produitsRepository ): Response
     {
         return $this->render('admin/produits/index.html.twig', [
             'produits' => $produitsRepository->findAll(),

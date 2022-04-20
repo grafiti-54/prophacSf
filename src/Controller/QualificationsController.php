@@ -36,7 +36,7 @@ class QualificationsController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $qualificationsRepository->add($qualification);
-            $this->addFlash('success', "Le qualification a été ajouté avec succès.");
+            $this->addFlash('success', "La qualification a été ajouté avec succès.");
             return $this->redirectToRoute('app_qualifications_index', [], Response::HTTP_SEE_OTHER);
         }
         return $this->renderForm('admin/qualifications/new.html.twig', [

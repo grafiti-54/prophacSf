@@ -25,19 +25,22 @@
 }
 
 
-.info span{
+/* .info span{
     padding-left: 0.5em;
-}
+} */
 
 
 @media(max-width: 1084px){
 
     .info{
-        height:10em;
+        display: block;
+        height:11em;
+        justify-content: flex-start;
     }
-    .bloc{
+    /* .bloc{
         margin: 1em;
-    }
+    } */
+    
  }
 
  @media(max-width: 660px){
@@ -50,7 +53,7 @@
         height:11em;
         justify-content: flex-start;
     }
-    .bloc{
+    /* .bloc{
         margin: 0.2em;
-    }
+    } */
  }
