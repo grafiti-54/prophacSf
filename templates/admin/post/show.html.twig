@@ -1,59 +1,70 @@
 {% extends 'admin/accueil.html.twig' %}
 
-{% block title %}Admin - Prophac{% endblock %}
+{% block title %}Admin - Prophac
+{% endblock %}
 
-{% block PageTitle %} Détail de l'article {{ article.titre }}{% endblock %}
+{% block PageTitle %}
+	Détail de l'article
+	{{ article.titre }}
+{% endblock %}
 {% block stylesheets %}
-			<link rel="stylesheet" href="{{asset('assets/css/article.css')}}">
-		{% endblock %}
+	<link rel="stylesheet" href="{{asset('assets/css/article.css')}}">
+{% endblock %}
 
 {% block body %}
-    <h1>Articles</h1>
-    {# {{ dump(article) }} #}
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ article.id }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ article.titre }}</td>
-            </tr>
-            <tr>
-                <th>Departement</th>
-                <td> <img src="../../../uploads/{{ article.departement.logo}}" alt="picto-{{article.departement}}" class="img-fluid" width="5%"> {{article.departement}} </td>
-            </tr>
-            <tr>
-                <th>Contenu</th>
-                <td>{% autoescape false %} {{ article.contenu}}  {% endautoescape %}</td>
-            </tr>
-            <tr>
-                <th>CreatedDate</th>
-                <td>{{ article.createdDate ? article.createdDate|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Illustration</th>
-                {# <td>{{ article.illustration }}</td> #}
-                <td class="" ><img src="../../../uploads/{{ article.illustration}}" alt="{{article.titreIllustration}}" class="img-fluid" width="350px"></td>
-            </tr>
-            <tr>
-                <th>TitreIllustration</th>
-                <td>{{ article.titreIllustration }}</td>
-            </tr>
-            <tr>
-                <th>LegendeIllustration</th>
-                <td>{{ article.legendeIllustration }}</td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="d-flex">
-        {% if is_granted('ROLE_REDACTEUR') %}
-            <a class="btn btn-success text-light ms-2 mt-2" href="{{ path('app_post_edit', {'id': article.id}) }}">Modifier l'article</a>
-        {% endif %}
-        {% if is_granted('ROLE_ADMIN') %}
-            {{ include('admin/post/_delete_form.html.twig') }}
-        {% endif %}
-    </div>
-        <a class="btn btn-prophac ms-2 mt-2 mb-5" href="{{ path('app_post_index') }}">Retourner sur la liste des articles</a>    
+	<h1>Articles</h1>
+	{# {{ dump(article) }} #}
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ article.id }}</td>
+			</tr>
+			<tr>
+				<th>Titre</th>
+				<td>{{ article.titre }}</td>
+			</tr>
+			<tr>
+				<th>Departement</th>
+				<td>
+					<img src="../../../uploads/{{ article.departement.logo}}" alt="picto-{{article.departement}}" class="img-fluid" width="5%">
+					{{article.departement}}
+				</td>
+			</tr>
+			<tr>
+				<th>Contenu</th>
+				<td>
+					{% autoescape false %}
+						{{ article.contenu}}
+					{% endautoescape %}
+				</td>
+			</tr>
+			<tr>
+				<th>CreatedDate</th>
+				<td>{{ article.createdDate ? article.createdDate|date('Y-m-d') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Illustration</th>
+				{# <td>{{ article.illustration }}</td> #}
+				<td class=""><img src="../../../uploads/{{ article.illustration}}" alt="{{article.titreIllustration}}" class="img-fluid" width="350px"></td>
+			</tr>
+			<tr>
+				<th>TitreIllustration</th>
+				<td>{{ article.titreIllustration }}</td>
+			</tr>
+			<tr>
+				<th>LegendeIllustration</th>
+				<td>{{ article.legendeIllustration }}</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="d-flex">
+		{% if is_granted('ROLE_REDACTEUR') %}
+			<a class="btn btn-success text-light ms-2 mt-2" href="{{ path('app_post_edit', {'id': article.id}) }}">Modifier l'article</a>
+		{% endif %}
+		{% if is_granted('ROLE_ADMIN') %}
+			{{ include('admin/post/_delete_form.html.twig') }}
+		{% endif %}
+	</div>
+	<a class="btn btn-prophac ms-2 mt-2 mb-5" href="{{ path('app_post_index') }}">Retourner sur la liste des articles</a>
 {% endblock %}

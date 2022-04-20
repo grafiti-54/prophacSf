@@ -32,13 +32,12 @@ class PartenairesType extends AbstractType
                 'expanded' =>true,
                 'multiple' => true,
                 'mapped' => true,
-                'help' => "Modifications des collaborateurs appartenant à ce département ",
-                
+                'help' => "Modifications des collaborateurs appartenant à ce département ", 
             ])
             ->add('logo', FileType::class,[
                 'label' => 'Image du partenaire',
                 'required' => false,
-                'mapped' => false, // n'est pas lié a la base de donnée
+                'mapped' => false, 
                 'constraints' => [
                     new ConstraintsFile([
                         'maxSize' => '10240k',
@@ -46,7 +45,7 @@ class PartenairesType extends AbstractType
                             'image/jpeg',
                             'image/png',   
                         ],
-                        'mimeTypesMessage' => 'Veuiller inserer un jpeg ou un png',
+                        'mimeTypesMessage' => 'Merci d\'inserer un fichier jpeg ou png',
                     ])
                 ]
             ])

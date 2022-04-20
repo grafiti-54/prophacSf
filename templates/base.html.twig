@@ -6,8 +6,7 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link
-		rel="icon" type="image/png" href="{{asset('assets/img/mini-prophac.jpg')}}" height="16px">
+		<link rel="icon" type="image/x-icon" href="{{asset('assets/img/mini-prophac2.png')}}" >
 		{# lien css bootstrap #}
 		<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
 		<link
@@ -42,8 +41,6 @@
 
 		{# lien css card-produit pour les produits présenté sur le site #}
 		<link rel="stylesheet" href="{{asset('assets/css/card-produit.css')}}">
-
-
 		{% block stylesheets %}
 			{# {{ encore_entry_link_tags('app') }} #}
 		{% endblock %}
@@ -52,7 +49,6 @@
 			{% endblock %}
 		</title>
 	</head>
-
 	{# HEADER #}
 	<body>
 		<div class="logo">
@@ -61,7 +57,7 @@
 			</div>
 		</div>
 		{# Info #}
-		<div class="info" data-aos="fade-right" data-aos-delay="3000">
+		<div class="info ps-3" data-aos="fade-right" data-aos-delay="3000">
 			<span class="bloc">
 				<span class="name">
 					<strong>PROPHAC</strong>
@@ -93,14 +89,12 @@
 				</span>
 				<span class="sous-bloc2">
 					<span class="parking">PARKING GRATUIT</span>
-					<span class="bus">Ligne bus: 30</span>
+					<span class="bus">, Ligne bus: 30</span>
 				</span>
 			</div>
 		</div>
-
 		{# Menu navigation #}
 		<header id="hd-navbar" class="hd-nav">
-
 			<a class="hd-home" href="{{path('app_accueil')}}">HOME</a>
 			<div class="hd-dropdown-1">
 				<button class="hd-btn">DOMAINE D'ACTIVITÉS</button>
@@ -132,7 +126,6 @@
 			{# Unicode menu hambourger #}
 			<a class="hd-icon" onclick="myFunction()">
 				&#9776</a>
-
 		</header>
 		{% block illustration %}
 			{# carousel #}
@@ -145,27 +138,25 @@
 				</div>
 				<div class="carousel-inner">
 					<div class="carousel-item active" data-bs-interval="10000">
-						<img src="{{asset('assets/img/diagnostics.jpg')}}" class="d-block w-100" alt="dep-diagnostics">
+						<img src="{{asset('assets/img/departement-diagnostics.jpg')}}" class="d-block w-100" alt="dep-diagnostics">
 						<div class="carousel-caption d-none d-md-block">
 							<a class="car-lien" href="{{path('app_diagnostics')}}">
 								<h5 class="car-titre">DIAGNOSTICS</h5>
 								<p class="car-p">Analyseurs et réactifs pour les analyses médicales et les analyses de recherche bio-médicales.</p>
 								<img src="{{asset('assets/img/Picto_Diagno_demi-tons_rgb.png')}}" alt="diagnostics" class="car-picto"></a>
-
 						</div>
 					</div>
 					<div class="carousel-item" data-bs-interval="4000">
-						<img src="{{asset('assets/img/pharma.jpg')}}" class="d-block w-100" alt="dep-pharmaceuticals">
+						<img src="{{asset('assets/img/department-pharmaceuticals.jpg')}}" class="d-block w-100" alt="dep-pharmaceuticals">
 						<div class="carousel-caption d-none d-md-block">
 							<a class="car-lien" href="{{path('app_pharma')}}">
 								<h5 class="car-titre">PHARMACEUTICALS</h5>
 								<p class="car-p">Partenaire de l’industrie pharmaceutique au Grand-Duché de Luxembourg.</p>
 								<img src="{{asset('assets/img/Picto_Pharma_demi-tons_rgb.png')}}" alt="picto-pharma" class="car-picto"></a>
-
 						</div>
 					</div>
 					<div class="carousel-item">
-						<img src="{{asset('assets/img/diabete.jpg')}}" class="d-block w-100" alt="dep-patient-diabete">
+						<img src="{{asset('assets/img/department-patient-information.jpg')}}" class="d-block w-100" alt="dep-patient-diabete">
 						<div class="carousel-caption d-none d-md-block">
 							<a class="car-lien" href="{{path('app_patient')}}">
 								<h5 class="car-titre">PATIENT INFORMATION & DIABETES CARE</h5>
@@ -259,18 +250,18 @@
 				</a>
 			</div>
 		</div>
-		{# SCRIPT MENU #}
-		<script>
-			// function navbar
-function myFunction() {
-var x = document.getElementById("hd-navbar");
-if (x.className === "hd-nav") {
-x.className += " hd-responsive";
-} else {
-x.className = "hd-nav";
-}
-}
-		</script>
+			{# SCRIPT MENU #}
+			<script>
+						// function navbar
+			function myFunction() {
+			var x = document.getElementById("hd-navbar");
+			if (x.className === "hd-nav") {
+			x.className += " hd-responsive";
+			} else {
+			x.className = "hd-nav";
+			}
+			}
+			</script>
 		{# SCRIPT BOOTSTRAP #}
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 		{# SCRIPT MENU RESPONSIVE #}
@@ -285,8 +276,5 @@ x.className = "hd-nav";
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
-
-
 	</body>
-
 </html>

@@ -1,39 +1,37 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Annuaire INFORMATION & DIABETES CARE - Prophac
 {% endblock %}
-
-
+{# Présentation du département #}
 {% block illustration %}
 	<div class="departement patient-container">
 		<h1 class="titre-departement">PATIENT INFORMATION & DIABETES CARE</h1>
-		<p class="sous-titre-departement">
-			Lecteurs de glycémie, pompes à insuline, thermomètres et tensiomètres.
-		</p>
+		<p class="sous-titre-departement">Lecteurs de glycémie, pompes à insuline, thermomètres et tensiomètres.</p>
 		<img class="picto" src="{{asset('assets/img/Picto_Diabet_demi-tons_rgb.png')}}" alt="picto patient & diabete"/>
 	</div>
 {% endblock %}
 
 {% block body %}
-	{# {{ dump(collaborateurs) }} #}
 	{# Liste des collaborateurs du département patients & diabete #}
-	<div class="container titre-section">
-		Annuaire INFORMATION & DIABETES CARE
-	</div>
+	<div class="container titre-section"> Annuaire INFORMATION & DIABETES CARE</div>
+	{# Liste des collaborateurs du département patients & diabete #}
 	<section class="container">
 		<div class="row d-flex justify-content-center">
 			{% for collaborateur in collaborateurs %}
 				<div class="col-sm-9 col-md-6 col-lg-4 col-xl-4 col-xxl-3" data-aos="zoom-in" data-aos-duration="2000">
 					<div class="card card-annuaire my-3">
+						{# Photo de présentation du collaborateur #}
 						<img src="../../../uploads/{{ collaborateur.photo}}" alt="photo-{{ collaborateur.nom }}-{{ collaborateur.prenom }}" class="img-fluid"/>
+						{# Informations du collaborateur #}
 						<div class="card-body card-info">
+						{# Nom et prenom du collaborateur #}
 							<div class="name d-flex">
-								<img src="{{asset('assets/img/logo-annuaire/name.svg')}}" alt="icon-identite" class="mb-3"><p class="ms-3 d-block"></p>
+								<img src="{{asset('assets/img/logo-annuaire/name.svg')}}" alt="icon-identite" class="mb-3">
 								<p>
 									<span>{{ collaborateur.nom }}</span>
 									{{ collaborateur.prenom }}
 								</p>
 							</div>
+							{# Qualification du collaborateur #}
 							<div class="fonction d-flex">
 								<img src="{{asset('assets/img/logo-annuaire/valise.svg')}}" alt="icon-valise" class="mb-3">
 								<p class="ms-3">
@@ -42,11 +40,15 @@
 									{% endfor %}
 								</p>
 							</div>
+							{# Adresse email du collaborateur #}
 							<div class="e-mail d-flex">
-								<img src="{{asset('assets/img/logo-annuaire/envelope.svg')}}" alt="icon-envelope" class="mb-3"><a href="mailto:{{ collaborateur.email }}"class="ms-3">{{ collaborateur.email }}</a>
+								<img src="{{asset('assets/img/logo-annuaire/envelope.svg')}}" alt="icon-envelope" class="mb-3">
+								<a href="mailto:{{ collaborateur.email }}" class="ms-3">{{ collaborateur.email }}</a>
 							</div>
+							{# Numero de telephone du collaborateur  #}
 							<div class="telephone d-flex">
-								<img src="{{asset('assets/img/logo-annuaire/telephone-fill.svg')}}" alt="icon-telephone" class="mb-3"><p class="ms-3">{{ collaborateur.numero }}</p>
+								<img src="{{asset('assets/img/logo-annuaire/telephone-fill.svg')}}" alt="icon-telephone" class="mb-3">
+								<p class="ms-3">{{ collaborateur.numero }}</p>
 							</div>
 						</div>
 					</div>

@@ -16,16 +16,14 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class ProfilController extends AbstractController
 {
-    //Affichage du profil d'un utilisateur lorsqu'il est connecté
+    //Affichage du profil d'un collaborateur lorsqu'il est connecté
     #[
         Route('/admin/profil', name: 'app_profil'),
         IsGranted("ROLE_USER")
     ]
     public function index(): Response
     {
-        return $this->render('admin/profil/index.html.twig', [
-            'controller_name' => 'ProfilController',
-        ]);
+        return $this->render('admin/profil/index.html.twig');
     }
     //Modification par un collaborateur de son profil lorsqu'il est connecté sur son compte
     #[
