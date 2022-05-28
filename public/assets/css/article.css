@@ -106,3 +106,12 @@ li{
     to { transform: scale(1); }
   }
   
+
+  /*Bouton de validation de formulaire style prophac */
+.btn-prophac{
+    background-color: rgb(0, 51, 160);
+    color: white;
+    border-radius: 25px;
+    height: 40px;
+    
+}

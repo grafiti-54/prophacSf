@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prophac - Modification du mot de passe{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset('assets/css/contact.css')}}">
+{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+
+    <h1>Modification du mot de passe</h1>
+
+    {{ form_start(resetForm) }}
+        {{ form_row(resetForm.plainPassword) }}
+        <button class="btn btn-prophac my-4 px-5">Modifier</button>
+    {{ form_end(resetForm) }}
+
+    </div>
+{% endblock %}

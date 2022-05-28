@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset('assets/css/contact.css')}}">
+{% endblock %}
+
+
+{% block title %}Prophac - Modification du mot de passe{% endblock %}
+
+{% block body %}
+    {% for flash_error in app.flashes('reset_password_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+    <div class="container">
+    <h1 class="my-5">Modification du mot de passe</h1>
+
+    {{ form_start(requestForm) }}
+        {{ form_row(requestForm.email) }}
+        <div>
+            <small>
+                Entrez votre adresse e-mail et nous vous enverrons un
+                 lien pour réinitialiser votre mot de passe.
+            </small>
+        </div>
+
+        <button class="btn btn-prophac my-4 px-5">Envoyer</button>
+    {{ form_end(requestForm) }}
+    </div>
+{% endblock %}
