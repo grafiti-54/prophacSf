@@ -25,7 +25,7 @@
 
 @media(max-width: 620px){
     .departement{
-        height: 25vh !important;
+        height: 30vh !important;
     }
 }
 
@@ -128,7 +128,10 @@
 
 @media(max-width: 625px){ 
     .picto{ 
-        visibility: hidden;
+        /* visibility: hidden; */
+        height: 80px;
+        width: 80px;
+        margin-bottom: 30px;
     }
 }
 
@@ -194,4 +197,11 @@
 .circle a{
     text-decoration: none;
     color: white;
+}
+
+
+@media(max-width: 550px){ 
+.btn-annuaire{
+    font-size: 0.9rem !important;
+}
 }

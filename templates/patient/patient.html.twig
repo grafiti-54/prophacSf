@@ -30,7 +30,7 @@
 							</div>
 							<small class="legende-illustration text-end" height="25px">{{ article.legendeIllustration}}</small>
 						</div>
-						<div class="m-3">
+						<div class="m-3 contenu-article">
 							{% autoescape false %}
 								{{ article.contenu}}
 							{% endautoescape %}
@@ -57,7 +57,7 @@
 			class="row">
 			{# {{ dump(produits) }} #}
 			{% for produit in produits %}
-				<div class="col-md-6 col-lg-4">
+				<div class="col-md-6 col-lg-4 col-sm-6 prod">
 					<div class="card card-perso my-3">
 						<img class="image-produit" src="../../../uploads/{{ produit.photo}}" class="img-fluid" alt="photo-{{ produit.nom }} "/>
 						<figcaption class="overlay">
@@ -80,7 +80,7 @@
 <div class="container">
 	<div class="row text-center text-lg-start">
 		{% for partenaire in partenaires %}
-			<div class="col-lg-3 col-md-4 col-6">
+			<div class="col-lg-3 col-md-4 col-6 d-flex justify-content-center">
 				<a href="{{ partenaire.siteInternet}}" target="_blank" class="d-block mb-4 h-100">
 					<img class="logo-partenaire" src="../../../uploads/{{ partenaire.logo}}" alt="logo-{{ partenaire.nom}}">
 				</a>

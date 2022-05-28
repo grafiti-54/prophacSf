@@ -127,8 +127,6 @@ class PostController extends AbstractController
         ]);
     }
 
-
-
     //Affichage du détail d'un article
     #[
         Route('/{id}', name: 'app_post_show', methods: ['GET']),

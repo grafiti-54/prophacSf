@@ -35,7 +35,7 @@ class ProduitsController extends AbstractController
         $form = $this->createForm(ProduitsType::class, $produit);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            //Ajout du departement lors de la création d'un produitrelation many to many mappedBy
+            //Ajout du departement lors de la création d'un produit relation many to many mappedBy
             foreach($form['departement']->getData()->getValues() as $v){
                 $departement = $entityManager->getRepository(Departements::class)->find($v->getId());
                 if($departement){

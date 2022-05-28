@@ -54,9 +54,9 @@
 <div class="container">
 	<div class="row text-center text-lg-start">
 		{% for partenaire in partenaires %}
-			<div class="col-lg-3 col-md-4 col-6">
+			<div class="col-lg-3 col-md-4 col-6 d-flex justify-content-center">
 				<a href="{{ partenaire.siteInternet}}" target="_blank" class="d-block mb-4 h-100">
-					<img class="logo-partenaire" src="../../../uploads/{{ partenaire.logo}}" alt="logo-{{partenaire.nom}}">
+					<img class="logo-partenaire text-center" src="../../../uploads/{{ partenaire.logo}}" alt="logo-{{partenaire.nom}}">
 				</a>
 			</div>
 		{% endfor %}

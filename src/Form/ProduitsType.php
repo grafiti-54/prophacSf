@@ -32,12 +32,12 @@ class ProduitsType extends AbstractType
                 'mapped' => false, 
                 'constraints' => [
                     new ConstraintsFile([
-                        'maxSize' => '10240k',
-                        'mimeTypes' => [
+                        'maxSize' => '10240k', // Taille maxi de l'image
+                        'mimeTypes' => [ // Formats d'image autorisé
                             'image/jpeg',
                             'image/png',    
                         ],
-                        'mimeTypesMessage' => 'Veuiller inserer un jpeg ou un png',
+                        'mimeTypesMessage' => 'Veuillez insérer un jpeg ou un png',
                     ])
                 ]
             ])

@@ -251,6 +251,12 @@ header .hd-icon {
   }
 }
 
+@media (max-width: 500px) {
+  .carouselExampleDark{
+    height: 50vh !important;
+  }
+}
+
 /*SCROLLBAR*/
 
 body::-webkit-scrollbar-track {
@@ -274,4 +280,10 @@ body::-webkit-scrollbar-thumb {
     color-stop(0.72, rgb(73, 125, 189)),
     color-stop(0.86, rgb(28, 58, 148))
   );
+}
+
+@media (max-width: 770px) {
+#search_produits_mots{
+  height: 35px;
+}
 }

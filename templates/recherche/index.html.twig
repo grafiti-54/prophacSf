@@ -18,7 +18,7 @@
 		<div class="row">
 			{# {{ dump(produits) }} #}
 			{% for produit in produits %}
-			<div class="col-md-6 col-lg-4">
+			<div class="col-md-6 col-lg-4 col-sm-6 prod">
 				<div class="card card-perso my-3">
 					<img class="image-produit" src="../../../uploads/{{ produit.photo}}" class="img-fluid"
 						alt="photo-{{ produit.nom }} " />
@@ -32,6 +32,8 @@
 					</div>
 				</div>
 			</div>
+			{% else %}
+                <h2 class ="text-center">Désolé, nous n'avons pas trouvé de produits correspondant à votre recherche.</h2>
 			{% endfor %}
 		</div>
 	</div>

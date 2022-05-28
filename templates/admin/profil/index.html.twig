@@ -74,10 +74,10 @@
 					{# Actions possible selon le role #}
 					<div class="buttons">
 						{% if is_granted('ROLE_REDACTEUR') %}
-							<a class="btn btn-prophac px-4" href="{{path('app_post_new')}}">Ajouter un article</a> 
+							<a class="btn btn-prophac px-4 py-2" href="{{path('app_post_new')}}">Ajouter un article</a> 
 						{% endif %}
-						<a class="btn btn-prophac px-4" href="{{ path('app_profil_edit', {'id': app.user.id}) }}">Modifier mon profil</a>
-						<a class="btn btn-outline-primary px-4" href="{{path('app_logout')}}">Me déconnecter</a>
+						<a class="btn btn-prophac px-4 py-2" href="{{ path('app_profil_edit', {'id': app.user.id}) }}">Modifier mon profil</a>
+						<a class="btn btn-outline-primary px-4 py-2" href="{{path('app_logout')}}">Me déconnecter</a>
 					</div>
 				</div>
 			</div>

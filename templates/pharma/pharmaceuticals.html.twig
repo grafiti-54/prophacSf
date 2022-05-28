@@ -25,12 +25,12 @@
 					<div class="col-lg-12 pt-lg-0 disposition">
 						<br/>
 						<div class="float-end m-3">
-							<div class="d-flex image-article">
+							<div class="d-flex image-article img-fluid">
 								<img src="../../../uploads/{{ article.illustration}}" class="{% if loop.index is odd %}float-end imgshadow{% else %}float-start imgshadow{% endif %}" alt="{{ article.titreIllustration}}" height="500px">
 							</div>
 							<small class="legende-illustration text-end" height="25px">{{ article.legendeIllustration}}</small>
 						</div>
-						<div class="m-3">
+						<div class="m-3 contenu-article">
 							{% autoescape false %}
 								{{ article.contenu}}
 							{% endautoescape %}
@@ -54,7 +54,7 @@
 <div class="container">
 	<div class="row text-center text-lg-start">
 		{% for partenaire in partenaires %}
-			<div class="col-lg-3 col-md-4 col-6">
+			<div class="col-lg-3 col-md-4 col-6 d-flex justify-content-center">
 				<a href="{{ partenaire.siteInternet}}" target="_blank" class="d-block mb-4 h-100">
 					<img class="logo-partenaire" src="../../../uploads/{{ partenaire.logo}}" alt="logo-{{partenaire.nom}}">
 				</a>
