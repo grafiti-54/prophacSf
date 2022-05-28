@@ -141,4 +141,20 @@ border: 5px solid rgba(0, 51, 160, 0.433);
         max-height: 200px;
         background-position: center top;
     }
+    figcaption p{
+        padding: 10px;
+        font-size: 0.8rem;
+        
+    }
+ }
+
+ @media(max-width: 575px){
+    .card-perso{
+        max-width: 300px;
+        min-width: 300px;
+    } 
+    .prod{
+        display: flex;
+        justify-content: center;
+    }
  }

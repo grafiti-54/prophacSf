@@ -29,7 +29,7 @@
 							</div>
 							<small class="legende-illustration text-end" height="25px">{{ article.legendeIllustration}}</small>
 						</div>
-						<div class="m-3">
+						<div class="m-3 contenu-article">
 							{% autoescape false %}
 								{{ article.contenu}}
 							{% endautoescape %}
@@ -50,15 +50,15 @@
 	<section class="article">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-12 pt-lg-0 disposition">
+				<div class="col-lg-12 pt-lg-0 disposition d-md-flex">
 					<br/>
 					<div class="float-start m-3">
 						<div class="d-flex image-article">
-							<img src="../../../uploads/{{ analyse.illustration}}" class="float-start imgshadow" alt="{{ analyse.titreIllustration}}">
+							<img src="../../../uploads/{{ analyse.illustration}}" class="float-start imgshadow img-fluid" alt="{{ analyse.titreIllustration}}">
 						</div>
 						<small class="legende-illustration text-end" height="25px">{{ analyse.legendeIllustration}}</small>
 					</div>
-					<div class="m-3">
+					<div class="m-3 contenu-article">
 						{% autoescape false %}
 							{{ analyse.contenu}}
 						{% endautoescape %}
@@ -129,7 +129,7 @@
 	</div>
 </div></div></div></section><div class="container titre-section">Produits</div>{# liste des produits du département diagnostics #}<section class="py-4 my-3"><div class="container"><div class="row">
 {% for produit in produits %}
-	<div class="col-md-6 col-lg-4">
+	<div class="col-md-6 col-lg-4 col-sm-6 prod">
 		<div class="card card-perso my-3">
 			<img class="image-produit" src="../../../uploads/{{ produit.photo}}" class="img-fluid" alt="photo-{{ produit.nom }} "/>
 			<figcaption class="overlay">
@@ -143,7 +143,7 @@
 		</div>
 	</div>
 {% endfor %}</div></div></section>{# Liste des partenaire du département diagnostics #}<div class="container titre-section">Partenaires</div>{# {{ dump(partenaires) }} #}<div class="container"><div class="row text-center text-lg-start">{% for partenaire in partenaires %}
-<div class="col-lg-3 col-md-4 col-6">
+<div class="col-lg-3 col-md-4 col-6 d-flex justify-content-center">
 	<a href="{{ partenaire.siteInternet}}" target="_blank" class="d-block mb-4 h-100">
 		<img class="logo-partenaire" src="../../../uploads/{{ partenaire.logo}}" alt="logo-{{partenaire.nom}}">
 	</a>

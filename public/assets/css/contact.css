@@ -23,15 +23,21 @@
     padding-bottom:56.25%;
     position:relative;
     height:0;
-    margin-left: 10%;
+    
     }
     
     .map-responsive iframe {
     left:0;
     top:0;
-    height:80%;
-    width:80%;
+    height:90%;
+    width:100%;
     position:absolute;
+}
+
+@media(max-width: 855px){
+    .map-responsive{
+        margin:0;
+    }
 }
 
 /*Bouton de validation de formulaire style prophac */

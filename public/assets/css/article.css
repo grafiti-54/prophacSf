@@ -42,7 +42,7 @@ li{
 
   @media screen and (max-width: 780px) {
     .image-article img{
-        width: 400px;
+        width: 500px;
     }
   }
 
@@ -55,15 +55,33 @@ li{
     }
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 565px) {
     .image-article img{
-        width: 380px;
+        width: 460px;
+        height: 400px;
     }
   }
 
-  @media screen and (max-width: 430px) {
+  @media screen and (max-width: 500px) {
+    .image-article img{
+        width: 398px;
+        height: 350px;
+    }
+    .contenu-article{
+        font-size: 10px !important;
+    }
+  }
+
+  @media screen and (max-width: 449px) {
     .image-article img{
         width: 320px;
+        height: 250px;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .image-article img{
+        width: 290px;
     }
   }
 
