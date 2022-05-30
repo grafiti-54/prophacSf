@@ -38,12 +38,15 @@ function index(Request $request, ArticlesRepository $articlesRepository): Respon
     $urls[] = ['loc' => $this->generateUrl('app_veto')];
     $urls[] = ['loc' => $this->generateUrl('app_veto.annuaire')];
     $urls[] = ['loc' => $this->generateUrl('app_patient')];
-    $urls[] = ['loc' => $this->generateUrl('app_annuaire')];
+    $urls[] = ['loc' => $this->generateUrl('app_patient.annuaire')];
     $urls[] = ['loc' => $this->generateUrl('app_iso')];
     $urls[] = ['loc' => $this->generateUrl('app_organigramme')];
     $urls[] = ['loc' => $this->generateUrl('app_historique')];
     $urls[] = ['loc' => $this->generateUrl('app_contact')];
     $urls[] = ['loc' => $this->generateUrl('recherche')];
+    $urls[] = ['loc' => $this->generateUrl('app_annuaire')];
+    $urls[] = ['loc' => $this->generateUrl('app_politique')];
+    $urls[] = ['loc' => $this->generateUrl('app_plan')];
     //dd($urls);
 
     //on ajoute dynamique (dans le cas d'ajout d'url dynamique sur des pages articles)

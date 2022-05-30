@@ -18,7 +18,7 @@ class ProfilController extends AbstractController
 {
     //Affichage du profil d'un collaborateur lorsqu'il est connecté
     #[
-        Route('/admin/profil', name: 'app_profil'),
+        Route('/prophac-admin/profil', name: 'app_profil'),
         IsGranted("ROLE_USER")
     ]
     public function index(): Response

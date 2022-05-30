@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 //Gestion de la liste des numéros de téléphone de la société (crud)
 #[
-    Route('/admin/telephones'),
+    Route('/prophac-admin/telephones'),
     IsGranted("ROLE_ADMIN")
 ]
 class TelephonesController extends AbstractController

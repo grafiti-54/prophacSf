@@ -15,7 +15,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 // Les départements de la société (crud coté admiistration)
 #[
-    Route('/admin/departements'),
+    Route('/prophac-admin/departements'),
     IsGranted('ROLE_ADMIN')
 ]
 class DepartementsController extends AbstractController

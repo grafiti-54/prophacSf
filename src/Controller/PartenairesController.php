@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 //Les partenaires de la société (crud administrateur)
-#[Route('/admin/partenaires')]
+#[Route('/prophac-admin/partenaires')]
 class PartenairesController extends AbstractController
 {
     // Affichage de la liste des partenaires de la société

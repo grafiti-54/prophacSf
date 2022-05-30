@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 //Gestion de la liste des qualifications de la société (crud)
 #[
-    Route('/admin/qualifications'),
+    Route('/prophac-admin/qualifications'),
     IsGranted("ROLE_ADMIN")
 ]
 class QualificationsController extends AbstractController

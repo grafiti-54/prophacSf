@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class RegistrationController extends AbstractController
 {
     //Page reservé à l'administrateur pour la création d'un nouveau compte (MAIL + MDP UNIQUEMENT)
-    #[Route('admin/prophac-createAccount', name: 'app_register')]
+    #[Route('prophac-admin/prophac-createAccount', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new Collaborateurs();
