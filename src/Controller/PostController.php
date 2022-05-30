@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 //Gestions des articles qui seront postés sur le site principal (crud)
-#[Route('/admin/post')]
+#[Route('/prophac-admin/post')]
 class PostController extends AbstractController
 {
     //Affichage de la liste des articles

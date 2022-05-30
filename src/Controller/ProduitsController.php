@@ -16,7 +16,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 
 //Gestions des produits qui sont affiché sur le site principal (crud)
-#[Route('admin/produits')]
+#[Route('prophac-admin/produits')]
 class ProduitsController extends AbstractController
 {
     //Affichage de la liste des produits 

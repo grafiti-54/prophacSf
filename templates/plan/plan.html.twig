@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{asset('assets/css/article.css')}}">
+	<link rel="stylesheet" href="{{asset('assets/css/plan.css')}}">
+{% endblock %}
+{% block title %}Prophac - Plan du site
+{% endblock %}
+
+
+{% block body %}
+	<h1 class="text-center py-5">Plan du site</h1>
+	<div class="vsitemap">
+		<ul>
+			<li>
+				<a href="{{path('app_accueil')}}">Accueil
+					<br/><small>Prophac</small>
+				</a>
+				<ul>
+					<li>
+						<button disabled>Activités</button>
+						<ul>
+							<li>
+								<a href="{{path('app_diagnostics')}}">Diagnostics</a>
+								<ul>
+									<li><a href="{{path('app_diagnostics.annuaire')}}">Annuaire Diagnostics</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="{{path('app_pharma')}}">Pharmaceuticals</a>
+								<ul>
+									<li><a href="{{path('app_pharma.annuaire')}}">Annuaire Pharmaceuticals</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="{{path('app_patient')}}">Patients - Diabetes</a>
+								<ul>
+									<li><a href="{{path('app_patient.annuaire')}}">Annuaire<br>Patients -Diabetes</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="{{path('app_veto')}}">Veterinary</a>
+								<ul>
+									<li><a href="{{path('app_veto.annuaire')}}">Annuaire Veterinary</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<button disabled>Prophac</button>
+						<ul>
+							<li><a href="{{path('app_historique')}}">Historique</a></li>
+							<li><a href="{{path('app_organigramme')}}">Organigramme</a></li>
+							<li><a href="{{path('app_iso')}}">Iso 9001</a></li>
+						</ul>
+					</li>
+					<li>
+						<button disabled>Contact</button>
+						<ul>
+							<li><a href="{{path('app_contact')}}">Formulaire de contact</a></li>
+							<li><a href="{{path('app_annuaire')}}">Annuaire</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="{{path('recherche')}}">Résultat de recherche</a>
+					</li>
+					<li>
+						<a href="{{path('app_politique')}}">Politique de confidentialité</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<hr/>
+{% endblock %}

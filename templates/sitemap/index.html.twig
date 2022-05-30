@@ -7,12 +7,7 @@
 		<url>
 			{# On vérifie si le nom de l'hote (hostname) est présent dans l'url #}
 			{# Si il n'y est pas on l'ajoute #}
-				<loc>
-					{% if url.loc|replace({hostname:''}) == url.loc  %}{{hostname}}{{url.loc}}
-				{% else %}
-					{{url.loc}}
-				{% endif %}
-			</loc>
+				<loc>{% if url.loc|replace({hostname:''}) == url.loc  %}{{hostname}}{{url.loc}}{% else %}{{url.loc}}{% endif %}</loc>
 			{# Si il y as une date de modification #}
 			{% if url.lastmod is defined %}
 				<lastmod>
