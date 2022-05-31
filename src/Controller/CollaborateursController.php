@@ -197,17 +197,3 @@ class CollaborateursController extends AbstractController
         ]);
     }
 }
-
-
-
-
-
-
-
-            //Modification du departement lors de la création d'un collaborateur relation many to many mappedBy à placer en dessous de isSubmitted() && $form->isValid()) si necessaire
-            // foreach($form['departements']->getData()->getValues() as $v){
-            //     $departement = $entityManager->getRepository(Departements::class)->find($v->getId());
-            //     if($departement){
-            //         $departement->addCollaborateur($collaborateur);
-            //     }
-            // }
