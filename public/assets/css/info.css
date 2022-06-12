@@ -3,7 +3,7 @@
 
 .info{
     width: 100vw auto;
-    height: 5em;
+    height: 6em;
     background-color: #dfeaf8;
     color: #0032a0;
     display: flex;
@@ -11,6 +11,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     font-size: clamp(0.6rem,2.5vw,0.8rem);
+    
 }
 
 .sous-bloc1, .sous-bloc2{
@@ -19,7 +20,6 @@
     flex-wrap: nowrap;
     justify-content: flex-start;
     align-items: center;
-
 }
 
 

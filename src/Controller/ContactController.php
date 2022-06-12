@@ -21,7 +21,7 @@ function index(Request $request, MailerInterface $mailer)
 
     if ($form->isSubmitted() && $form->isValid()) {
 
-        $clientResponse = $request->request->get('g-recaptcha-response');
+        $clientResponse = $request->request->get('g-recaptcha-response'); //recupére le captcha validé par l'utilisateur
         $secret = "6LflyjAfAAAAAAVeRyU_7QDy4mUvIVpeauHL9zQ1"; // clé secrete du site
         $ip = $request->server->get("REMOTE_ADDR"); // on recupere le host
         $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$clientResponse&remoteip=$ip";
@@ -32,7 +32,7 @@ function index(Request $request, MailerInterface $mailer)
             $contactFormData = $form->getData();
             $message = (new Email())
                 ->from($contactFormData['email'])
-                ->to('test@gmail.com')
+                ->to('admin@prophac.lu')
                 ->subject($contactFormData['sujet'])
                 ->text('Sender : ' . $contactFormData['email'] . \PHP_EOL .
                     $contactFormData['message'],

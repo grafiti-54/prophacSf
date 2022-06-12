@@ -8,8 +8,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+//https://www.sitemaps.org/fr/protocol.html voir documentation
 class SitemapController extends AbstractController
 {
+    //Sitemap du site
     #[Route('/sitemap.xml', name:'app_sitemap', defaults:["_format" => "xml"])]
 
 function index(Request $request, ArticlesRepository $articlesRepository): Response
