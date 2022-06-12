@@ -60,6 +60,7 @@ class PartenairesRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    //Syntaxe de la requete en SQL
     // SELECT * 
     // FROM `partenaires`
     // INNER JOIN `partenaires_departements`

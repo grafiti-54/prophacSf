@@ -8,7 +8,7 @@ security:
 
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
-        # used to reload user from session & other features (e.g. switch_user)
+        # permet de lier et recuperer la table qui est utiliser pour l'authentification des collaborateurs
         app_user_provider:
             entity:
                 class: App\Entity\Collaborateurs
@@ -26,11 +26,9 @@ security:
                 target: app_accueil
             login_throttling:
                 max_attempts: 3
-                interval: '15 minutes'
-        
-                
+                interval: '1 minutes'
+            #remettre interval 15 minutes après présentation
 
-            
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall

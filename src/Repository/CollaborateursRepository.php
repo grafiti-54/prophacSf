@@ -63,7 +63,7 @@ class CollaborateursRepository extends ServiceEntityRepository implements Passwo
     }
 
 
-    // Recherche des collaborateurs par nom / prenom
+    // Recherche des collaborateurs par nom / prenom pour futur recherche dans la liste de collaborateurs pour l'admin
     public function findCollaborateurByName(string $query)
     {
         $qb = $this->createQueryBuilder('c');
@@ -99,14 +99,12 @@ class CollaborateursRepository extends ServiceEntityRepository implements Passwo
         ;
         return $qb->getQuery()->getResult();
     }
-
-
-
-
-
-
-
-
+    //Syntaxe de la requete en SQL
+    // SELECT *
+    // FROM `collaborateurs` 
+    // inner join `departements_collaborateurs`
+    // on id = collaborateurs_id
+    // where departements_id = 2;
 
 
     // /**

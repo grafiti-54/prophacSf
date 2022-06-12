@@ -61,6 +61,8 @@ class ArticlesRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+    //Syntaxe de la requete en SQL
+    // SELECT * FROM `articles` WHERE `departement_id` = 3;
 
     /**
      * Requete permettant de récupérer un article selon son id
@@ -78,7 +80,8 @@ class ArticlesRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
         ;
     }
-
+    //Syntaxe de la requete en SQL
+    //SELECT * FROM `articles` WHERE `id` = 1;
 
   
     // /**

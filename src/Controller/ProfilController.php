@@ -23,6 +23,8 @@ class ProfilController extends AbstractController
     ]
     public function index(): Response
     {
+        // test des informations de sessions récupéré de base 
+        // dd($_SESSION);
         return $this->render('admin/profil/index.html.twig');
     }
     //Modification par un collaborateur de son profil lorsqu'il est connecté sur son compte
