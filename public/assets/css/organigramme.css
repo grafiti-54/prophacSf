@@ -10,16 +10,53 @@
          url('font/fonts/DINOffc.ttf')  format('truetype'),
          url('font/fonts/DINOffc.svg#DIN Offc') format('svg');
 }
-
-.content{
-    height: 250vh;
+/*reglage perso*/
+body{
+	background-color: white !important;
 }
 
+#search_produits_mots{
+	height: 38px;
+	margin-top: 5px;
+}
+
+.name strong{
+	color: rgb(0, 51, 160);
+	font-size: 10px;
+}
+
+.content, .test{
+    height: 280vh;
+	background-color: #dfeaf8;
+}
+
+#search_produits_Rechercher img{
+	height: 25px;
+}
+
+@media screen and (max-width: 767px){
+.name, .role{
+	margin-bottom: -20px;
+	font-size: 14px !important;
+}
+}
 @media screen and (max-width: 830px){
     .content{
         height: 565vh;
     }
 }
+
+@media screen and (max-width: 1084px){
+.info{
+	height: 18vh !important;
+}
+}
+
+/*fin reglage perso*/
+
+
+
+
 
 *{
 	-webkit-box-sizing: border-box;

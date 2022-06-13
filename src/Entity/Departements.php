@@ -6,8 +6,7 @@ use App\Repository\DepartementsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\HttpFoundation\Response;
+
 
 #[ORM\Entity(repositoryClass: DepartementsRepository::class)]
 class Departements
